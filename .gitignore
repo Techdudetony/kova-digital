@@ -1,0 +1,11 @@
+# DS Files
+.DS_Store
+Thumbs.db
+
+# Editor Files
+.vscode/
+*.code-workspace
+
+# Logs & Temp
+*.log
+tmp/
