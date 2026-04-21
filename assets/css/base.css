@@ -155,16 +155,21 @@ pre {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var();
+  background: transparent;
   border-radius: var(--radius-full);
+  transition: background var(--duration-slow) var(--ease-out);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold);
+}
+
+body.is-scrolling::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dim);
 }
 
 /* Reduced Motion */
