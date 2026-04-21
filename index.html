@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kova Digital — Creative Digital Solutions. Custom websites, UI systems, and ongoing digital partnerships. Where Imagination meets Innovation."
+    />
+
+    <title>Kova Digital — Creative Digital Solutions</title>
+
+    <!-- Design System: ORDER MATTERS!! tokens > reset > utilities > components -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/kova.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <!-- Logo -->
+        <a href="index.html" class="nav__logo">
+          <img
+            src="assets/img/kova-logo.png"
+            alt="Kova Digital logo"
+            class="nav__logo-img"
+          />
+          <div class="nav__logo-text">
+            <span class="nav__logo-name">Kova Digital</span>
+            <span class="nav__logo-sub">Creative Digital Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="nav__links" role="list">
+          <li><a href="index.html" class="nav__link is-active">Home</a></li>
+          <li><a href="services.html" class="nav__link">Services</a></li>
+          <li><a href="lab/index.html" class="nav__link">The Lab</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a href="contact.html" class="nav__cta">Get a Quote</a>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="nav__hamburger"
+          aria-label="Toggle hamburger menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile nav drawer -->
+    <div
+      class="nav__mobile"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html" class="nav__mobile-link is-active">Home</a>
+      <a href="services.html" class="nav__mobile-link">Services</a>
+      <a href="lab/index.html" class="nav__mobile-link">The Lab</a>
+      <a href="contact.html" class="nav__mobile-link">Contact</a>
+      <a href="contact.html" class="btn btn--primary nav__mobile-cta"
+        >Get a Quote</a
+      >
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Creative Digital Solutions</p>
+
+          <h1 class="hero__heading" id="hero-heading">
+            Where <span>Imagination</span><br />meets Innovation
+          </h1>
+
+          <p class="hero__sub">
+            We craft custom websites, design systems, and digital experiences
+            that elevate your brand and keep your business growing.
+          </p>
+
+          <div class="hero__actions">
+            <a href="services.html" class="btn btn--primary btn--lg"
+              >Explore Services</a
+            >
+            <a href="lab/index.html" class="btn btn--outline btn--lg"
+              >View The Lab</a
+            >
+          </div>
+        </div>
+
+        <!-- Animated scroll indicator -->
+        <div class="hero__scroll" aria-hidden="true">
+          <svg
+            class="hero__scroll-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- SERVICES SNAPSHOT -->
+      <section class="section" aria-labelledby="services-heading">
+        <div class="container">
+          <header class="section-header">
+            <p class="eyebrow">What We Do</p>
+            <h2 class="section-header__heading" id="services-heading">
+              Built for your business.<br />Designed to perform.
+            </h2>
+            <hr class="divider divider--center" />
+            <p class="section-header__sub">
+              From a single landing page to a full design system, we bring the
+              same level of craft and care to every project.
+            </p>
+          </header>
+
+          <!-- Service Cards Grid -->
+          <div class="grid grid-auto-md gap-8">
+            <!-- Card 1 - Custom Website Design -->
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg>
+              </div>
+              <h3 class="service-card__title">Custom Website Design</h3>
+              <p class="service-card__desc">
+                Handcrafted, pixel-perfect websites built from scratch. No
+                template, no shortcuts — just a site that truly represents your
+                brand and converts visitors into clients.
+              </p>
+              <a href="services.html#custom-design" class="service-card__link">
+                Learn more
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+
+            <!-- Card 2 - UI Component Systems -->
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="9" height="9" rx="1" />
+                  <rect x="13" y="2" width="9" height="9" rx="1" />
+                  <rect x="2" y="13" width="9" height="9" rx="1" />
+                  <rect x="13" y="13" width="9" height="9" rx="1" />
+                </svg>
+              </div>
+              <h3 class="service-card__title">UI Component Systems</h3>
+              <p class="service-card__desc">
+                Scalable, reusable component libraries and design systems that
+                keep your product consistent, fast to build, and easy to
+                maintain as you grow.
+              </p>
+              <a href="services.html#ui-systems" class="service-card__link">
+                Learn more
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+
+            <!-- Card 3 - Ongoing Maintenance -->
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 2a10 10 0 1 0 10 10" />
+                  <path d="M22 2 12 12" />
+                  <path d="m16 2 6 6V2z" />
+                </svg>
+              </div>
+              <h3 class="service-card__title">Ongoing Maintenance</h3>
+              <p class="service-card__desc">
+                Your website is never "done." We offer retainer partnerships for
+                updates, performance monitoring, new features, and continuous
+                improvements that keep you ahead.
+              </p>
+              <a href="services.html#maintenance" class="service-card__link">
+                Learn more
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+          </div>
+
+          <!-- Link to full services page -->
+          <div class="flex justify-center mt-12">
+            <a href="services.html" class="btn btn--outline"
+              >See All Services</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- LAB TEASER -->
+      <section class="lab-teaser section" aria-labelledby="lab-heading">
+        <div class="container lab-teaser__inner">
+          <div class="lab-teaser__content">
+            <p class="eyebrow">Proof of Craft</p>
+            <h2 class="lab-teaser__heading" id="lab-heading">
+              The Lab — See Our Work in Motion
+            </h2>
+            <hr class="divider" />
+            <p class="lab-teaser__desc">
+              Every component, animation, and interaction we build for clients
+              starts as a live experiment in The Lab — our open showcase of UI
+              craft. Browse real, working code. No mockups, no screenshots.
+            </p>
+            <a href="lab/index.html" class="btn btn--primary"
+              >Explore The Lab</a
+            >
+          </div>
+
+          <!-- Component category preview tiles -->
+          <div class="lab-teaser__preview" aria-hidden="true">
+            <div class="lab-teaser__preview-item">Animation</div>
+            <div class="lab-teaser__preview-item">Buttons</div>
+            <div class="lab-teaser__preview-item">Cards</div>
+            <div class="lab-teaser__preview-item">Forms</div>
+            <div class="lab-teaser__preview-item">Navigation</div>
+            <div class="lab-teaser__preview-item">Hero</div>
+            <div class="lab-teaser__preview-item">Modal</div>
+            <div class="lab-teaser__preview-item">Load</div>
+            <div class="lab-teaser__preview-item">Transition</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BAND -->
+      <section class="cta-band section" aria-labelledby="cta-heading">
+        <div class="container cta-band__inner">
+          <p class="eyebrow">Let's Build Together</p>
+          <h2 class="cta-band__heading" id="cta-heading">
+            Ready to bring your vision to life?
+          </h2>
+          <p class="cta-band__sub">
+            Tell us about your project. We'll respond within 48 hours with a
+            clear plan and honest pricing.
+          </p>
+          <div class="hero__actions">
+            <a href="contact.html" class="btn btn--primary btn--lg"
+              >Start a Project</a
+            >
+            <a href="services.html" class="btn btn--outline btn--lg"
+              >View Services</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <!-- Brand Column -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo">
+              <img
+                src="assets/img/kova-logo.png"
+                alt="Kova Digital"
+                class="footer__logo-img"
+              />
+              <span class="footer__logo-name">Kova Digital</span>
+            </a>
+            <p class="footer__tagline">
+              Where Imagination meets Innovation. Custom digital experiences
+              crafted with precision and purpose.
+            </p>
+          </div>
+
+          <!-- Nav group - Company -->
+          <nav class="footer__nav-group" aria-label="Company links">
+            <p class="footer__nav-title">Company</p>
+            <a href="index.html" class="footer__nav-link">Home</a>
+            <a href="services.html" class="footer__nav-link">Services</a>
+            <a href="contact.html" class="footer__nav-link">Contact</a>
+          </nav>
+
+          <!-- Nav group - Work -->
+          <nav class="footer__nav-group" aria-label="Work links">
+            <p class="footer__nav-title">Work</p>
+            <a href="lab/index.html" class="footer__nav-link">The Lab</a>
+            <a href="lab/index.html#animations" class="footer__nav-link"
+              >Animations</a
+            >
+            <a href="lab/index.html#components" class="footer__nav-link"
+              >Components</a
+            >
+          </nav>
+
+          <!-- Nav group - Contact -->
+          <nav class="footer__nav-group" aria-label="Contact links">
+            <p class="footer__nav-title">Get in Touch</p>
+            <a href="mailto:techdudetony@gmail.com" class="footer__nav-link"
+              >techdudetony@gmail.com</a
+            >
+            <a href="contact.html" class="footer__nav-link">Project Inquiry</a>
+          </nav>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; <span id="footer-year"></span><span> Kova Digital</span>. All
+            rights reserved.
+          </p>
+          <p class="footer__copy">Creative Digital Solutions</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Business site JS -->
+    <script src="assets/js/kova.js"></script>
+
+    <!-- Auto-update copyright year -->
+    <script>
+      document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>

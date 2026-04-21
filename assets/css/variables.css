@@ -100,7 +100,7 @@
 
 /* Layout */
 :root {
-  --container-max: 1200px;
+  --container-max: 1600px;
   --container-wide: 1440px;
   --container-narrow: 720px;
   --container-pad: clamp(var(--space-6), 5vw, var(--space-16));

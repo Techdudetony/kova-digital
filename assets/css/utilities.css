@@ -264,18 +264,19 @@
 
 /* Divider */
 .divider {
-  width: 48px;
+  width: 80px;
   height: 2px;
   background: var(--gradient-gold);
-  margin: var(--space-4) 0;
+  margin: var(--space-4) auto;
   border: none;
+  display: block;
 }
 
 .divider-center {
   margin-inline: auto;
 }
 
-/* Vidibility */
+/* Visibility */
 .sr-only {
   /* Visually hidden but readable by screen readers */
   position: absolute;

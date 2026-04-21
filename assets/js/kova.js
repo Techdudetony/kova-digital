@@ -8,9 +8,17 @@ const initNavScroll = () => {
   if (!nav) return; // Exit silently if nav is not on this page
 
   const SCROLL_THRESHOLD = 60; // px before nav gets filled background
+  let scrollbarTimer = null;
 
   const onScroll = () => {
     nav.classList.toggle("is-scrolled", window.scrollY > SCROLL_THRESHOLD);
+
+    /* Show scrollbar while scrolling, hide after 1s of inactivity */
+    document.body.classList.add("is-scrolling");
+    clearTimeout(scrollbarTimer);
+    scrollbarTimer = setTimeout(() => {
+      document.body.classList.remove("is-scrolling");
+    }, 1000);
   };
 
   /* Throttle scroll handler via requestAnimationFrame for performance */
