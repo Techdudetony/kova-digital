@@ -1,0 +1,918 @@
+/* ── Page Layout Override ────────────────────────────────────
+   Auto-fit grid like navbars. Wide cards span full width.
+   ------------------------------------------------------------ */
+.page--transitions .demo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.page--transitions .demo-card--wide {
+  grid-column: 1 / -1;
+}
+
+/* ── Scroll Deck Demo Wrapper ────────────────────────────────
+   Outer scroll container. JS reads scrollTop from this element.
+   ------------------------------------------------------------ */
+.scroll-deck-demo {
+  width: 100%;
+  height: 720px;
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.scroll-deck-demo::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll-deck-demo::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-deck-demo::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+}
+
+.scroll-deck {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  background: #000;
+}
+
+.scroll-deck__track {
+  height: 2200px;
+  pointer-events: none;
+}
+
+.scroll-deck__viewport {
+  position: sticky;
+  top: 0;
+  height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  overflow: hidden;
+}
+
+.scroll-deck__container {
+  width: 280px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+.scroll-deck__card {
+  position: absolute;
+  width: 280px;
+  height: 400px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.scroll-deck__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.25);
+}
+
+.scroll-deck__face--front {
+  background-size: cover;
+  background-position: center;
+}
+
+.scroll-deck__face--back {
+  background: #360909;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-deck__face--back::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-md);
+}
+
+.scroll-deck__face--back::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='10' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+@media (max-width: 900px) {
+  .scroll-deck__viewport {
+    justify-content: center;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .scroll-deck-demo,
+  .scroll-deck,
+  .scroll-deck__viewport {
+    min-height: 620px;
+    height: 620px;
+  }
+  .scroll-deck__container {
+    transform: scale(0.82);
+    transform-origin: center center;
+  }
+}
+
+/* ── Shared Transition Helpers ───────────────────────────────  */
+.transition-demo-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.transition-btn {
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.transition-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+.transition-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Page Transition ─────────────────────────────────────────
+   Fixed overlays animate across the screen.
+   ------------------------------------------------------------ */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-toast);
+  pointer-events: none;
+  display: none;
+}
+
+.page-transition-overlay.is-active {
+  display: block;
+  pointer-events: all;
+}
+
+/* Slide — green panel sweeps left to right and back */
+.page-transition-overlay.variant-slide {
+  background: var(--color-primary);
+  animation: pt-slide 1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* Fade — screen fades to black then back out */
+.page-transition-overlay.variant-fade {
+  background: var(--color-dark);
+  animation: pt-fade 1.4s ease forwards;
+}
+
+/* Curtain — two accent panels close from sides then open */
+.page-transition-overlay.variant-curtain::before,
+.page-transition-overlay.variant-curtain::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--color-accent);
+  animation: pt-curtain 1.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.page-transition-overlay.variant-curtain::before {
+  left: 0;
+  transform-origin: left;
+}
+.page-transition-overlay.variant-curtain::after {
+  right: 0;
+  transform-origin: right;
+  animation-delay: 0.05s;
+}
+
+@keyframes pt-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  45% {
+    transform: translateX(0);
+  }
+  55% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Fades in (black appears), holds, then fades back out */
+@keyframes pt-fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pt-curtain {
+  0% {
+    transform: scaleX(0);
+  }
+  40% {
+    transform: scaleX(1);
+  }
+  60% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+/* ── Scroll Reveal ───────────────────────────────────────────
+   Boxes start hidden. JS adds .is-visible when in viewport.
+   CSS resets them when .should-reset is on the container.
+   ------------------------------------------------------------ */
+.reveal-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 240px;
+}
+
+.reveal-box {
+  padding: var(--space-md);
+  background: var(--color-mid);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-light-soft);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-box.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger each box slightly */
+.reveal-box:nth-child(1) {
+  transition-delay: 0s;
+}
+.reveal-box:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.reveal-box:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+/* Replay button */
+.reveal-replay-btn {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.reveal-replay-btn:hover {
+  color: var(--color-light);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Stagger List ────────────────────────────────────────────  */
+.stagger-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  max-width: 220px;
+}
+
+.stagger-list__item {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-mid);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--color-light-soft);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.stagger-list.is-visible .stagger-list__item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Replay button for stagger list */
+.stagger-replay-btn {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.stagger-replay-btn:hover {
+  color: var(--color-light);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Counter ─────────────────────────────────────────────────  */
+.counter-group {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: center;
+}
+
+.counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.counter-item__value {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.counter-item__label {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Magnetic Cursor ─────────────────────────────────────────  */
+.magnetic-demo {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: center;
+  padding: var(--space-xl) 0;
+}
+
+.magnetic-btn {
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.magnetic-btn--accent {
+  border-color: rgba(255, 0, 85, 0.4);
+  color: var(--color-accent);
+  background: rgba(255, 0, 85, 0.06);
+}
+
+.magnetic-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Parallax Scroll ─────────────────────────────────────────
+   Mousemove within the card drives layer translation.
+   ------------------------------------------------------------ */
+.parallax-scene {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.parallax-layer--far {
+  background: radial-gradient(
+    ellipse 60% 60% at 50% 50%,
+    rgba(0, 255, 153, 0.1) 0%,
+    transparent 80%
+  );
+}
+
+.parallax-layer--mid {
+  background:
+    radial-gradient(
+      circle 80px at 30% 40%,
+      rgba(0, 255, 153, 0.15) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 60px at 70% 60%,
+      rgba(255, 0, 85, 0.12) 0%,
+      transparent 100%
+    );
+}
+
+.parallax-layer--near {
+  background: radial-gradient(
+    circle 50px at 50% 50%,
+    rgba(72, 10, 216, 0.25) 0%,
+    transparent 100%
+  );
+}
+
+.parallax-layer--front {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-label {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+}
+
+/* ── Flip Number ─────────────────────────────────────────────  */
+.flip-number-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.flip-number {
+  display: flex;
+  gap: 4px;
+}
+
+.flip-digit {
+  width: 36px;
+  height: 52px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-mid);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.flip-digit__track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-digit__face {
+  width: 36px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Smooth Marquee ──────────────────────────────────────────  */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  padding: var(--space-md) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--space-xl);
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 0 var(--space-md);
+  position: relative;
+}
+
+.marquee__item::after {
+  content: "·";
+  position: absolute;
+  right: calc(var(--space-md) * -1);
+  color: var(--color-primary);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Page Flip ───────────────────────────────────────────────
+   Book with a fixed left page and a right page that flips
+   over the spine. Clicking turns the page in 3D.
+   ------------------------------------------------------------ */
+.page-flip {
+  perspective: 1400px;
+  padding: var(--space-md) 0;
+}
+
+.page-flip__book {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  transform-style: preserve-3d;
+  display: flex;
+}
+
+/* Left page — static, never moves */
+.page-flip__left {
+  width: 160px;
+  height: 200px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  background: linear-gradient(135deg, #0f3460, #1a1a2e);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  color: var(--color-light-soft);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  flex-shrink: 0;
+  /* Subtle right edge shadow to simulate spine */
+  box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Right page — this is the one that flips */
+.page-flip__right {
+  width: 160px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: left center; /* hinge is the spine */
+  transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+  cursor: pointer;
+}
+
+.page-flip__right.is-flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Front face of the right page */
+.page-flip__right-front,
+.page-flip__right-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.page-flip__right-front {
+  background: linear-gradient(135deg, var(--color-dark-soft), var(--color-mid));
+  color: var(--color-light);
+  /* Gradient shadow toward spine for realism */
+  box-shadow: inset 4px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.page-flip__right-back {
+  background: linear-gradient(135deg, #533483, #e94560);
+  color: var(--color-light);
+  transform: rotateY(180deg); /* pre-rotated — shows when flipped */
+  box-shadow: inset -4px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Page number / hint text */
+.page-flip__hint {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.page-flip__page-num {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ── Portal Transition ───────────────────────────────────────  */
+.portal-demo {
+  display: flex;
+  justify-content: center;
+}
+
+.portal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-toast);
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(0% at var(--cx, 50%) var(--cy, 50%));
+  transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: none;
+}
+
+.portal-overlay.is-open {
+  clip-path: circle(150% at var(--cx, 50%) var(--cy, 50%));
+  pointer-events: all;
+}
+
+.portal-close {
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-dark);
+  background: transparent;
+  color: var(--color-dark);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.portal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.portal-close:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 3px;
+}
+
+/* ── Glitch Page Transition ──────────────────────────────────
+   Button triggers a two-stage glitch: Page A → glitch → Page B.
+   Completely different from the button glitch on the Buttons page.
+   ------------------------------------------------------------ */
+.glitch-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* The scene that flips between two content states */
+.glitch-scene {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 140px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.glitch-scene__page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  transition: opacity 0.1s;
+}
+
+.glitch-scene__page--a {
+  background: linear-gradient(135deg, var(--color-dark-soft), #0f3460);
+  color: var(--color-primary);
+}
+
+.glitch-scene__page--b {
+  background: linear-gradient(135deg, #360909, #533483);
+  color: var(--color-accent);
+  opacity: 0;
+}
+
+/* RGB-split glitch layers — shown during transition */
+.glitch-scene__slice {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-scene__slice--r {
+  background: rgba(255, 0, 85, 0.6);
+  mix-blend-mode: screen;
+}
+.glitch-scene__slice--g {
+  background: rgba(0, 255, 153, 0.6);
+  mix-blend-mode: screen;
+}
+.glitch-scene__slice--b {
+  background: rgba(0, 100, 255, 0.6);
+  mix-blend-mode: screen;
+}
+
+/* Active glitch state — JS adds .is-glitching to .glitch-scene */
+.glitch-scene.is-glitching .glitch-scene__slice--r {
+  animation: glitch-slice-r 0.4s steps(3) forwards;
+}
+.glitch-scene.is-glitching .glitch-scene__slice--g {
+  animation: glitch-slice-g 0.4s steps(3) forwards;
+}
+.glitch-scene.is-glitching .glitch-scene__slice--b {
+  animation: glitch-slice-b 0.4s steps(3) 0.05s forwards;
+}
+.glitch-scene.is-glitching {
+  animation: glitch-scene-shake 0.4s steps(3) forwards;
+}
+
+@keyframes glitch-slice-r {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-6px, 2px);
+    clip-path: polygon(0 0%, 100% 0%, 100% 35%, 0 35%);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(6px, -2px);
+    clip-path: polygon(0 50%, 100% 50%, 100% 75%, 0 75%);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-3px, 4px);
+    clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-slice-g {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(5px, -3px);
+    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-4px, 2px);
+    clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(3px, -1px);
+    clip-path: polygon(0 65%, 100% 65%, 100% 90%, 0 90%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-slice-b {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  33% {
+    opacity: 1;
+    transform: translate(4px, 3px);
+    clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%);
+  }
+  66% {
+    opacity: 1;
+    transform: translate(-5px, -2px);
+    clip-path: polygon(0 5%, 100% 5%, 100% 25%, 0 25%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-scene-shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-4px, 2px) skewX(-2deg);
+  }
+  40% {
+    transform: translate(4px, -3px) skewX(2deg);
+  }
+  60% {
+    transform: translate(-2px, 4px);
+  }
+  80% {
+    transform: translate(3px, -1px) skewX(-1deg);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

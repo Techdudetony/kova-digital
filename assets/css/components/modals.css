@@ -1,0 +1,827 @@
+/* ── Page Layout Override ────────────────────────────────────
+   Modals use the standard auto-fit grid for small demo cards.
+   Cookie Consent uses demo-card--wide to span full width.
+   ------------------------------------------------------------ */
+.page--modals .demo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.page--modals .demo-card--wide {
+  grid-column: 1 / -1;   /* cookie banner always spans full width */
+}
+
+
+/* ── Trigger Buttons ─────────────────────────────────────────
+   Shared button style used to open modals in demo cards.
+   ------------------------------------------------------------ */
+.modal-trigger-btn {
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.modal-trigger-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.modal-trigger-btn--danger {
+  border-color: rgba(255, 0, 85, 0.4);
+  color: var(--color-accent);
+}
+
+.modal-trigger-btn--danger:hover {
+  background: rgba(255, 0, 85, 0.1);
+  border-color: var(--color-accent);
+}
+
+.modal-trigger-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.modal-kbd {
+  display: inline-block;
+  padding: 1px var(--space-xs);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.demo-card__note {
+  margin: var(--space-xs) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+}
+
+
+/* ── Modal Overlay ───────────────────────────────────────────
+   Full-screen backdrop. JS toggles [hidden] to show/hide.
+   CSS handles the fade-in animation.
+   ------------------------------------------------------------ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  animation: overlay-fade-in 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+.modal-overlay--dark {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+/* Top-aligned overlay for command palette */
+.modal-overlay--top {
+  align-items: flex-start;
+  padding-top: 10vh;
+}
+
+@keyframes overlay-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ── Shared Modal Base ───────────────────────────────────────
+   All modal variants build on this. JS adds .is-open.
+   ------------------------------------------------------------ */
+.modal {
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  animation: modal-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes modal-slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-light);
+}
+
+.modal__title--center { text-align: center; width: 100%; }
+
+.modal__close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  line-height: 1;
+}
+
+.modal__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-light);
+}
+
+.modal__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.modal__body {
+  padding: var(--space-lg);
+  overflow-y: auto;
+  flex: 1;
+  color: var(--color-light-soft);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.modal__footer--centered { justify-content: center; }
+
+/* Modal action buttons */
+.modal__btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.modal__btn:active { transform: translateY(1px); }
+
+.modal__btn--primary {
+  background: var(--color-primary);
+  color: var(--color-dark);
+}
+
+.modal__btn--primary:hover { box-shadow: var(--shadow-glow-primary); }
+
+.modal__btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal__btn--ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+.modal__btn--danger {
+  background: var(--color-accent);
+  color: var(--color-light);
+}
+
+.modal__btn--danger:hover { box-shadow: var(--shadow-glow-accent); }
+
+.modal__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+/* ── Drawer ──────────────────────────────────────────────────
+   Slides in from the right edge of the screen.
+   ------------------------------------------------------------ */
+.modal--drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  max-width: 320px;
+  max-height: 100vh;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  animation: drawer-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes drawer-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0);    }
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.drawer-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: var(--color-light-soft);
+  text-decoration: none;
+  font-size: var(--text-md);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.drawer-nav__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+}
+
+.drawer-nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ── Bottom Sheet ────────────────────────────────────────────
+   Anchored to the bottom of the screen, slides up.
+   ------------------------------------------------------------ */
+.modal-overlay:has(.modal--sheet) {
+  align-items: flex-end;
+  padding: 0;
+}
+
+.modal--sheet {
+  max-width: 100%;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  animation: sheet-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: env(safe-area-inset-bottom, var(--space-lg));
+}
+
+@keyframes sheet-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0);    }
+}
+
+/* Drag handle bar at top of sheet */
+.modal__handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  margin: var(--space-sm) auto 0;
+}
+
+.sheet-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.sheet-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-sm);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-light-soft);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.sheet-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-light);
+}
+
+.sheet-option:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+/* ── Confirmation Dialog ─────────────────────────────────────
+   Compact centered dialog with icon, title, description, actions.
+   ------------------------------------------------------------ */
+.modal--confirm {
+  max-width: 380px;
+  padding: var(--space-xl);
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  border-color: rgba(255, 0, 85, 0.2);
+}
+
+.modal__icon {
+  font-size: var(--text-3xl);
+  line-height: 1;
+}
+
+.modal__desc {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+
+/* ── Image Lightbox ──────────────────────────────────────────
+   Full-screen dark overlay. Image centered and responsive.
+   ------------------------------------------------------------ */
+.lightbox-grid {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lightbox-thumb {
+  width: 80px;
+  height: 54px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.lightbox-thumb:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.lightbox-thumb:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.lightbox-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  z-index: calc(var(--z-modal) + 1);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-light);
+  font-size: var(--text-xl);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+  line-height: 1;
+}
+
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.1); }
+
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.lightbox-image {
+  max-width: min(90vw, 1000px);
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  box-shadow: var(--shadow-md);
+  animation: modal-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ── Command Palette ─────────────────────────────────────────
+   Keyboard-driven search modal. JS filters the list on input.
+   ------------------------------------------------------------ */
+.modal--command {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 0;
+  animation: modal-slide-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.command__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.command__search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+.command__input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font: inherit;
+  font-size: var(--text-md);
+  outline: none;
+}
+
+.command__input::placeholder { color: var(--color-muted); }
+
+.command__esc {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-xs);
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.command__list {
+  list-style: none;
+  padding: var(--space-xs) 0;
+  margin: 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.command__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-light-soft);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.command__item:hover,
+.command__item.is-selected {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+}
+
+.command__item[hidden] { display: none; }
+
+.command__icon { font-size: var(--text-md); flex-shrink: 0; }
+
+/* Empty state shown when no results match */
+.command__empty {
+  padding: var(--space-xl);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+}
+
+
+/* ── Toast / Notification ────────────────────────────────────
+   Toasts stack in the bottom-right corner. JS injects and
+   removes them. CSS handles the slide-in and fade-out.
+   ------------------------------------------------------------ */
+.toast-triggers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  pointer-events: none;
+  max-width: 360px;
+  width: calc(100vw - var(--space-2xl));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+  pointer-events: all;
+  animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.is-dismissing {
+  animation: toast-out 0.25s ease forwards;
+}
+
+.toast__icon { font-size: var(--text-lg); flex-shrink: 0; line-height: 1.4; }
+
+.toast__body { flex: 1; }
+
+.toast__title {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-light);
+}
+
+.toast__message {
+  margin: 2px 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.toast__close {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: var(--text-md);
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.toast__close:hover { color: var(--color-light); }
+
+/* Color-coded left border per variant */
+.toast--success { border-left: 3px solid var(--color-primary); }
+.toast--error   { border-left: 3px solid var(--color-accent);  }
+.toast--info    { border-left: 3px solid #00d4ff;              }
+.toast--warning { border-left: 3px solid #f5a623;              }
+
+@keyframes toast-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes toast-out {
+  from { transform: translateX(0);    opacity: 1; max-height: 100px; margin-bottom: 0; }
+  to   { transform: translateX(120%); opacity: 0; max-height: 0;     margin-bottom: 0; }
+}
+
+
+/* ── Cookie Consent Banner ───────────────────────────────────
+   Full-width bottom bar. Pure CSS — no JS required.
+   ------------------------------------------------------------ */
+.cookie-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.cookie-banner__content { flex: 1; min-width: 200px; }
+
+.cookie-banner__text {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-light-soft);
+  line-height: 1.5;
+}
+
+.cookie-banner__link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-banner__link:hover { color: var(--color-light); }
+
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.cookie-banner__btn {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.cookie-banner__btn:active { transform: translateY(1px); }
+
+.cookie-banner__btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cookie-banner__btn--ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+.cookie-banner__btn--primary {
+  background: var(--color-primary);
+  color: var(--color-dark);
+}
+
+.cookie-banner__btn--primary:hover { box-shadow: var(--shadow-glow-primary); }
+
+.cookie-banner__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+/* ── Tooltip Popover ─────────────────────────────────────────
+   Pure CSS — tooltip appears on :hover and :focus-visible.
+   Position variants: default (below), --top, --left.
+   ------------------------------------------------------------ */
+.tooltip-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  justify-content: center;
+  padding: var(--space-lg) 0;
+}
+
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Base tooltip — appears below by default */
+.tooltip {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  min-width: 180px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-xs);
+  color: var(--color-light-soft);
+  line-height: 1.5;
+  white-space: normal;
+  z-index: var(--z-dropdown);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.tooltip strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--color-light);
+  font-size: var(--text-sm);
+}
+
+.tooltip p { margin: 0; }
+
+/* Arrow pointing up (tooltip below button) */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 6px;
+  background: var(--color-dark-soft);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Show on hover or keyboard focus of the sibling button */
+.tooltip-wrap:hover .tooltip,
+.tooltip-wrap:focus-within .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Top variant */
+.tooltip--top {
+  top: auto;
+  bottom: calc(100% + var(--space-sm));
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.tooltip--top::before {
+  top: auto;
+  bottom: -6px;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+
+.tooltip-wrap--top:hover .tooltip--top,
+.tooltip-wrap--top:focus-within .tooltip--top {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Left variant */
+.tooltip--left {
+  top: 50%;
+  left: auto;
+  right: calc(100% + var(--space-sm));
+  transform: translateY(-50%) translateX(-4px);
+  min-width: 140px;
+}
+
+.tooltip--left::before {
+  top: 50%;
+  left: auto;
+  right: -6px;
+  transform: translateY(-50%);
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+}
+
+.tooltip-wrap--left:hover .tooltip--left,
+.tooltip-wrap--left:focus-within .tooltip--left {
+  transform: translateY(-50%) translateX(0);
+}

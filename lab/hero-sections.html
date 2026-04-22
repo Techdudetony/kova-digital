@@ -1,0 +1,416 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Hero Sections</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Component Styles -->
+    <link
+      rel="stylesheet"
+      href="../assets/css/components/hero-sections.css"
+    />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page page--heroes">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+      <header class="page__header">
+        
+        <h1 class="page__title">Hero Sections</h1>
+        <p class="page__subtitle">
+          Full-bleed landing page openers and visual experiments
+        </p>
+      </header>
+
+      <section class="demo-grid">
+        <!-- ── Gradient Mesh ──────────────────────────────── -->
+        <article class="demo-card demo-card--wide demo-card--hero">
+          <h2 class="demo-card__title">Gradient Mesh</h2>
+          <div class="hero hero--mesh">
+            <div class="hero__content">
+              <p class="hero__eyebrow">Design System</p>
+              <h3 class="hero__heading">Build faster.<br />Ship better.</h3>
+              <p class="hero__sub">
+                Animated mesh gradients create depth without images.
+              </p>
+              <div class="hero__actions">
+                <button class="hero__btn hero__btn--primary" type="button">
+                  Get Started
+                </button>
+                <button class="hero__btn hero__btn--ghost" type="button">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">hero--mesh</span>
+        </article>
+
+        <!-- ── Particle Field ─────────────────────────────── -->
+        <!-- data-particle-hero triggers canvas particle animation via JS -->
+        <article class="demo-card demo-card--wide demo-card--hero">
+          <h2 class="demo-card__title">Particle Field</h2>
+          <div class="hero hero--particles" data-particle-hero>
+            <canvas class="hero__canvas" aria-hidden="true"></canvas>
+            <div class="hero__content hero__content--center">
+              <p class="hero__eyebrow">Connected</p>
+              <h3 class="hero__heading">Everything<br />is linked.</h3>
+              <p class="hero__sub">
+                Move your cursor to interact with the field.
+              </p>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Explore
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--particles · data-particle-hero</span>
+        </article>
+
+        <!-- ── Split Screen ───────────────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Split Screen</h2>
+          <div class="hero hero--split">
+            <div class="hero__half hero__half--left">
+              <p class="hero__eyebrow">Studio</p>
+              <h3 class="hero__heading">Craft your<br />vision.</h3>
+              <p class="hero__sub">
+                Left panel for your message, right panel for impact.
+              </p>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Start Creating
+              </button>
+            </div>
+            <div class="hero__half hero__half--right" aria-hidden="true">
+              <!-- Decorative geometric shapes -->
+              <div class="hero__shape hero__shape--circle"></div>
+              <div class="hero__shape hero__shape--ring"></div>
+              <div class="hero__shape hero__shape--dot"></div>
+            </div>
+          </div>
+          <span class="demo-label">hero--split</span>
+        </article>
+
+        <!-- ── Glassmorphism Hero ─────────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Glassmorphism</h2>
+          <div class="hero hero--glass">
+            <!-- Background orbs give the blur something to show -->
+            <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+            <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+            <div class="hero__orb hero__orb--3" aria-hidden="true"></div>
+            <div class="hero__glass-card">
+              <p class="hero__eyebrow">Premium</p>
+              <h3 class="hero__heading">Clarity through<br />the blur.</h3>
+              <p class="hero__sub">
+                Frosted glass surfaces layer beautifully over rich backgrounds.
+              </p>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Get Access
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--glass</span>
+        </article>
+
+        <!-- ── Cinematic Text Reveal ──────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Cinematic Text Reveal</h2>
+          <div class="hero hero--cinematic">
+            <div class="hero__content hero__content--center">
+              <p class="hero__eyebrow hero__eyebrow--reveal">Now showing</p>
+              <h3 class="hero__heading hero__heading--reveal">
+                <span class="hero__reveal-word" style="--reveal-delay: 0s"
+                  >The</span
+                >
+                <span class="hero__reveal-word" style="--reveal-delay: 0.15s"
+                  >Future</span
+                >
+                <span class="hero__reveal-word" style="--reveal-delay: 0.3s"
+                  >Is</span
+                >
+                <span class="hero__reveal-word" style="--reveal-delay: 0.45s"
+                  >Here.</span
+                >
+              </h3>
+              <p class="hero__sub hero__sub--reveal">
+                Each word slides up from behind a mask.
+              </p>
+              <button
+                class="hero__btn hero__btn--ghost hero__btn--reveal"
+                style="--reveal-delay: 0.7s"
+                type="button"
+              >
+                Watch Now
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--cinematic</span>
+        </article>
+
+        <!-- ── 3D Tilt Hero ───────────────────────────────── -->
+        <!-- data-tilt-hero enables multi-layer parallax on mousemove -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">3D Tilt Hero</h2>
+          <div class="hero hero--tilt" data-tilt-hero>
+            <div
+              class="hero__tilt-layer hero__tilt-layer--bg"
+              data-depth="0.1"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="hero__tilt-layer hero__tilt-layer--mid"
+              data-depth="0.25"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="hero__tilt-layer hero__tilt-layer--glow"
+              data-depth="0.4"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="hero__content hero__content--center hero__tilt-layer"
+              data-depth="0.6"
+            >
+              <p class="hero__eyebrow">Parallax</p>
+              <h3 class="hero__heading">Move your<br />cursor.</h3>
+              <p class="hero__sub">Each layer shifts at a different depth.</p>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Dive In
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--tilt · data-tilt-hero</span>
+        </article>
+
+        <!-- ── Typewriter Hero ────────────────────────────── -->
+        <!-- Reuses [data-typewriter] from interactions.js section 7b -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Typewriter Hero</h2>
+          <div class="hero hero--typewriter">
+            <div class="hero__content hero__content--center">
+              <p class="hero__eyebrow">UI Lab</p>
+              <h3 class="hero__heading hero__heading--typewriter">
+                We&nbsp;
+                <span
+                  class="hero__typewriter-target"
+                  data-typewriter
+                  data-phrases='["design things.", "build things.", "ship things.", "break things.", "fix things."]'
+                >
+                </span>
+              </h3>
+              <p class="hero__sub">
+                The typewriter cycles through phrases automatically.
+              </p>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Join Us
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--typewriter · data-typewriter</span>
+        </article>
+
+        <!-- ── Video Overlay Hero ─────────────────────────── -->
+        <!-- No video asset — animated CSS gradient simulates cinematic footage -->
+        <article class="demo-card demo-card--wide demo-card--hero">
+          <h2 class="demo-card__title">Video Overlay</h2>
+          <div class="hero hero--video">
+            <div class="hero__video-bg" aria-hidden="true"></div>
+            <div class="hero__video-overlay" aria-hidden="true"></div>
+            <div class="hero__content hero__content--center">
+              <p class="hero__eyebrow">Now Streaming</p>
+              <h3 class="hero__heading">The world<br />in motion.</h3>
+              <p class="hero__sub">
+                Dark overlay + centered CTA — no video file required.
+              </p>
+              <div class="hero__actions">
+                <button class="hero__btn hero__btn--primary" type="button">
+                  ▶ Play
+                </button>
+                <button class="hero__btn hero__btn--ghost" type="button">
+                  More Info
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">hero--video</span>
+        </article>
+
+        <!-- ── Bento Grid Hero ────────────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Bento Grid</h2>
+          <div class="hero hero--bento">
+            <div class="bento__cell bento__cell--main">
+              <p class="hero__eyebrow">Platform</p>
+              <h3 class="hero__heading">One grid.<br />Infinite use.</h3>
+              <button class="hero__btn hero__btn--primary" type="button">
+                Get Started
+              </button>
+            </div>
+            <div class="bento__cell bento__cell--stat">
+              <span class="bento__number">99%</span>
+              <span class="bento__label">Uptime</span>
+            </div>
+            <div class="bento__cell bento__cell--visual" aria-hidden="true">
+              <div class="bento__rings">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="bento__cell bento__cell--stat">
+              <span class="bento__number">12ms</span>
+              <span class="bento__label">Latency</span>
+            </div>
+            <div class="bento__cell bento__cell--wide">
+              <p class="bento__tagline">
+                Built for teams that move fast and break nothing.
+              </p>
+            </div>
+          </div>
+          <span class="demo-label">hero--bento</span>
+        </article>
+
+        <!-- ── Anime / Manga Hero ─────────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Anime / Manga</h2>
+          <div class="hero hero--anime">
+            <!-- Speed lines radiate from center -->
+            <div class="hero__speed-lines" aria-hidden="true"></div>
+            <!-- Halftone dot overlay -->
+            <div class="hero__halftone" aria-hidden="true"></div>
+            <div class="hero__content hero__content--center">
+              <div class="hero__manga-badge" aria-hidden="true">NEW</div>
+              <h3 class="hero__heading hero__heading--manga">
+                <span class="hero__manga-line">限界</span>
+                <span class="hero__manga-line hero__manga-line--en"
+                  >BEYOND LIMITS</span
+                >
+              </h3>
+              <div class="hero__manga-sfx" aria-hidden="true">BOOM!</div>
+              <button class="hero__btn hero__btn--manga" type="button">
+                始める — Begin
+              </button>
+            </div>
+          </div>
+          <span class="demo-label">hero--anime</span>
+        </article>
+
+        <!-- ── Comic Strip Hero ───────────────────────────── -->
+        <article
+          class="demo-card demo-card--wide demo-card--hero demo-card--hero-short"
+        >
+          <h2 class="demo-card__title">Comic Strip</h2>
+          <div class="hero hero--comic">
+            <div class="comic__panel comic__panel--1">
+              <div class="comic__caption">Meanwhile, on the web...</div>
+              <div class="comic__bubble comic__bubble--speech">
+                Our site needs a hero section!
+              </div>
+              <div class="comic__figure" aria-hidden="true">🧑‍💻</div>
+            </div>
+            <div class="comic__panel comic__panel--2">
+              <div class="comic__sfx">POW!</div>
+              <div class="comic__bubble comic__bubble--thought">
+                I'll use UI Lab...
+              </div>
+              <div class="comic__figure comic__figure--hero" aria-hidden="true">
+                🦸
+              </div>
+            </div>
+            <div class="comic__panel comic__panel--3">
+              <div class="comic__caption comic__caption--bottom">
+                To be continued...
+              </div>
+              <div class="comic__bubble comic__bubble--speech">Ship it! 🚀</div>
+              <div class="comic__stars" aria-hidden="true">✦ ✦ ✦</div>
+            </div>
+          </div>
+          <span class="demo-label">hero--comic</span>
+        </article>
+
+        <!-- ── Shooting Stars Hero ────────────────────────── -->
+        <article class="demo-card demo-card--wide demo-card--hero">
+          <h2 class="demo-card__title">Shooting Stars</h2>
+          <div class="hero hero--shooting-stars" data-shooting-stars>
+            <!-- Static twinkling star field -->
+            <div
+              class="shooting-stars__field"
+              data-star-field
+              aria-hidden="true"
+            ></div>
+            <!-- Rotated container — meteors travel at 45deg diagonal -->
+            <div
+              class="shooting-stars__night"
+              data-meteor-field
+              aria-hidden="true"
+            ></div>
+            <div class="hero__content hero__content--center">
+              <p class="hero__eyebrow">Atmosphere</p>
+              <h3 class="hero__heading">Make a wish.</h3>
+              <p class="hero__sub">
+                Shooting stars in white, blue, purple and gold.
+              </p>
+            </div>
+          </div>
+          <span class="demo-label"
+            >hero--shooting-stars · data-shooting-stars</span
+          >
+        </article>
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+

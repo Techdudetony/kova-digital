@@ -1,0 +1,1389 @@
+/* ── Page Layout Override ────────────────────────────────────
+   Standard auto-fit grid. Wide cards span full width.
+   ------------------------------------------------------------ */
+.page--navbars .demo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.page--navbars .demo-card--wide {
+  grid-column: 1 / -1;
+}
+
+/* ── Demo Wrappers ───────────────────────────────────────────
+   Centers navbar components inside their demo cards.
+   ------------------------------------------------------------ */
+.nav-demo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  width: 100%;
+}
+
+.nav-demo-wrap--full {
+  align-items: stretch; /* full-width navbars stretch to card edge */
+  padding: 0;
+}
+
+.nav-demo-wrap--tall {
+  min-height: 220px; /* extra height for mega menu / sidebar */
+  align-items: flex-start;
+}
+
+.nav-demo-wrap--wheel {
+  min-height: 340px;
+}
+
+/* ── Material Symbols ────────────────────────────────────────
+   Google icon font helper class.
+   ------------------------------------------------------------ */
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--text-xl); /* 24px */
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* ── Expandable Icon Menu ────────────────────────────────────
+   Horizontal pill — items start icon-only and expand on hover.
+   Component-scoped vars keep theming isolated.
+   ------------------------------------------------------------ */
+.nav-menu {
+  --nav-menu-bg: rgba(255, 255, 255, 0.85);
+  --nav-menu-border: rgba(255, 255, 255, 1);
+  --nav-text-main: #18181b;
+  --nav-text-muted: #71717a;
+  --nav-item-hover: #e4e4e7;
+  --nav-accent: #0f172a;
+  --nav-accent-text: #ffffff;
+  --nav-danger: #ef4444;
+  --nav-ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --nav-transition: 0.4s var(--nav-ease-elastic);
+
+  padding: var(--space-xs);
+  background: var(--nav-menu-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--nav-menu-border);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: var(--space-xs);
+  position: relative;
+  width: fit-content;
+}
+
+.nav-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  color: var(--nav-text-muted);
+  position: relative;
+  overflow: hidden;
+  transition:
+    width var(--nav-transition),
+    background var(--nav-transition),
+    color var(--nav-transition);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-menu__icon {
+  font-size: var(--text-xl); /* 24px */
+  min-width: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  line-height: 1;
+}
+
+.nav-menu__label {
+  position: absolute;
+  left: 48px;
+  opacity: 0;
+  font-weight: 500;
+  font-size: var(--text-sm); /* 14px */
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  transform: translateX(10px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+  color: var(--nav-text-main);
+}
+
+.nav-menu__link:hover,
+.nav-menu__link:focus-visible {
+  width: 135px;
+  background: var(--nav-item-hover);
+  color: var(--nav-text-main);
+  outline: none;
+}
+
+.nav-menu__link:hover .nav-menu__label,
+.nav-menu__link:focus-visible .nav-menu__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-menu__link:hover .nav-menu__icon,
+.nav-menu__link:focus-visible .nav-menu__icon {
+  transform: scale(1.08);
+}
+
+.nav-menu__link:active {
+  transform: scale(0.98);
+}
+
+.nav-menu__link.is-active {
+  background: var(--nav-accent);
+  color: var(--nav-accent-text);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu__link.is-active .nav-menu__icon,
+.nav-menu__link.is-active .nav-menu__label {
+  color: var(--nav-accent-text);
+}
+
+/* Notification badge — hides on hover and active */
+.nav-menu__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 7px;
+  height: 7px;
+  background: var(--nav-danger);
+  border-radius: var(--radius-full);
+  z-index: 3;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-menu__link:hover .nav-menu__badge,
+.nav-menu__link.is-active .nav-menu__badge {
+  opacity: 0;
+}
+
+.nav-menu__separator {
+  width: 1px;
+  background: var(--nav-menu-border);
+  margin: var(--space-sm) var(--space-xs);
+  opacity: 0.5;
+}
+
+/* Dark theme variant — swaps scoped vars */
+.theme-preview--dark .nav-menu {
+  --nav-menu-bg: rgba(24, 24, 27, 0.8);
+  --nav-menu-border: rgba(255, 255, 255, 0.05);
+  --nav-text-main: #ffffff;
+  --nav-text-muted: #a1a1aa;
+  --nav-item-hover: #27272a;
+  --nav-accent: #ffffff;
+  --nav-accent-text: #000000;
+}
+
+/* ── Top Horizontal Navbar ───────────────────────────────────
+   Classic logo + links + CTA layout.
+   ------------------------------------------------------------ */
+.nav-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-dark-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-top__logo {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.nav-top__links {
+  display: flex;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* pushes CTA to the right */
+}
+
+.nav-top__link {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.nav-top__link:hover {
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.06);
+}
+.nav-top__link--active {
+  color: var(--color-light);
+}
+
+.nav-top__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-top__cta {
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-top__cta:hover {
+  box-shadow: var(--shadow-glow-primary);
+  transform: translateY(-1px);
+}
+
+.nav-top__cta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Pill Navbar ─────────────────────────────────────────────
+   Floating centered pill. A sliding indicator moves under
+   the active item. JS sets --indicator-left and --indicator-width.
+   ------------------------------------------------------------ */
+.nav-pill-bar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--color-dark-soft);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sliding background indicator — position driven by JS CSS vars */
+.nav-pill-bar__indicator {
+  position: absolute;
+  height: calc(100% - var(--space-xs) * 2);
+  top: var(--space-xs);
+  left: var(--indicator-left, var(--space-xs));
+  width: var(--indicator-width, 60px);
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition:
+    left var(--transition-slow),
+    width var(--transition-slow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nav-pill-bar__item {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-pill-bar__item.is-active {
+  color: var(--color-dark);
+}
+.nav-pill-bar__item:not(.is-active):hover {
+  color: var(--color-light);
+}
+
+.nav-pill-bar__item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}
+
+/* ── Mobile Hamburger ────────────────────────────────────────
+   Top bar collapses to a burger icon. Menu slides down.
+   ------------------------------------------------------------ */
+.nav-hamburger-demo {
+  width: 100%;
+  position: relative;
+}
+
+.nav-hamburger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-dark-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.nav-hamburger__logo {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.nav-hamburger__toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.nav-hamburger__toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-hamburger__toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-hamburger__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-light);
+  border-radius: var(--radius-full);
+  transition:
+    transform var(--transition-slow),
+    opacity var(--transition-fast);
+  transform-origin: center;
+}
+
+/* Animate bars into an X when open */
+.nav-hamburger.is-open .nav-hamburger__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.is-open .nav-hamburger__bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger.is-open .nav-hamburger__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-hamburger__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-dark-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-sm) var(--space-xl) var(--space-lg);
+  gap: var(--space-xs);
+  animation: hamburger-slide-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: var(--z-dropdown);
+}
+
+.nav-hamburger__menu[hidden] {
+  display: none;
+}
+
+@keyframes hamburger-slide-down {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-hamburger__link {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: var(--color-light-soft);
+  text-decoration: none;
+  font-size: var(--text-md);
+  font-weight: 500;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.nav-hamburger__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+}
+
+.nav-hamburger__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.nav-hamburger__cta {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: box-shadow var(--transition-fast);
+}
+
+.nav-hamburger__cta:hover {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────
+   Horizontal list with chevron separators via ::before.
+   ------------------------------------------------------------ */
+.nav-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* Chevron separator between items */
+.nav-breadcrumb__item + .nav-breadcrumb__item::before {
+  content: "/";
+  margin: 0 var(--space-sm);
+  color: var(--color-muted);
+  opacity: 0.4;
+}
+
+.nav-breadcrumb__link {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-breadcrumb__link:hover {
+  color: var(--color-light);
+}
+
+.nav-breadcrumb__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.nav-breadcrumb__item--current {
+  color: var(--color-light);
+  font-weight: 600;
+}
+
+/* ── Tab Bar ─────────────────────────────────────────────────
+   Bottom mobile-style navigation. JS moves .is-active.
+   ------------------------------------------------------------ */
+.nav-tab-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--color-dark-soft);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: var(--space-xs) 0;
+}
+
+.nav-tab-bar__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: var(--space-xs) 0;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-tab-bar__item:hover {
+  color: var(--color-light-soft);
+}
+
+.nav-tab-bar__item.is-active {
+  color: var(--color-primary);
+  transform: translateY(-2px); /* slight lift on active tab */
+}
+
+.nav-tab-bar__icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.nav-tab-bar__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-tab-bar__item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Mega Menu ───────────────────────────────────────────────
+   Top nav with dropdown panel. JS toggles hidden + aria-expanded.
+   ------------------------------------------------------------ */
+.nav-mega {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-dark-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.nav-mega__logo {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-mega__items {
+  display: flex;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 0 0;
+}
+
+.nav-mega__item {
+  position: relative;
+}
+
+.nav-mega__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.nav-mega__trigger:hover,
+.nav-mega__trigger[aria-expanded="true"] {
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-mega__trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-mega__trigger--link {
+  cursor: pointer;
+}
+
+.nav-mega__chevron {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-mega__trigger[aria-expanded="true"] .nav-mega__chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.nav-mega__panel {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  left: 0;
+  min-width: 400px;
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md);
+  z-index: var(--z-dropdown);
+  animation: mega-drop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-mega__panel[hidden] {
+  display: none;
+}
+
+@keyframes mega-drop {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-mega__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.nav-mega__grid--narrow {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nav-mega__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.nav-mega__card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-mega__card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+.nav-mega__card-icon {
+  font-size: var(--text-xl);
+}
+.nav-mega__card-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-light);
+}
+.nav-mega__card-desc {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* ── Sidebar Nav ─────────────────────────────────────────────
+   Vertical nav with collapsible groups. JS toggles .is-collapsed
+   and group .is-closed states.
+   ------------------------------------------------------------ */
+.nav-sidebar {
+  width: 240px;
+  min-height: 200px;
+  background: var(--color-dark-soft);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  transition: width var(--transition-slow);
+  overflow: hidden;
+}
+
+.nav-sidebar.is-collapsed {
+  width: 64px;
+}
+
+.nav-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.nav-sidebar__logo {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-sidebar.is-collapsed .nav-sidebar__logo {
+  opacity: 0;
+  width: 0;
+}
+
+.nav-sidebar__collapse-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: var(--space-xs);
+  font-size: var(--text-xs);
+  transition:
+    transform var(--transition-slow),
+    color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.nav-sidebar__collapse-btn:hover {
+  color: var(--color-light);
+}
+.nav-sidebar.is-collapsed .nav-sidebar__collapse-btn {
+  transform: rotate(180deg);
+}
+
+.nav-sidebar__collapse-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-sidebar__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.nav-sidebar__group-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-sidebar__group-toggle:hover {
+  color: var(--color-light-soft);
+}
+
+.nav-sidebar.is-collapsed .nav-sidebar__group-toggle {
+  display: none;
+}
+
+.nav-sidebar__chevron {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-sidebar__group-toggle[aria-expanded="false"] .nav-sidebar__chevron {
+  transform: rotate(-90deg);
+}
+
+.nav-sidebar__group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+}
+
+.nav-sidebar__group-items.is-closed {
+  max-height: 0 !important;
+}
+
+.nav-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+/* Icon must not shrink — keeps it fixed width */
+.nav-sidebar__link .material-symbols-rounded {
+  flex-shrink: 0;
+  font-size: var(--text-lg); /* 20px — slightly smaller in sidebar */
+}
+
+.nav-sidebar__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-light);
+}
+
+.nav-sidebar__link.is-active {
+  background: rgba(0, 255, 153, 0.1);
+  color: var(--color-primary);
+}
+
+.nav-sidebar__link--danger {
+  color: var(--color-accent);
+}
+.nav-sidebar__link--danger:hover {
+  background: rgba(255, 0, 85, 0.08);
+}
+
+.nav-sidebar__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-sidebar__badge {
+  margin-left: auto;
+  background: var(--color-accent);
+  color: var(--color-light);
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-sidebar.is-collapsed
+  .nav-sidebar__link
+  span:not(.material-symbols-rounded),
+.nav-sidebar.is-collapsed .nav-sidebar__badge {
+  display: none;
+}
+
+/* ── Weapon Wheel ────────────────────────────────────────────
+   8 radial segments arranged in a true circle.
+   JS detects mouse angle and highlights the nearest segment.
+   Starts hidden — right-click to open, mouseup to select.
+   ------------------------------------------------------------ */
+.weapon-wheel {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.weapon-wheel__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  opacity: 0; /* hidden by default — JS sets opacity:1 on right-click */
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+/* Each segment absolutely positioned from center using trigonometry */
+.weapon-wheel__segment {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  /* Each segment is centered at the origin; --tx/--ty shift it outward */
+  transform: translate(
+    calc(-50% + var(--tx, 0px)),
+    calc(-50% + var(--ty, 0px))
+  );
+  left: 50%;
+  top: 50%;
+}
+
+/* Highlighted segment */
+.weapon-wheel__segment.is-selected {
+  background: rgba(0, 255, 153, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow-primary);
+  transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, 0px)))
+    scale(1.18);
+}
+
+.weapon-wheel__center {
+  position: relative;
+  z-index: 2;
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-full);
+  background: var(--color-dark-soft);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  box-shadow: var(--shadow-md);
+}
+
+.weapon-wheel__center-icon {
+  line-height: 1;
+}
+
+.weapon-wheel__selected-label {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  white-space: nowrap;
+  min-height: 1.4em;
+}
+
+/* ── Radial Action Menu ──────────────────────────────────────
+   Centre button expands 6 action items in a circle.
+   data-angle on each item drives JS-calculated --tx/--ty.
+   ------------------------------------------------------------ */
+.radial-menu {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centre toggle button */
+.radial-menu__toggle {
+  position: relative;
+  z-index: 3;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow-primary);
+  transition:
+    transform var(--transition-slow),
+    background var(--transition-fast);
+}
+
+.radial-menu__toggle:hover {
+  transform: scale(1.08);
+}
+.radial-menu__toggle:active {
+  transform: scale(0.95);
+}
+
+.radial-menu__toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Plus → × rotation animation on the two SVG lines */
+.radial-menu__bar {
+  transform-origin: center;
+  transition: transform var(--transition-slow);
+}
+
+.radial-menu.is-open .radial-menu__bar--h {
+  transform: rotate(45deg);
+}
+.radial-menu.is-open .radial-menu__bar--v {
+  transform: rotate(-45deg);
+}
+
+/* Action item buttons — positioned via JS --tx/--ty */
+.radial-menu__item {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-dark-soft);
+  color: var(--color-light-soft);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  /* Start at center, JS sets --tx/--ty for open position */
+  transform: translate(-50%, -50%) translate(0px, 0px) scale(0.5);
+  top: 50%;
+  left: 50%;
+  transition:
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 180ms ease,
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.radial-menu__item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Open state — JS sets --tx/--ty then adds .is-open to parent */
+.radial-menu.is-open .radial-menu__item {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px))
+    scale(1);
+}
+
+/* Stagger delay — set by JS as --delay */
+.radial-menu.is-open .radial-menu__item {
+  transition-delay: var(--delay, 0s);
+}
+
+.radial-menu__item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-light);
+  box-shadow: var(--shadow-sm);
+  transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px))
+    scale(1.15) !important;
+}
+
+.radial-menu__item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Danger variant — delete action */
+.radial-menu__item--danger {
+  color: var(--color-accent);
+  border-color: rgba(255, 0, 85, 0.2);
+}
+.radial-menu__item--danger:hover {
+  background: rgba(255, 0, 85, 0.1);
+  color: var(--color-accent);
+}
+
+/* Label shown below the menu */
+.radial-menu__label {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  white-space: nowrap;
+  min-height: 1.2em;
+  pointer-events: none;
+}
+
+/* ── Gooey Vertical Navbar ───────────────────────────────────
+   A sliding pill indicator moves between items on hover.
+   The ::before pseudo on the menu list drives the gooey effect.
+   Tooltip labels slide out to the right on hover.
+   Pure CSS :has() — no JS needed for the indicator.
+   JS (section 2i) adds a pulse class on click.
+   ------------------------------------------------------------ */
+.gooey-nav {
+  background: var(--color-dark-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+}
+
+.gooey-nav__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative; /* stacking context for ::before pill */
+}
+
+/* ── Sliding pill indicator — pure CSS :has() ── */
+.gooey-nav__menu::before {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 44px;
+  height: 44px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glow-primary);
+  transition:
+    top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.2s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Show pill and position it under each hovered item (56px per item) */
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(1):hover)::before {
+  opacity: 1;
+  top: calc(56px * 0 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(2):hover)::before {
+  opacity: 1;
+  top: calc(56px * 1 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(3):hover)::before {
+  opacity: 1;
+  top: calc(56px * 2 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(4):hover)::before {
+  opacity: 1;
+  top: calc(56px * 3 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(5):hover)::before {
+  opacity: 1;
+  top: calc(56px * 4 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(6):hover)::before {
+  opacity: 1;
+  top: calc(56px * 5 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+.gooey-nav__menu:has(.gooey-nav__item:nth-child(7):hover)::before {
+  opacity: 1;
+  top: calc(56px * 6 + 6px);
+  animation: gooey-squish 0.4s ease-out;
+}
+
+/* Squish animation — stretches vertically mid-slide then snaps back */
+@keyframes gooey-squish {
+  0% {
+    transform: translateX(-50%) scale(1, 1);
+  }
+  45% {
+    transform: translateX(-50%) scale(0.82, 1.28);
+  }
+  100% {
+    transform: translateX(-50%) scale(1, 1);
+  }
+}
+
+/* Pulse on click — JS adds .is-pulsing to the menu */
+.gooey-nav__menu.is-pulsing::before {
+  animation: gooey-pulse 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@keyframes gooey-pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.18);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* ── Nav item ── */
+.gooey-nav__item {
+  position: relative;
+  animation: gooey-fade-up 0.4s ease-out backwards;
+}
+
+.gooey-nav__item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.gooey-nav__item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.gooey-nav__item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.gooey-nav__item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.gooey-nav__item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.gooey-nav__item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.gooey-nav__item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+@keyframes gooey-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Link ── */
+.gooey-nav__link {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.gooey-nav__link svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+  transition:
+    transform var(--transition-slow),
+    filter var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.gooey-nav__link:hover {
+  color: var(--color-dark); /* icon goes dark over the green pill */
+}
+
+.gooey-nav__link:hover svg {
+  transform: scale(1.1);
+}
+
+.gooey-nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Tooltip label — slides out to the right ── */
+.gooey-nav__tooltip {
+  position: absolute;
+  left: calc(100% + var(--space-sm));
+  top: 50%;
+  transform: translateY(-50%) translateX(-12px);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  background: var(--color-dark-soft);
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 255, 153, 0.2);
+  box-shadow: var(--shadow-sm);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-slow);
+  z-index: 10;
+}
+
+/* Arrow pointing left toward the nav */
+.gooey-nav__tooltip::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: var(--color-dark-soft);
+  border-left: none;
+}
+
+.gooey-nav__link:hover .gooey-nav__tooltip,
+.gooey-nav__link:focus-visible .gooey-nav__tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}

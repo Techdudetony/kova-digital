@@ -1,0 +1,152 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>UI Lab</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Core styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page-shell">
+      <!-- =========================================
+           Hero Section
+      ========================================= -->
+      <header class="home-hero">
+        <h1 class="home-hero__title">UI Lab</h1>
+        <p class="home-hero__subtitle">
+          A collection of reusable UI components and micro-interactions
+        </p>
+      </header>
+
+      <!-- =========================================
+           Navigation Grid
+      ========================================= -->
+      <section class="home-grid">
+        <!-- Animations -->
+        <a href="./animations.html" class="home-card">
+          <h2 class="home-card__title">Animations</h2>
+          <p class="home-card__desc">Motion, transitions, and text effects</p>
+        </a>
+
+        <!-- Buttons -->
+        <a href="./buttons.html" class="home-card">
+          <h2 class="home-card__title">Buttons</h2>
+          <p class="home-card__desc">Interactive button styles and effects</p>
+        </a>
+
+        <!-- Cards -->
+        <a href="./cards.html" class="home-card">
+          <h2 class="home-card__title">Cards</h2>
+          <p class="home-card__desc">
+            Surface patterns + interactice card experiments
+          </p>
+        </a>
+
+        <!-- Footers -->
+        <a href="./footers.html" class="home-card">
+          <h2 class="home-card__title">Footers</h2>
+          <p class="home-card__desc">Animated and responsive footer designs</p>
+        </a>
+
+        <!-- Forms -->
+        <a href="./forms.html" class="home-card">
+          <h2 class="home-card__title">Forms</h2>
+          <p class="home-card__desc">
+            Search bars, inputs, and form interactions
+          </p>
+        </a>
+
+        <!-- Hero Sections -->
+        <a href="./hero-sections.html" class="home-card">
+          <h2 class="home-card__title">Hero Sections</h2>
+          <p class="home-card__desc">
+            Full-bleed landing page openers and visual experiments
+          </p>
+        </a>
+
+        <!-- Loaders -->
+        <a href="./loaders.html" class="home-card">
+          <h2 class="home-card__title">Loaders</h2>
+          <p class="home-card__desc">
+            Spinners, skeletons, and motion experiments
+          </p>
+        </a>
+
+        <!-- Modals -->
+        <a href="./modals.html" class="home-card">
+          <h2 class="home-card__title">Modals</h2>
+          <p class="home-card__desc">
+            Overlays, drawers, sheets, and notification patterns
+          </p>
+        </a>
+
+        <!-- Navbars -->
+        <a href="./navbars.html" class="home-card">
+          <h2 class="home-card__title">Navbars</h2>
+          <p class="home-card__desc">Navigation menus and layout patterns</p>
+        </a>
+
+        <!-- Transitions -->
+        <a href="./transitions.html" class="home-card">
+          <h2 class="home-card__title">Transitions</h2>
+          <p class="home-card__desc">
+            Scroll-driven reveals and motion-based state changes
+          </p>
+        </a>
+      </section>
+    </main>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+

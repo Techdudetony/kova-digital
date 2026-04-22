@@ -1,0 +1,358 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Forms</title>
+
+    <!-- Poppins — used by the Login/Signup demo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../assets/css/components/forms.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page page--forms">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+
+      <header class="page__header">
+        
+        <h1 class="page__title">Forms</h1>
+        <p class="page__subtitle">Search fields, inputs, and interactive form patterns</p>
+      </header>
+
+      <section class="demo-grid">
+
+        <!-- ── Neon Search Bar ─────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Neon Search Bar</h2>
+          <div class="form-demo-wrap">
+            <div class="search-neon" data-search-neon>
+              <div class="search-neon__frame">
+                <div class="search-neon__effect search-neon__effect--outer"></div>
+                <div class="search-neon__effect search-neon__effect--dark"></div>
+                <div class="search-neon__effect search-neon__effect--bright"></div>
+                <div class="search-neon__effect search-neon__effect--border"></div>
+                <div class="search-neon__button-border"></div>
+                <input type="text" class="search-neon__field" placeholder="Search..." aria-label="Search" />
+                <div class="search-neon__pink-hint"></div>
+                <div class="search-neon__gradient-mask"></div>
+                <button class="search-neon__button" type="button" aria-label="Search">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+                    <line x1="16.65" y1="16.65" x2="22" y2="22" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">search-neon · data-search-neon</span>
+        </div>
+
+        <!-- ── Floating Label Input ───────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Floating Label</h2>
+          <div class="form-demo-wrap">
+            <div class="float-group">
+              <div class="float-field">
+                <input class="float-field__input" type="text" id="float-name" placeholder=" " autocomplete="off" />
+                <label class="float-field__label" for="float-name">Full Name</label>
+              </div>
+              <div class="float-field">
+                <input class="float-field__input" type="email" id="float-email" placeholder=" " autocomplete="off" />
+                <label class="float-field__label" for="float-email">Email Address</label>
+              </div>
+              <div class="float-field">
+                <input class="float-field__input" type="password" id="float-pass" placeholder=" " autocomplete="off" />
+                <label class="float-field__label" for="float-pass">Password</label>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">float-field</span>
+        </div>
+
+        <!-- ── OTP / PIN Input ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">OTP / PIN Input</h2>
+          <div class="form-demo-wrap">
+            <!-- data-otp enables auto-advance and backspace handling via JS -->
+            <div class="otp-group" data-otp aria-label="One-time password input">
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" />
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" />
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" />
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" />
+              <input class="otp-group__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+            </div>
+          </div>
+          <span class="demo-label">otp-group · data-otp</span>
+        </div>
+
+        <!-- ── Toggle Switch ──────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Toggle Switch</h2>
+          <div class="form-demo-wrap">
+            <div class="toggle-group">
+              <label class="toggle" for="toggle-1">
+                <input class="toggle__input" type="checkbox" id="toggle-1" />
+                <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                <span class="toggle__label">Notifications</span>
+              </label>
+              <label class="toggle" for="toggle-2">
+                <input class="toggle__input" type="checkbox" id="toggle-2" checked />
+                <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                <span class="toggle__label">Dark Mode</span>
+              </label>
+              <label class="toggle" for="toggle-3">
+                <input class="toggle__input" type="checkbox" id="toggle-3" />
+                <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                <span class="toggle__label">Analytics</span>
+              </label>
+            </div>
+          </div>
+          <span class="demo-label">toggle</span>
+        </div>
+
+        <!-- ── Range Slider ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Range Slider</h2>
+          <div class="form-demo-wrap">
+            <div class="slider-group">
+              <div class="slider-field">
+                <label class="slider-field__label" for="slider-vol">Volume</label>
+                <input class="slider-field__input" type="range" id="slider-vol" min="0" max="100" value="65" />
+              </div>
+              <div class="slider-field">
+                <label class="slider-field__label" for="slider-bright">Brightness</label>
+                <input class="slider-field__input" type="range" id="slider-bright" min="0" max="100" value="40" />
+              </div>
+              <div class="slider-field">
+                <label class="slider-field__label" for="slider-speed">Speed</label>
+                <input class="slider-field__input slider-field__input--accent" type="range" id="slider-speed" min="0" max="100" value="80" />
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">slider-field</span>
+        </div>
+
+        <!-- ── Password Strength Meter ────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Password Strength</h2>
+          <div class="form-demo-wrap">
+            <!-- data-password-strength enables live scoring via JS -->
+            <div class="pw-strength" data-password-strength>
+              <div class="float-field">
+                <input class="float-field__input" type="password" id="pw-input" placeholder=" " autocomplete="new-password" />
+                <label class="float-field__label" for="pw-input">Password</label>
+              </div>
+              <div class="pw-strength__meter">
+                <span class="pw-strength__bar" data-bar="0"></span>
+                <span class="pw-strength__bar" data-bar="1"></span>
+                <span class="pw-strength__bar" data-bar="2"></span>
+                <span class="pw-strength__bar" data-bar="3"></span>
+              </div>
+              <p class="pw-strength__label" data-strength-label>Enter a password</p>
+            </div>
+          </div>
+          <span class="demo-label">pw-strength · data-password-strength</span>
+        </div>
+
+        <!-- ── Credit Card Input ──────────────────────────── -->
+        <!-- data-credit-card enables number formatting, expiry, flip via JS -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Credit Card</h2>
+          <div class="form-demo-wrap form-demo-wrap--tall">
+            <div class="credit-card-demo" data-credit-card>
+
+              <!-- Visual card preview — flips when CVV is focused -->
+              <div class="cc-preview">
+                <div class="cc-preview__inner">
+                  <div class="cc-preview__front">
+                    <div class="cc-preview__chip" aria-hidden="true"></div>
+                    <p class="cc-preview__number" data-cc-number>•••• •••• •••• ••••</p>
+                    <div class="cc-preview__bottom">
+                      <div>
+                        <p class="cc-preview__meta-label">Card Holder</p>
+                        <p class="cc-preview__name" data-cc-name>FULL NAME</p>
+                      </div>
+                      <div>
+                        <p class="cc-preview__meta-label">Expires</p>
+                        <p class="cc-preview__expiry" data-cc-expiry">MM / YY</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cc-preview__back">
+                    <div class="cc-preview__stripe" aria-hidden="true"></div>
+                    <div class="cc-preview__cvv-row">
+                      <p class="cc-preview__meta-label">CVV</p>
+                      <p class="cc-preview__cvv" data-cc-cvv>•••</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input fields -->
+              <div class="cc-fields">
+                <div class="float-field">
+                  <input class="float-field__input" type="text" id="cc-number" placeholder=" "
+                    inputmode="numeric" maxlength="19" autocomplete="cc-number" data-cc-input="number" />
+                  <label class="float-field__label" for="cc-number">Card Number</label>
+                </div>
+                <div class="float-field">
+                  <input class="float-field__input" type="text" id="cc-name" placeholder=" "
+                    autocomplete="cc-name" data-cc-input="name" />
+                  <label class="float-field__label" for="cc-name">Card Holder Name</label>
+                </div>
+                <div class="cc-fields__row">
+                  <div class="float-field">
+                    <input class="float-field__input" type="text" id="cc-expiry" placeholder=" "
+                      inputmode="numeric" maxlength="7" autocomplete="cc-exp" data-cc-input="expiry" />
+                    <label class="float-field__label" for="cc-expiry">MM / YY</label>
+                  </div>
+                  <div class="float-field">
+                    <input class="float-field__input" type="text" id="cc-cvv" placeholder=" "
+                      inputmode="numeric" maxlength="4" autocomplete="cc-csc" data-cc-input="cvv" />
+                    <label class="float-field__label" for="cc-cvv">CVV</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <span class="demo-label">credit-card-demo · data-credit-card</span>
+        </div>
+
+        <!-- ── Login / Signup ─────────────────────────────── -->
+        <!-- Full-panel component — needs demo-card--wide and page--forms override -->
+        <article class="demo-card demo-card--wide demo-card--login">
+          <h2 class="demo-card__title">Login / Signup</h2>
+          <div class="form-demo-wrap form-demo-wrap--login">
+
+            <div class="login-wrapper" data-login-wrapper>
+
+              <!-- Animated sliding circle -->
+              <div class="login-circle" aria-hidden="true"></div>
+
+              <!-- Forms area -->
+              <div class="login-forms">
+
+                <!-- Login form -->
+                <form class="login-auth-form login-auth-form--login" id="login-form" novalidate>
+                  <h3 class="login-heading">Welcome Back</h3>
+                  <div class="login-field">
+                    <svg class="login-field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <input type="email" placeholder="Email" aria-label="Email address" autocomplete="email" />
+                  </div>
+                  <div class="login-field">
+                    <svg class="login-field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    <input type="password" placeholder="Password" aria-label="Password" autocomplete="current-password" />
+                  </div>
+                  <a href="#" class="login-text-link">Forgot password?</a>
+                  <button class="login-action-btn" type="submit">Sign In</button>
+                  <p class="login-social-heading">or continue with</p>
+                  <div class="login-socials">
+                    <a href="#" class="login-social-link" aria-label="Google">G</a>
+                    <a href="#" class="login-social-link" aria-label="GitHub">GH</a>
+                    <a href="#" class="login-social-link" aria-label="Twitter">X</a>
+                  </div>
+                </form>
+
+                <!-- Signup form -->
+                <form class="login-auth-form login-auth-form--signup" id="signup-form" novalidate>
+                  <h3 class="login-heading">Create Account</h3>
+                  <div class="login-field">
+                    <svg class="login-field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                    <input type="text" placeholder="Full Name" aria-label="Full name" autocomplete="name" />
+                  </div>
+                  <div class="login-field">
+                    <svg class="login-field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <input type="email" placeholder="Email" aria-label="Email address" autocomplete="email" />
+                  </div>
+                  <div class="login-field">
+                    <svg class="login-field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    <input type="password" placeholder="Password" aria-label="Password" autocomplete="new-password" />
+                  </div>
+                  <button class="login-action-btn" type="submit">Sign Up</button>
+                  <p class="login-social-heading">or continue with</p>
+                  <div class="login-socials">
+                    <a href="#" class="login-social-link" aria-label="Google">G</a>
+                    <a href="#" class="login-social-link" aria-label="GitHub">GH</a>
+                    <a href="#" class="login-social-link" aria-label="Twitter">X</a>
+                  </div>
+                </form>
+
+              </div>
+
+              <!-- Side panels with toggle buttons -->
+              <div class="login-panels">
+                <!-- Left panel — visible on login, prompts to sign up -->
+                <div class="login-panel login-panel--left">
+                  <div class="login-panel__content">
+                    <h3>New here?</h3>
+                    <p>Sign up and discover a great amount of new opportunities!</p>
+                    <button class="login-panel__btn" type="button" data-login-toggle="signup">Sign Up</button>
+                  </div>
+                </div>
+                <!-- Right panel — visible on signup, prompts to sign in -->
+                <div class="login-panel login-panel--right">
+                  <div class="login-panel__content">
+                    <h3>Already have an account?</h3>
+                    <p>Sign in to access all your saved work and settings.</p>
+                    <button class="login-panel__btn" type="button" data-login-toggle="login">Sign In</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <span class="demo-label">login-wrapper · data-login-wrapper</span>
+        </article>
+
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+

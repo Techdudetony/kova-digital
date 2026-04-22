@@ -1,0 +1,247 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Cards</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../assets/css/components/cards.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+      <header class="page__header">
+        
+        <h1 class="page__title">Cards</h1>
+        <p class="page__subtitle">
+          Surface patterns + interactive card experiments
+        </p>
+      </header>
+
+      <section class="demo-grid">
+        <!-- ── Glassmorphism ──────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Glassmorphism</h2>
+          <div class="card card--glass">
+            <p class="card__eyebrow">Featured</p>
+            <h3 class="card__heading">Frosted Glass</h3>
+            <p class="card__body">
+              Layered blur + transparency creates depth without heavy shadows.
+            </p>
+          </div>
+          <span class="demo-label">card--glass</span>
+        </div>
+
+        <!-- ── Flip Card ──────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Flip Card</h2>
+          <div class="card card--flip">
+            <div class="card__face card__face--front">
+              <p class="card__eyebrow">Hover me</p>
+              <h3 class="card__heading">Front Face</h3>
+            </div>
+            <div class="card__face card__face--back">
+              <h3 class="card__heading">Back Face</h3>
+              <p class="card__body">Hidden until flipped.</p>
+            </div>
+          </div>
+          <span class="demo-label">card--flip</span>
+        </div>
+
+        <!-- ── Expandable Card ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Expandable</h2>
+          <div class="card card--expandable">
+            <p class="card__eyebrow">Hover to expand</p>
+            <h3 class="card__heading">Expandable Card</h3>
+            <p class="card__body card__body--hidden">
+              Extra content revealed when the card expands on hover.
+            </p>
+          </div>
+          <span class="demo-label">card--expandable</span>
+        </div>
+
+        <!-- ── Neon Border Card ───────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Neon Border</h2>
+          <div class="card card--neon-border">
+            <p class="card__eyebrow">Active</p>
+            <h3 class="card__heading">Neon Border</h3>
+            <p class="card__body">Animated gradient traces the card outline.</p>
+          </div>
+          <span class="demo-label">card--neon-border</span>
+        </div>
+
+        <!-- ── Profile Card ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Profile Card</h2>
+          <div class="card card--profile">
+            <div class="card__avatar" aria-hidden="true">JD</div>
+            <h3 class="card__heading">Jane Doe</h3>
+            <p class="card__role">Senior Designer</p>
+            <div class="card__stats">
+              <div class="card__stat">
+                <span class="card__stat-value">248</span>
+                <span class="card__stat-label">Posts</span>
+              </div>
+              <div class="card__stat">
+                <span class="card__stat-value">12k</span>
+                <span class="card__stat-label">Followers</span>
+              </div>
+              <div class="card__stat">
+                <span class="card__stat-value">186</span>
+                <span class="card__stat-label">Following</span>
+              </div>
+            </div>
+            <button class="card__follow-btn" type="button">Follow</button>
+          </div>
+          <span class="demo-label">card--profile</span>
+        </div>
+
+        <!-- ── Pricing Card ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Pricing Card</h2>
+          <div class="card card--pricing">
+            <p class="card__tier">Pro</p>
+            <div class="card__price">
+              <span class="card__price-currency">$</span>
+              <span class="card__price-amount">29</span>
+              <span class="card__price-period">/mo</span>
+            </div>
+            <ul class="card__features">
+              <li class="card__feature card__feature--on">
+                Unlimited projects
+              </li>
+              <li class="card__feature card__feature--on">Priority support</li>
+              <li class="card__feature card__feature--on">Custom domain</li>
+              <li class="card__feature card__feature--off">White label</li>
+            </ul>
+            <button class="card__cta-btn" type="button">Get Started</button>
+          </div>
+          <span class="demo-label">card--pricing</span>
+        </div>
+
+        <!-- ── Spotlight Card ─────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Spotlight</h2>
+          <!-- data-spotlight enables cursor-tracking radial highlight via JS -->
+          <div class="card card--spotlight" data-spotlight>
+            <p class="card__eyebrow">Move your cursor</p>
+            <h3 class="card__heading">Spotlight Card</h3>
+            <p class="card__body">A radial highlight follows your pointer.</p>
+          </div>
+          <span class="demo-label">card--spotlight · data-spotlight</span>
+        </div>
+
+        <!-- ── Tilt Hover ─────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Tilt Hover</h2>
+          <!-- data-tilt enables 3D perspective tilt on mousemove via JS -->
+          <div class="card card--tilt" data-tilt>
+            <p class="card__eyebrow">Move your cursor</p>
+            <h3 class="card__heading">Tilt Card</h3>
+            <p class="card__body">3D perspective follows your pointer.</p>
+          </div>
+          <span class="demo-label">card--tilt · data-tilt</span>
+        </div>
+
+        <!-- ── Focus Cards ─────────────────────────────────── -->
+        <!-- demo-card--wide so the 3-card grid has room to breathe -->
+        <div class="demo-card demo-card--wide">
+          <h2 class="demo-card__title">Focus Cards</h2>
+          <!-- data-focus-stack — JS is not needed, pure CSS :has() handles blur/scale -->
+          <div class="focus-stack" data-focus-stack>
+            <div class="focus-card focus-card--crimson">
+              <div
+                class="focus-card__bg"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&quot;);
+                "
+                aria-hidden="true"
+              ></div>
+              <div class="focus-card__overlay" aria-hidden="true"></div>
+              <div class="focus-card__content">
+                <p class="focus-card__label">Crimson Fire</p>
+                <p class="focus-card__sub">Passion and Energy</p>
+              </div>
+            </div>
+
+            <div class="focus-card focus-card--azure">
+              <div
+                class="focus-card__bg"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=400&fit=crop&quot;);
+                "
+                aria-hidden="true"
+              ></div>
+              <div class="focus-card__overlay" aria-hidden="true"></div>
+              <div class="focus-card__content">
+                <p class="focus-card__label">Azure Ocean</p>
+                <p class="focus-card__sub">Calm and Depth</p>
+              </div>
+            </div>
+
+            <div class="focus-card focus-card--emerald">
+              <div
+                class="focus-card__bg"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop&quot;);
+                "
+                aria-hidden="true"
+              ></div>
+              <div class="focus-card__overlay" aria-hidden="true"></div>
+              <div class="focus-card__content">
+                <p class="focus-card__label">Emerald Nature</p>
+                <p class="focus-card__sub">Life and Growth</p>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">focus-stack · focus-card</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+

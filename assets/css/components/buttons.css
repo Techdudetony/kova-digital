@@ -1,0 +1,2860 @@
+/* ── Base Button ─────────────────────────────────────────────
+   Foundation shared by all .btn variants.
+   ------------------------------------------------------------ */
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm); /* 8px icon/text gap */
+
+  padding: var(--space-sm) var(--space-md); /* 8px 16px */
+  border-radius: var(--radius-md);
+  font-size: var(--text-md); /* 16px */
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary); /* consistent focus ring across all buttons */
+  outline-offset: 3px;
+}
+
+/* ── Neon Glow ───────────────────────────────────────────────
+   Glows green on hover using --color-primary.
+   ------------------------------------------------------------ */
+.btn--neon {
+  background: rgba(0, 255, 153, 0.12);
+  border: 1px solid rgba(0, 255, 153, 0.35);
+}
+
+.btn--neon:hover {
+  background: rgba(0, 255, 153, 0.18);
+  box-shadow: var(--shadow-glow-primary);
+  transform: translateY(-1px);
+}
+
+/* ── Animated Border ─────────────────────────────────────────
+   A gradient sweeps up from below the button on hover,
+   visible as an animated border around the dark inner fill.
+   ------------------------------------------------------------ */
+.btn--border {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.btn--border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 85, 0.75),
+    rgba(0, 255, 153, 0.75),
+    rgba(255, 0, 85, 0.75)
+  );
+  transform: translateY(-60%);
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-slow);
+  z-index: 0;
+}
+
+.btn--border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(
+    var(--radius-md) - 2px
+  ); /* matches outer radius minus border width */
+  background: var(--color-dark);
+  z-index: 1;
+}
+
+/* text must sit above both pseudo-elements */
+.btn--border span,
+.btn--border {
+  position: relative;
+  z-index: 2;
+}
+
+.btn--border:hover::before {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/* ── Ripple Click ────────────────────────────────────────────
+   .ripple spans are injected by interactions.js on click.
+   ------------------------------------------------------------ */
+.btn--ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--ripple .ripple {
+  position: absolute;
+  border-radius: var(--radius-full);
+  transform: scale(0);
+  animation: ripple 650ms ease-out;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* ── 3D Press ────────────────────────────────────────────────
+   Simulates physical depth with a bottom shadow that compresses on click.
+   ------------------------------------------------------------ */
+.btn--press {
+  box-shadow:
+    0 8px 0 rgba(255, 255, 255, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.btn--press:hover {
+  transform: translateY(-1px);
+}
+
+.btn--press:active {
+  transform: translateY(6px); /* pushes down to meet the shadow */
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.12),
+    0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Underline Slide ─────────────────────────────────────────
+   A --color-primary line slides in from the left on hover.
+   ------------------------------------------------------------ */
+.btn--underline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+}
+
+.btn--underline::after {
+  content: "";
+  position: absolute;
+  left: var(--space-md); /* 16px — matches horizontal padding */
+  right: var(--space-md);
+  bottom: var(--space-sm); /* 8px from bottom */
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+  opacity: 0.85;
+}
+
+.btn--underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Flying Send ─────────────────────────────────────────────
+   Icon flies and rotates on hover while the text slides out.
+   ------------------------------------------------------------ */
+.btn--send {
+  font-size: var(--text-lg); /* 20px */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 85, 0.9),
+    rgba(0, 255, 153, 0.9)
+  );
+  color: var(--color-dark);
+  padding: 0.7em 1em 0.7em 0.9em;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn--send .btn__send-text {
+  display: block;
+  margin-left: 0.3em;
+  transition: transform var(--transition-slow);
+}
+
+.btn--send svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform var(--transition-slow);
+}
+
+.btn--send .btn__send-icon,
+.btn--send .btn__send-icon-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--send:hover .btn__send-icon-inner {
+  animation: fly-1 0.6s ease-in-out infinite alternate; /* gentle bob */
+}
+
+.btn--send:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.btn--send:hover .btn__send-text {
+  transform: translateX(5em); /* slides out of view */
+}
+
+.btn--send:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+/* ── Download Tooltip ────────────────────────────────────────
+   Circular button; tooltip appears to the right on hover.
+   Icon re-enters from above on hover via slide-in animation.
+   ------------------------------------------------------------ */
+.btn--download {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  flex-direction: column;
+  gap: var(--space-xs); /* 4px */
+  background-color: #1b1b1b;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.btn--download .btn__download-icon {
+  fill: rgb(214, 178, 255);
+}
+
+.btn--download .btn__download-tray {
+  width: 18px;
+  height: 5px;
+  border-bottom: 2px solid rgb(185, 143, 255);
+  border-left: 2px solid rgb(182, 143, 255);
+  border-right: 2px solid rgb(182, 143, 255);
+  transition: border-color var(--transition-fast);
+}
+
+.btn--download .btn__download-tooltip {
+  position: absolute;
+  right: -105px;
+  opacity: 0;
+  background-color: #0c0c0c;
+  color: var(--color-light);
+  padding: var(--space-xs) var(--space-sm); /* 4px 8px */
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+/* Arrow caret pointing left toward the button */
+.btn--download .btn__download-tooltip::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: #0c0c0c;
+  transform: rotate(45deg);
+}
+
+.btn--download:hover {
+  background-color: rgb(150, 94, 255);
+}
+
+.btn--download:hover .btn__download-tooltip {
+  opacity: 1;
+}
+
+.btn--download:hover .btn__download-tray {
+  border-color: rgb(235, 235, 235);
+}
+
+.btn--download:hover .btn__download-icon {
+  fill: var(--color-light);
+  animation: download-slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+}
+
+@keyframes download-slide-in-top {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Back to Top ─────────────────────────────────────────────
+   Pill expands on hover to reveal a "Back to Top" label
+   while the arrow icon slides upward out of view.
+   ------------------------------------------------------------ */
+.btn--to-top {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background-color: #141414;
+  box-shadow: 0 0 0 4px rgba(180, 160, 255, 0.25);
+  overflow: hidden;
+  position: relative;
+  font-weight: 600;
+  transition:
+    width var(--transition-slow),
+    border-radius var(--transition-slow),
+    background-color var(--transition-slow),
+    box-shadow var(--transition-slow),
+    transform var(--transition-fast);
+}
+
+.btn--to-top .btn__to-top-icon {
+  width: 12px;
+  transition: transform var(--transition-slow);
+}
+
+.btn--to-top .btn__to-top-icon path {
+  fill: var(--color-light);
+}
+
+.btn--to-top::before {
+  position: absolute;
+  content: "Back to Top";
+  color: var(--color-light);
+  bottom: -20px;
+  font-size: 0; /* hidden until hover */
+  opacity: 0;
+  transition:
+    font-size var(--transition-slow),
+    opacity var(--transition-slow),
+    bottom var(--transition-slow);
+}
+
+.btn--to-top:hover {
+  width: 140px;
+  border-radius: var(--radius-full);
+  background-color: rgb(181, 160, 255);
+}
+
+.btn--to-top:hover .btn__to-top-icon {
+  transform: translateY(-200%); /* slides arrow out of the pill */
+}
+
+.btn--to-top:hover::before {
+  font-size: var(--text-xs); /* 12px — reveals label */
+  opacity: 1;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+/* ── Skew CTA Next ───────────────────────────────────────────
+   Entire button is skewed; inner text counter-skews to appear
+   upright. Three staggered arrow paths animate in on hover.
+   ------------------------------------------------------------ */
+.btn--cta-next {
+  padding: var(--space-sm) var(--space-xl); /* 8px 40px */
+  gap: 0;
+  border-radius: 0;
+  font-size: var(--text-xl); /* 24px */
+  font-weight: 700;
+  background: #6225e6;
+  color: var(--color-light);
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  transition:
+    box-shadow var(--transition-slow),
+    transform var(--transition-fast);
+}
+
+/* skew CTA intentionally removes the default focus ring — replaced with box-shadow */
+.btn--cta-next:focus-visible {
+  outline: none;
+  box-shadow: 6px 6px 0 var(--color-primary);
+}
+
+.btn--cta-next:hover {
+  box-shadow: 10px 10px 0 #fbc638;
+}
+
+.btn--cta-next:active {
+  transform: skewX(-15deg) translateY(1px);
+}
+
+/* counter-skew keeps text visually upright inside the skewed button */
+.btn--cta-next .btn__cta-text {
+  display: inline-block;
+  transform: skewX(15deg);
+}
+
+/* merged: both .btn__cta-arrow rules combined */
+.btn--cta-next .btn__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-xl); /* 40px */
+  position: relative;
+  top: 12%;
+  transform: skewX(15deg);
+  transition: margin-right var(--transition-slow);
+  margin-right: 0;
+}
+
+.btn--cta-next:hover .btn__cta-arrow {
+  margin-right: 4px;
+}
+
+/* staggered arrow paths start offset and slide into position on hover */
+.btn--cta-next .btn__cta-one {
+  transition: transform 0.4s;
+  transform: translateX(-60%);
+}
+
+.btn--cta-next .btn__cta-two {
+  transition: transform 0.5s;
+  transform: translateX(-30%);
+}
+
+.btn--cta-next:hover .btn__cta-one {
+  transform: translateX(0%);
+  animation: cta-color-anim 1s infinite 0.6s;
+}
+
+.btn--cta-next:hover .btn__cta-two {
+  transform: translateX(0%);
+  animation: cta-color-anim 1s infinite 0.4s;
+}
+
+.btn--cta-next:hover .btn__cta-three {
+  animation: cta-color-anim 1s infinite 0.2s;
+}
+
+@keyframes cta-color-anim {
+  0%,
+  100% {
+    fill: white;
+  }
+  50% {
+    fill: #fbc638;
+  }
+}
+
+/* ── Neumorphic Nav ──────────────────────────────────────────
+   Light-mode pill with inset shadow on press.
+   Dark mode driven by body[data-theme="dark"].
+   ------------------------------------------------------------ */
+.nav-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: var(--space-sm); /* 8px */
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+}
+
+.nav-pill__inner {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  width: 100%;
+  gap: var(--space-md); /* 16px */
+}
+
+/* merged: color declaration combined into main .btn--navicon rule */
+.btn--navicon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: #f2f3f7;
+  border: 2px solid transparent;
+  color: #4f9cff; /* default icon color */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.12),
+    -6px -6px 12px rgba(255, 255, 255, 0.75);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.btn--navicon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.btn--navicon:hover {
+  color: #000000;
+}
+
+.btn--navicon:hover,
+.btn--navicon:active {
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.14),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.75);
+}
+
+.btn--navicon:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.45);
+  outline-offset: 3px;
+}
+
+/* Dark theme overrides — toggled via data-theme="dark" on <body> */
+body[data-theme="dark"] .nav-pill {
+  background: #121212;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+}
+
+body[data-theme="dark"] .btn--navicon {
+  background: #1a1a1a;
+  color: #a3a3a3;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.45),
+    -6px -6px 12px rgba(255, 255, 255, 0.04);
+}
+
+body[data-theme="dark"] .btn--navicon:hover,
+body[data-theme="dark"] .btn--navicon:active {
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.55),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.06);
+}
+
+/* ── Settings Sliders ────────────────────────────────────────
+   Three slider bars animate their knobs in opposite directions on hover.
+   ------------------------------------------------------------ */
+.btn--settings {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border-radius: var(--radius-sm); /* 6px */
+  flex-direction: column;
+  gap: var(--space-xs); /* 4px */
+  background-color: rgb(129, 110, 216);
+  box-shadow: 0 0 0 2px rgb(212, 209, 255);
+  overflow: hidden;
+}
+
+.btn--settings .btn__settings-bar {
+  width: 50%;
+  height: 2px;
+  background-color: rgb(229, 229, 229);
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The knob on each slider bar */
+.btn--settings .btn__settings-bar::before {
+  content: "";
+  width: 2px;
+  height: 2px;
+  background-color: rgb(126, 117, 255);
+  border-radius: 50%;
+  border: 2px solid white;
+  position: absolute;
+  transition: transform var(--transition-slow);
+  box-shadow: 0 0 5px white;
+}
+
+.btn--settings .btn__settings-bar--left::before {
+  transform: translateX(-4px);
+}
+.btn--settings .btn__settings-bar--right::before {
+  transform: translateX(4px);
+}
+
+/* Knobs cross over each other on hover */
+.btn--settings:hover .btn__settings-bar--left::before {
+  transform: translateX(4px);
+}
+.btn--settings:hover .btn__settings-bar--right::before {
+  transform: translateX(-4px);
+}
+
+/* ── Fill Sweep ──────────────────────────────────────────────
+   A solid fill expands from the left on hover, inverting the text color.
+   ------------------------------------------------------------ */
+.btn--fill {
+  position: relative;
+  background: transparent;
+  color: #00e0ff;
+  border: 2px solid #00e0ff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: #00e0ff;
+  transition: width 0.5s ease;
+  z-index: -1;
+}
+
+.btn--fill:hover {
+  color: var(--color-dark);
+}
+
+.btn--fill:hover::before {
+  width: 100%;
+}
+
+/* ── Shake ───────────────────────────────────────────────────
+   Oscillates left/right with a slight rotation on hover.
+   ------------------------------------------------------------ */
+.btn--shake {
+  background: #9b59b6;
+  color: var(--color-light);
+}
+
+.btn--shake:hover {
+  background: #8e44ad;
+  animation: btn-shake 0.5s infinite;
+}
+
+@keyframes btn-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+}
+
+/* ── Flip ────────────────────────────────────────────────────
+   Button rotates 180° on Y-axis to reveal a back face.
+   ------------------------------------------------------------ */
+.btn--flip {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  background: #27ae60;
+  color: var(--color-light);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.6s ease,
+    background var(--transition-slow);
+}
+
+.btn--flip:hover {
+  transform: rotateY(180deg);
+  background: #1e8449;
+}
+
+.btn--flip .btn__face,
+.btn--flip .btn__back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+.btn--flip .btn__back {
+  transform: rotateY(180deg); /* pre-rotated so it faces away until flipped */
+}
+
+/* ── Magnet ──────────────────────────────────────────────────
+   Pulses with a slight scale + rotation on hover.
+   ------------------------------------------------------------ */
+.btn--magnet {
+  background: #f39c12;
+  color: var(--color-light);
+}
+
+.btn--magnet:hover {
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.6);
+  animation: btn-magnet 0.4s ease-in-out alternate infinite;
+}
+
+@keyframes btn-magnet {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+/* ── Strobe ──────────────────────────────────────────────────
+   Flashes color and jitters position rapidly on hover.
+   ------------------------------------------------------------ */
+.btn--strobe {
+  background: #e84393;
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--strobe:hover {
+  animation: btn-strobe 0.3s infinite;
+}
+
+@keyframes btn-strobe {
+  0% {
+    background: #ff9ff3;
+  }
+  10% {
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    transform: translate(2px, 2px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ── Neon Pulse ──────────────────────────────────────────────
+   Magenta neon border glows at idle; intensifies on hover.
+   ------------------------------------------------------------ */
+.btn--neon-pulse {
+  background: var(--color-dark);
+  color: var(--color-light);
+  border: 3px solid #ff00ff;
+  box-shadow:
+    0 0 10px #ff00ff,
+    inset 0 0 10px #ff00ff;
+  animation: btn-neon-idle 2s ease-in-out infinite;
+}
+
+.btn--neon-pulse:hover {
+  background: #ff00ff;
+  color: var(--color-dark);
+  box-shadow:
+    0 0 20px #ff00ff,
+    0 0 40px #ff00ff,
+    0 0 60px #ff00ff,
+    0 0 80px #ff00ff,
+    inset 0 0 20px var(--color-light);
+  animation: btn-neon-pulse 0.1s ease-in-out infinite;
+}
+
+@keyframes btn-neon-idle {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px #ff00ff,
+      inset 0 0 10px #ff00ff;
+  }
+  50% {
+    box-shadow:
+      0 0 15px #ff00ff,
+      inset 0 0 15px #ff00ff;
+  }
+}
+
+@keyframes btn-neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px #ff00ff,
+      0 0 40px #ff00ff,
+      0 0 60px #ff00ff,
+      0 0 80px #ff00ff,
+      inset 0 0 20px var(--color-light);
+  }
+  50% {
+    box-shadow:
+      0 0 30px #ff00ff,
+      0 0 50px #ff00ff,
+      0 0 70px #ff00ff,
+      0 0 100px #ff00ff,
+      inset 0 0 20px var(--color-light);
+  }
+}
+
+/* ── Activate ────────────────────────────────────────────────
+   3D tilt + radial flash + animated gradient border on hover.
+   ------------------------------------------------------------ */
+.btn--activate {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-light);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease;
+  isolation: isolate;
+}
+
+/* Radial flash expands from center on hover */
+.btn--activate::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    width 0.6s ease,
+    height 0.6s ease,
+    opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* Animated gradient border — hidden until hover */
+.btn--activate::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00d4ff, #7000ff, #ff00e5, #00d4ff);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: btn-border-flow 3s linear infinite;
+}
+
+.btn--activate:hover {
+  transform: translateY(-5px) rotateX(10deg) rotateY(-10deg) scale(1.05);
+  box-shadow:
+    0 15px 35px rgba(102, 126, 234, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.btn--activate:hover::before {
+  width: 300px;
+  height: 300px;
+  opacity: 0.3;
+}
+
+.btn--activate:hover::after {
+  opacity: 1;
+}
+
+@keyframes btn-border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── Glitch ──────────────────────────────────────────────────
+   Two pseudo-elements use data-text to duplicate the label,
+   then offset in opposite directions to simulate a glitch.
+   ------------------------------------------------------------ */
+.btn--glitch {
+  position: relative;
+  background: #00ff88;
+  color: var(--color-dark);
+}
+
+.btn--glitch::before,
+.btn--glitch::after {
+  content: attr(data-text); /* reads label from HTML attribute */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn--glitch::before {
+  color: #ff00de;
+  z-index: 1;
+}
+.btn--glitch::after {
+  color: #00ffff;
+  z-index: 0;
+}
+
+.btn--glitch:hover::before {
+  animation: btn-glitch-1 0.3s infinite;
+  opacity: 0.8;
+}
+.btn--glitch:hover::after {
+  animation: btn-glitch-2 0.3s infinite;
+  opacity: 0.8;
+}
+.btn--glitch:hover {
+  animation: btn-glitch-main 0.3s infinite;
+}
+
+@keyframes btn-glitch-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(3px, 3px);
+  }
+  80% {
+    transform: translate(3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes btn-glitch-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(3px, -3px);
+  }
+  40% {
+    transform: translate(3px, 3px);
+  }
+  60% {
+    transform: translate(-3px, -3px);
+  }
+  80% {
+    transform: translate(-3px, 3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes btn-glitch-main {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* ── Ripple Rings ────────────────────────────────────────────
+   Two expanding ring pseudo-elements pulse outward on hover,
+   staggered by 0.5s.
+   ------------------------------------------------------------ */
+.btn--rings {
+  position: relative;
+  background: linear-gradient(135deg, #5efce8 0%, #736efe 100%);
+  color: var(--color-light);
+  overflow: visible;
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.btn--rings::before,
+.btn--rings::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #5efce8;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn--rings:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 25px rgba(115, 110, 254, 0.6),
+    0 0 45px rgba(94, 252, 232, 0.4);
+}
+
+.btn--rings:hover::before {
+  animation: btn-ring-expand 1.5s ease-out infinite;
+}
+.btn--rings:hover::after {
+  animation: btn-ring-expand 1.5s ease-out 0.5s infinite;
+}
+
+@keyframes btn-ring-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ── Liquid Fill ─────────────────────────────────────────────
+   A rounded fill rises from the bottom with a wave animation,
+   inverting the text color as it covers the button.
+   ------------------------------------------------------------ */
+.btn--liquid {
+  position: relative;
+  background: transparent;
+  color: #00d4ff;
+  border: 2px solid #00d4ff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--liquid::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #00d4ff;
+  transition: height 0.5s ease;
+  z-index: -1;
+  border-radius: 50% 50% 0 0; /* rounded top edge creates the liquid effect */
+}
+
+.btn--liquid:hover {
+  color: var(--color-dark);
+}
+
+.btn--liquid:hover::before {
+  height: 180%; /* overshoots to fully cover the button */
+  animation: btn-wave 0.8s ease-in-out;
+}
+
+@keyframes btn-wave {
+  0% {
+    border-radius: 50% 50% 0 0;
+  }
+  25% {
+    border-radius: 40% 60% 0 0;
+  }
+  50% {
+    border-radius: 60% 40% 0 0;
+  }
+  75% {
+    border-radius: 45% 55% 0 0;
+  }
+  100% {
+    border-radius: 50% 50% 0 0;
+  }
+}
+
+/* ── Expanding Icon Buttons ──────────────────────────────────
+   Each button starts as a square icon. On hover it expands
+   to reveal a label via width transition. Pure CSS, no JS.
+   ------------------------------------------------------------ */
+.btn-expand-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md) 0;
+}
+
+.btn-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--color-dark-soft);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    width var(--transition-slow),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn-expand svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.btn-expand:hover svg {
+  transform: scale(1.1);
+}
+
+/* Label — hidden (width:0) by default, slides open on hover */
+.btn-expand span {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition:
+    width var(--transition-slow),
+    opacity var(--transition-fast),
+    padding var(--transition-slow);
+}
+
+.btn-expand:hover {
+  width: 140px;
+}
+
+.btn-expand:hover span {
+  width: 80px;
+  opacity: 1;
+  padding-left: var(--space-xs);
+}
+
+.btn-expand:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Brand colour variants ── */
+.btn-expand--instagram svg {
+  fill: #e4405f;
+}
+.btn-expand--instagram:hover {
+  background: rgba(228, 64, 95, 0.1);
+}
+.btn-expand--instagram span {
+  color: #e4405f;
+}
+
+.btn-expand--facebook svg {
+  fill: #1877f2;
+}
+.btn-expand--facebook:hover {
+  background: rgba(24, 119, 242, 0.1);
+}
+.btn-expand--facebook span {
+  color: #1877f2;
+}
+
+.btn-expand--github svg {
+  fill: var(--color-light);
+}
+.btn-expand--github:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-expand--github span {
+  color: var(--color-light);
+}
+
+.btn-expand--twitter svg {
+  fill: #1da1f2;
+}
+.btn-expand--twitter:hover {
+  background: rgba(29, 161, 242, 0.1);
+}
+.btn-expand--twitter span {
+  color: #1da1f2;
+}
+
+.btn-expand--youtube svg {
+  fill: #ff0000;
+}
+.btn-expand--youtube:hover {
+  background: rgba(255, 0, 0, 0.1);
+}
+.btn-expand--youtube span {
+  color: #ff0000;
+}
+
+/* ── Social Pop Buttons ──────────────────────────────────────
+   Circular icon buttons. Hover triggers a bounce pop animation
+   and reveals the brand background colour. Pure CSS, no JS.
+   ------------------------------------------------------------ */
+.btn-social-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md) 0;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-light);
+  text-decoration: none;
+  transition:
+    background var(--transition-slow),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn-social svg {
+  width: 55%;
+  height: 55%;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Pop bounce keyframe — scale up, overshoot, settle */
+@keyframes social-pop {
+  40% {
+    transform: scale(1.35);
+  }
+  60% {
+    transform: scale(0.88);
+  }
+  80% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-social:hover {
+  animation: social-pop 0.4s ease-in-out;
+}
+
+.btn-social:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Brand colour variants ── */
+.btn-social--instagram:hover {
+  background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888);
+  border-color: transparent;
+}
+
+.btn-social--twitter:hover {
+  background: #00acee;
+  border-color: transparent;
+}
+
+.btn-social--discord:hover {
+  background: #5865f2;
+  border-color: transparent;
+}
+
+.btn-social--whatsapp:hover {
+  background: #25d366;
+  border-color: transparent;
+}
+
+.btn-social--facebook:hover {
+  background: #1877f2;
+  border-color: transparent;
+}
+
+.btn-social--youtube:hover {
+  background: #ff0000;
+  border-color: transparent;
+}
+
+.btn-social--tiktok:hover {
+  background: #010101;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+/* ── Base Button ─────────────────────────────────────────────
+   Foundation shared by all .btn variants.
+   ------------------------------------------------------------ */
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm); /* 8px icon/text gap */
+
+  padding: var(--space-sm) var(--space-md); /* 8px 16px */
+  border-radius: var(--radius-md);
+  font-size: var(--text-md); /* 16px */
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary); /* consistent focus ring across all buttons */
+  outline-offset: 3px;
+}
+
+/* ── Neon Glow ───────────────────────────────────────────────
+   Glows green on hover using --color-primary.
+   ------------------------------------------------------------ */
+.btn--neon {
+  background: rgba(0, 255, 153, 0.12);
+  border: 1px solid rgba(0, 255, 153, 0.35);
+}
+
+.btn--neon:hover {
+  background: rgba(0, 255, 153, 0.18);
+  box-shadow: var(--shadow-glow-primary);
+  transform: translateY(-1px);
+}
+
+/* ── Animated Border ─────────────────────────────────────────
+   A gradient sweeps up from below the button on hover,
+   visible as an animated border around the dark inner fill.
+   ------------------------------------------------------------ */
+.btn--border {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.btn--border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 85, 0.75),
+    rgba(0, 255, 153, 0.75),
+    rgba(255, 0, 85, 0.75)
+  );
+  transform: translateY(-60%);
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-slow);
+  z-index: 0;
+}
+
+.btn--border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(
+    var(--radius-md) - 2px
+  ); /* matches outer radius minus border width */
+  background: var(--color-dark);
+  z-index: 1;
+}
+
+/* text must sit above both pseudo-elements */
+.btn--border span,
+.btn--border {
+  position: relative;
+  z-index: 2;
+}
+
+.btn--border:hover::before {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/* ── Ripple Click ────────────────────────────────────────────
+   .ripple spans are injected by interactions.js on click.
+   ------------------------------------------------------------ */
+.btn--ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--ripple .ripple {
+  position: absolute;
+  border-radius: var(--radius-full);
+  transform: scale(0);
+  animation: ripple 650ms ease-out;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* ── 3D Press ────────────────────────────────────────────────
+   Simulates physical depth with a bottom shadow that compresses on click.
+   ------------------------------------------------------------ */
+.btn--press {
+  box-shadow:
+    0 8px 0 rgba(255, 255, 255, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.btn--press:hover {
+  transform: translateY(-1px);
+}
+
+.btn--press:active {
+  transform: translateY(6px); /* pushes down to meet the shadow */
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.12),
+    0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Underline Slide ─────────────────────────────────────────
+   A --color-primary line slides in from the left on hover.
+   ------------------------------------------------------------ */
+.btn--underline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+}
+
+.btn--underline::after {
+  content: "";
+  position: absolute;
+  left: var(--space-md); /* 16px — matches horizontal padding */
+  right: var(--space-md);
+  bottom: var(--space-sm); /* 8px from bottom */
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+  opacity: 0.85;
+}
+
+.btn--underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Flying Send ─────────────────────────────────────────────
+   Icon flies and rotates on hover while the text slides out.
+   ------------------------------------------------------------ */
+.btn--send {
+  font-size: var(--text-lg); /* 20px */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 85, 0.9),
+    rgba(0, 255, 153, 0.9)
+  );
+  color: var(--color-dark);
+  padding: 0.7em 1em 0.7em 0.9em;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn--send .btn__send-text {
+  display: block;
+  margin-left: 0.3em;
+  transition: transform var(--transition-slow);
+}
+
+.btn--send svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform var(--transition-slow);
+}
+
+.btn--send .btn__send-icon,
+.btn--send .btn__send-icon-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--send:hover .btn__send-icon-inner {
+  animation: fly-1 0.6s ease-in-out infinite alternate; /* gentle bob */
+}
+
+.btn--send:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.btn--send:hover .btn__send-text {
+  transform: translateX(5em); /* slides out of view */
+}
+
+.btn--send:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+/* ── Download Tooltip ────────────────────────────────────────
+   Circular button; tooltip appears to the right on hover.
+   Icon re-enters from above on hover via slide-in animation.
+   ------------------------------------------------------------ */
+.btn--download {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  flex-direction: column;
+  gap: var(--space-xs); /* 4px */
+  background-color: #1b1b1b;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.btn--download .btn__download-icon {
+  fill: rgb(214, 178, 255);
+}
+
+.btn--download .btn__download-tray {
+  width: 18px;
+  height: 5px;
+  border-bottom: 2px solid rgb(185, 143, 255);
+  border-left: 2px solid rgb(182, 143, 255);
+  border-right: 2px solid rgb(182, 143, 255);
+  transition: border-color var(--transition-fast);
+}
+
+.btn--download .btn__download-tooltip {
+  position: absolute;
+  right: -105px;
+  opacity: 0;
+  background-color: #0c0c0c;
+  color: var(--color-light);
+  padding: var(--space-xs) var(--space-sm); /* 4px 8px */
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+/* Arrow caret pointing left toward the button */
+.btn--download .btn__download-tooltip::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: #0c0c0c;
+  transform: rotate(45deg);
+}
+
+.btn--download:hover {
+  background-color: rgb(150, 94, 255);
+}
+
+.btn--download:hover .btn__download-tooltip {
+  opacity: 1;
+}
+
+.btn--download:hover .btn__download-tray {
+  border-color: rgb(235, 235, 235);
+}
+
+.btn--download:hover .btn__download-icon {
+  fill: var(--color-light);
+  animation: download-slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+}
+
+@keyframes download-slide-in-top {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Back to Top ─────────────────────────────────────────────
+   Pill expands on hover to reveal a "Back to Top" label
+   while the arrow icon slides upward out of view.
+   ------------------------------------------------------------ */
+.btn--to-top {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background-color: #141414;
+  box-shadow: 0 0 0 4px rgba(180, 160, 255, 0.25);
+  overflow: hidden;
+  position: relative;
+  font-weight: 600;
+  transition:
+    width var(--transition-slow),
+    border-radius var(--transition-slow),
+    background-color var(--transition-slow),
+    box-shadow var(--transition-slow),
+    transform var(--transition-fast);
+}
+
+.btn--to-top .btn__to-top-icon {
+  width: 12px;
+  transition: transform var(--transition-slow);
+}
+
+.btn--to-top .btn__to-top-icon path {
+  fill: var(--color-light);
+}
+
+.btn--to-top::before {
+  position: absolute;
+  content: "Back to Top";
+  color: var(--color-light);
+  bottom: -20px;
+  font-size: 0; /* hidden until hover */
+  opacity: 0;
+  transition:
+    font-size var(--transition-slow),
+    opacity var(--transition-slow),
+    bottom var(--transition-slow);
+}
+
+.btn--to-top:hover {
+  width: 140px;
+  border-radius: var(--radius-full);
+  background-color: rgb(181, 160, 255);
+}
+
+.btn--to-top:hover .btn__to-top-icon {
+  transform: translateY(-200%); /* slides arrow out of the pill */
+}
+
+.btn--to-top:hover::before {
+  font-size: var(--text-xs); /* 12px — reveals label */
+  opacity: 1;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+/* ── Skew CTA Next ───────────────────────────────────────────
+   Entire button is skewed; inner text counter-skews to appear
+   upright. Three staggered arrow paths animate in on hover.
+   ------------------------------------------------------------ */
+.btn--cta-next {
+  padding: var(--space-sm) var(--space-xl); /* 8px 40px */
+  gap: 0;
+  border-radius: 0;
+  font-size: var(--text-xl); /* 24px */
+  font-weight: 700;
+  background: #6225e6;
+  color: var(--color-light);
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  transition:
+    box-shadow var(--transition-slow),
+    transform var(--transition-fast);
+}
+
+/* skew CTA intentionally removes the default focus ring — replaced with box-shadow */
+.btn--cta-next:focus-visible {
+  outline: none;
+  box-shadow: 6px 6px 0 var(--color-primary);
+}
+
+.btn--cta-next:hover {
+  box-shadow: 10px 10px 0 #fbc638;
+}
+
+.btn--cta-next:active {
+  transform: skewX(-15deg) translateY(1px);
+}
+
+/* counter-skew keeps text visually upright inside the skewed button */
+.btn--cta-next .btn__cta-text {
+  display: inline-block;
+  transform: skewX(15deg);
+}
+
+/* merged: both .btn__cta-arrow rules combined */
+.btn--cta-next .btn__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-xl); /* 40px */
+  position: relative;
+  top: 12%;
+  transform: skewX(15deg);
+  transition: margin-right var(--transition-slow);
+  margin-right: 0;
+}
+
+.btn--cta-next:hover .btn__cta-arrow {
+  margin-right: 4px;
+}
+
+/* staggered arrow paths start offset and slide into position on hover */
+.btn--cta-next .btn__cta-one {
+  transition: transform 0.4s;
+  transform: translateX(-60%);
+}
+
+.btn--cta-next .btn__cta-two {
+  transition: transform 0.5s;
+  transform: translateX(-30%);
+}
+
+.btn--cta-next:hover .btn__cta-one {
+  transform: translateX(0%);
+  animation: cta-color-anim 1s infinite 0.6s;
+}
+
+.btn--cta-next:hover .btn__cta-two {
+  transform: translateX(0%);
+  animation: cta-color-anim 1s infinite 0.4s;
+}
+
+.btn--cta-next:hover .btn__cta-three {
+  animation: cta-color-anim 1s infinite 0.2s;
+}
+
+@keyframes cta-color-anim {
+  0%,
+  100% {
+    fill: white;
+  }
+  50% {
+    fill: #fbc638;
+  }
+}
+
+/* ── Neumorphic Nav ──────────────────────────────────────────
+   Light-mode pill with inset shadow on press.
+   Dark mode driven by body[data-theme="dark"].
+   ------------------------------------------------------------ */
+.nav-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: var(--space-sm); /* 8px */
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+}
+
+.nav-pill__inner {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  width: 100%;
+  gap: var(--space-md); /* 16px */
+}
+
+/* merged: color declaration combined into main .btn--navicon rule */
+.btn--navicon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: #f2f3f7;
+  border: 2px solid transparent;
+  color: #4f9cff; /* default icon color */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.12),
+    -6px -6px 12px rgba(255, 255, 255, 0.75);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.btn--navicon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.btn--navicon:hover {
+  color: #000000;
+}
+
+.btn--navicon:hover,
+.btn--navicon:active {
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.14),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.75);
+}
+
+.btn--navicon:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.45);
+  outline-offset: 3px;
+}
+
+/* Dark theme overrides — toggled via data-theme="dark" on <body> */
+body[data-theme="dark"] .nav-pill {
+  background: #121212;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+}
+
+body[data-theme="dark"] .btn--navicon {
+  background: #1a1a1a;
+  color: #a3a3a3;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.45),
+    -6px -6px 12px rgba(255, 255, 255, 0.04);
+}
+
+body[data-theme="dark"] .btn--navicon:hover,
+body[data-theme="dark"] .btn--navicon:active {
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.55),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.06);
+}
+
+/* ── Settings Sliders ────────────────────────────────────────
+   Three slider bars animate their knobs in opposite directions on hover.
+   ------------------------------------------------------------ */
+.btn--settings {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border-radius: var(--radius-sm); /* 6px */
+  flex-direction: column;
+  gap: var(--space-xs); /* 4px */
+  background-color: rgb(129, 110, 216);
+  box-shadow: 0 0 0 2px rgb(212, 209, 255);
+  overflow: hidden;
+}
+
+.btn--settings .btn__settings-bar {
+  width: 50%;
+  height: 2px;
+  background-color: rgb(229, 229, 229);
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The knob on each slider bar */
+.btn--settings .btn__settings-bar::before {
+  content: "";
+  width: 2px;
+  height: 2px;
+  background-color: rgb(126, 117, 255);
+  border-radius: 50%;
+  border: 2px solid white;
+  position: absolute;
+  transition: transform var(--transition-slow);
+  box-shadow: 0 0 5px white;
+}
+
+.btn--settings .btn__settings-bar--left::before {
+  transform: translateX(-4px);
+}
+.btn--settings .btn__settings-bar--right::before {
+  transform: translateX(4px);
+}
+
+/* Knobs cross over each other on hover */
+.btn--settings:hover .btn__settings-bar--left::before {
+  transform: translateX(4px);
+}
+.btn--settings:hover .btn__settings-bar--right::before {
+  transform: translateX(-4px);
+}
+
+/* ── Fill Sweep ──────────────────────────────────────────────
+   A solid fill expands from the left on hover, inverting the text color.
+   ------------------------------------------------------------ */
+.btn--fill {
+  position: relative;
+  background: transparent;
+  color: #00e0ff;
+  border: 2px solid #00e0ff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: #00e0ff;
+  transition: width 0.5s ease;
+  z-index: -1;
+}
+
+.btn--fill:hover {
+  color: var(--color-dark);
+}
+
+.btn--fill:hover::before {
+  width: 100%;
+}
+
+/* ── Shake ───────────────────────────────────────────────────
+   Oscillates left/right with a slight rotation on hover.
+   ------------------------------------------------------------ */
+.btn--shake {
+  background: #9b59b6;
+  color: var(--color-light);
+}
+
+.btn--shake:hover {
+  background: #8e44ad;
+  animation: btn-shake 0.5s infinite;
+}
+
+@keyframes btn-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+}
+
+/* ── Flip ────────────────────────────────────────────────────
+   Button rotates 180° on Y-axis to reveal a back face.
+   ------------------------------------------------------------ */
+.btn--flip {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  background: #27ae60;
+  color: var(--color-light);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.6s ease,
+    background var(--transition-slow);
+}
+
+.btn--flip:hover {
+  transform: rotateY(180deg);
+  background: #1e8449;
+}
+
+.btn--flip .btn__face,
+.btn--flip .btn__back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+.btn--flip .btn__back {
+  transform: rotateY(180deg); /* pre-rotated so it faces away until flipped */
+}
+
+/* ── Magnet ──────────────────────────────────────────────────
+   Pulses with a slight scale + rotation on hover.
+   ------------------------------------------------------------ */
+.btn--magnet {
+  background: #f39c12;
+  color: var(--color-light);
+}
+
+.btn--magnet:hover {
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.6);
+  animation: btn-magnet 0.4s ease-in-out alternate infinite;
+}
+
+@keyframes btn-magnet {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+/* ── Strobe ──────────────────────────────────────────────────
+   Flashes color and jitters position rapidly on hover.
+   ------------------------------------------------------------ */
+.btn--strobe {
+  background: #e84393;
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--strobe:hover {
+  animation: btn-strobe 0.3s infinite;
+}
+
+@keyframes btn-strobe {
+  0% {
+    background: #ff9ff3;
+  }
+  10% {
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    transform: translate(2px, 2px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ── Neon Pulse ──────────────────────────────────────────────
+   Magenta neon border glows at idle; intensifies on hover.
+   ------------------------------------------------------------ */
+.btn--neon-pulse {
+  background: var(--color-dark);
+  color: var(--color-light);
+  border: 3px solid #ff00ff;
+  box-shadow:
+    0 0 10px #ff00ff,
+    inset 0 0 10px #ff00ff;
+  animation: btn-neon-idle 2s ease-in-out infinite;
+}
+
+.btn--neon-pulse:hover {
+  background: #ff00ff;
+  color: var(--color-dark);
+  box-shadow:
+    0 0 20px #ff00ff,
+    0 0 40px #ff00ff,
+    0 0 60px #ff00ff,
+    0 0 80px #ff00ff,
+    inset 0 0 20px var(--color-light);
+  animation: btn-neon-pulse 0.1s ease-in-out infinite;
+}
+
+@keyframes btn-neon-idle {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px #ff00ff,
+      inset 0 0 10px #ff00ff;
+  }
+  50% {
+    box-shadow:
+      0 0 15px #ff00ff,
+      inset 0 0 15px #ff00ff;
+  }
+}
+
+@keyframes btn-neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px #ff00ff,
+      0 0 40px #ff00ff,
+      0 0 60px #ff00ff,
+      0 0 80px #ff00ff,
+      inset 0 0 20px var(--color-light);
+  }
+  50% {
+    box-shadow:
+      0 0 30px #ff00ff,
+      0 0 50px #ff00ff,
+      0 0 70px #ff00ff,
+      0 0 100px #ff00ff,
+      inset 0 0 20px var(--color-light);
+  }
+}
+
+/* ── Activate ────────────────────────────────────────────────
+   3D tilt + radial flash + animated gradient border on hover.
+   ------------------------------------------------------------ */
+.btn--activate {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-light);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease;
+  isolation: isolate;
+}
+
+/* Radial flash expands from center on hover */
+.btn--activate::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    width 0.6s ease,
+    height 0.6s ease,
+    opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* Animated gradient border — hidden until hover */
+.btn--activate::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00d4ff, #7000ff, #ff00e5, #00d4ff);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: btn-border-flow 3s linear infinite;
+}
+
+.btn--activate:hover {
+  transform: translateY(-5px) rotateX(10deg) rotateY(-10deg) scale(1.05);
+  box-shadow:
+    0 15px 35px rgba(102, 126, 234, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.btn--activate:hover::before {
+  width: 300px;
+  height: 300px;
+  opacity: 0.3;
+}
+
+.btn--activate:hover::after {
+  opacity: 1;
+}
+
+@keyframes btn-border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── Glitch ──────────────────────────────────────────────────
+   Two pseudo-elements use data-text to duplicate the label,
+   then offset in opposite directions to simulate a glitch.
+   ------------------------------------------------------------ */
+.btn--glitch {
+  position: relative;
+  background: #00ff88;
+  color: var(--color-dark);
+}
+
+.btn--glitch::before,
+.btn--glitch::after {
+  content: attr(data-text); /* reads label from HTML attribute */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn--glitch::before {
+  color: #ff00de;
+  z-index: 1;
+}
+.btn--glitch::after {
+  color: #00ffff;
+  z-index: 0;
+}
+
+.btn--glitch:hover::before {
+  animation: btn-glitch-1 0.3s infinite;
+  opacity: 0.8;
+}
+.btn--glitch:hover::after {
+  animation: btn-glitch-2 0.3s infinite;
+  opacity: 0.8;
+}
+.btn--glitch:hover {
+  animation: btn-glitch-main 0.3s infinite;
+}
+
+@keyframes btn-glitch-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(3px, 3px);
+  }
+  80% {
+    transform: translate(3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes btn-glitch-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(3px, -3px);
+  }
+  40% {
+    transform: translate(3px, 3px);
+  }
+  60% {
+    transform: translate(-3px, -3px);
+  }
+  80% {
+    transform: translate(-3px, 3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes btn-glitch-main {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* ── Ripple Rings ────────────────────────────────────────────
+   Two expanding ring pseudo-elements pulse outward on hover,
+   staggered by 0.5s.
+   ------------------------------------------------------------ */
+.btn--rings {
+  position: relative;
+  background: linear-gradient(135deg, #5efce8 0%, #736efe 100%);
+  color: var(--color-light);
+  overflow: visible;
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.btn--rings::before,
+.btn--rings::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #5efce8;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn--rings:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 25px rgba(115, 110, 254, 0.6),
+    0 0 45px rgba(94, 252, 232, 0.4);
+}
+
+.btn--rings:hover::before {
+  animation: btn-ring-expand 1.5s ease-out infinite;
+}
+.btn--rings:hover::after {
+  animation: btn-ring-expand 1.5s ease-out 0.5s infinite;
+}
+
+@keyframes btn-ring-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ── Liquid Fill ─────────────────────────────────────────────
+   A rounded fill rises from the bottom with a wave animation,
+   inverting the text color as it covers the button.
+   ------------------------------------------------------------ */
+.btn--liquid {
+  position: relative;
+  background: transparent;
+  color: #00d4ff;
+  border: 2px solid #00d4ff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--liquid::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #00d4ff;
+  transition: height 0.5s ease;
+  z-index: -1;
+  border-radius: 50% 50% 0 0; /* rounded top edge creates the liquid effect */
+}
+
+.btn--liquid:hover {
+  color: var(--color-dark);
+}
+
+.btn--liquid:hover::before {
+  height: 180%; /* overshoots to fully cover the button */
+  animation: btn-wave 0.8s ease-in-out;
+}
+
+@keyframes btn-wave {
+  0% {
+    border-radius: 50% 50% 0 0;
+  }
+  25% {
+    border-radius: 40% 60% 0 0;
+  }
+  50% {
+    border-radius: 60% 40% 0 0;
+  }
+  75% {
+    border-radius: 45% 55% 0 0;
+  }
+  100% {
+    border-radius: 50% 50% 0 0;
+  }
+}
+
+/* ── Expanding Icon Buttons ──────────────────────────────────
+   Each button starts as a square icon. On hover it expands
+   to reveal a label via width transition. Pure CSS, no JS.
+   ------------------------------------------------------------ */
+.btn-expand-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md) 0;
+}
+
+.btn-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--color-dark-soft);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    width var(--transition-slow),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn-expand svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.btn-expand:hover svg {
+  transform: scale(1.1);
+}
+
+/* Label — hidden (width:0) by default, slides open on hover */
+.btn-expand span {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition:
+    width var(--transition-slow),
+    opacity var(--transition-fast),
+    padding var(--transition-slow);
+}
+
+.btn-expand:hover {
+  width: 140px;
+}
+
+.btn-expand:hover span {
+  width: 80px;
+  opacity: 1;
+  padding-left: var(--space-xs);
+}
+
+.btn-expand:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Brand colour variants ── */
+.btn-expand--instagram svg {
+  fill: #e4405f;
+}
+.btn-expand--instagram:hover {
+  background: rgba(228, 64, 95, 0.1);
+}
+.btn-expand--instagram span {
+  color: #e4405f;
+}
+
+.btn-expand--facebook svg {
+  fill: #1877f2;
+}
+.btn-expand--facebook:hover {
+  background: rgba(24, 119, 242, 0.1);
+}
+.btn-expand--facebook span {
+  color: #1877f2;
+}
+
+.btn-expand--github svg {
+  fill: var(--color-light);
+}
+.btn-expand--github:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-expand--github span {
+  color: var(--color-light);
+}
+
+.btn-expand--twitter svg {
+  fill: #1da1f2;
+}
+.btn-expand--twitter:hover {
+  background: rgba(29, 161, 242, 0.1);
+}
+.btn-expand--twitter span {
+  color: #1da1f2;
+}
+
+.btn-expand--youtube svg {
+  fill: #ff0000;
+}
+.btn-expand--youtube:hover {
+  background: rgba(255, 0, 0, 0.1);
+}
+.btn-expand--youtube span {
+  color: #ff0000;
+}
+
+/* ── Social Pop Buttons ──────────────────────────────────────
+   Circular icon buttons. Hover triggers a bounce pop animation
+   and reveals the brand background colour. Pure CSS, no JS.
+   ------------------------------------------------------------ */
+.btn-social-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md) 0;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--color-dark-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-light);
+  text-decoration: none;
+  transition:
+    background var(--transition-slow),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn-social svg {
+  width: 55%;
+  height: 55%;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Pop bounce keyframe — scale up, overshoot, settle */
+@keyframes social-pop {
+  40% {
+    transform: scale(1.35);
+  }
+  60% {
+    transform: scale(0.88);
+  }
+  80% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-social:hover {
+  animation: social-pop 0.4s ease-in-out;
+}
+
+.btn-social:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── Brand colour variants ── */
+.btn-social--instagram:hover {
+  background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888);
+  border-color: transparent;
+}
+
+.btn-social--twitter:hover {
+  background: #00acee;
+  border-color: transparent;
+}
+
+.btn-social--discord:hover {
+  background: #5865f2;
+  border-color: transparent;
+}
+
+.btn-social--whatsapp:hover {
+  background: #25d366;
+  border-color: transparent;
+}
+
+.btn-social--facebook:hover {
+  background: #1877f2;
+  border-color: transparent;
+}
+
+.btn-social--youtube:hover {
+  background: #ff0000;
+  border-color: transparent;
+}
+
+.btn-social--tiktok:hover {
+  background: #010101;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Social Tooltip Buttons ──────────────────────────────────
+   Circular buttons with an animated tooltip above.
+   --btn-tt-bg on each <li> drives both the tooltip bg and the
+   circle fill sweep via CSS var. Pure CSS — no JS needed.
+   ------------------------------------------------------------ */
+.btn-tooltip-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: var(--space-xl) 0 var(--space-2xl); /* extra bottom for tooltip room */
+  margin: 0;
+}
+
+.btn-tooltip-item {
+  position: relative;
+  animation: tooltip-pop-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+    backwards;
+}
+
+.btn-tooltip-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.btn-tooltip-item:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.btn-tooltip-item:nth-child(3) {
+  animation-delay: 0.19s;
+}
+.btn-tooltip-item:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.btn-tooltip-item:nth-child(5) {
+  animation-delay: 0.33s;
+}
+.btn-tooltip-item:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+@keyframes tooltip-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ── Tooltip — attr(data-tooltip) via CSS ::after ── */
+.btn-tooltip-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-light);
+  background: var(--btn-tt-bg, var(--color-dark));
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+/* Show on hover/focus with bounce-in animation */
+.btn-tooltip-item:has(a:hover)::after,
+.btn-tooltip-item:has(a:focus-visible)::after {
+  visibility: visible;
+  animation: tooltip-enter 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Fade out when not hovered */
+.btn-tooltip-item:not(:has(a:hover))::after {
+  animation: tooltip-exit 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes tooltip-enter {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes tooltip-exit {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+}
+
+/* ── Button circle ── */
+.btn-tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: var(--color-dark-soft);
+  color: var(--color-light);
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    box-shadow 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    border-color var(--transition-fast);
+}
+
+.btn-tooltip svg {
+  width: 44%;
+  height: 44%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Brand colour circle sweeps in from scale(0) on hover */
+.btn-tooltip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--btn-tt-bg, var(--color-primary));
+  border-radius: var(--radius-full);
+  transform: scale(0);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 0;
+}
+
+.btn-tooltip:hover,
+.btn-tooltip:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  border-color: transparent;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.btn-tooltip:hover::before,
+.btn-tooltip:focus-visible::before {
+  transform: scale(1);
+}
+
+.btn-tooltip:hover svg,
+.btn-tooltip:focus-visible svg {
+  transform: scale(1.2) rotate(360deg);
+}
+
+.btn-tooltip:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}

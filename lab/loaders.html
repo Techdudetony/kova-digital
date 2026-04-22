@@ -1,0 +1,214 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Loaders</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../assets/css/components/loaders.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+
+      <header class="page__header">
+        
+        <h1 class="page__title">Loaders</h1>
+        <p class="page__subtitle">Spinners, skeletons, and motion experiments</p>
+      </header>
+
+      <section class="demo-grid">
+
+        <!-- ── Spinner Ring ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Spinner Ring</h2>
+          <div class="loader-wrap">
+            <div class="loader-spinner" role="status" aria-label="Loading">
+              <span class="loader-spinner__ring"></span>
+            </div>
+          </div>
+          <span class="demo-label">loader-spinner</span>
+        </div>
+
+        <!-- ── Dots Bounce ────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Dots Bounce</h2>
+          <div class="loader-wrap">
+            <div class="loader-dots" role="status" aria-label="Loading">
+              <span class="loader-dots__dot"></span>
+              <span class="loader-dots__dot"></span>
+              <span class="loader-dots__dot"></span>
+            </div>
+          </div>
+          <span class="demo-label">loader-dots</span>
+        </div>
+
+        <!-- ── Skeleton Screen ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Skeleton Screen</h2>
+          <div class="loader-wrap">
+            <div class="loader-skeleton" aria-label="Loading content" aria-busy="true">
+              <div class="loader-skeleton__avatar"></div>
+              <div class="loader-skeleton__lines">
+                <div class="loader-skeleton__line loader-skeleton__line--full"></div>
+                <div class="loader-skeleton__line loader-skeleton__line--wide"></div>
+                <div class="loader-skeleton__line loader-skeleton__line--short"></div>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">loader-skeleton</span>
+        </div>
+
+        <!-- ── Progress Bar ───────────────────────────────── -->
+        <!-- data-progress triggers JS-driven fill + counter animation -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Progress Bar</h2>
+          <div class="loader-wrap">
+            <div class="loader-progress" data-progress role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="loader-progress__track">
+                <div class="loader-progress__fill"></div>
+              </div>
+              <span class="loader-progress__label" data-progress-label>0%</span>
+            </div>
+          </div>
+          <span class="demo-label">loader-progress · data-progress</span>
+        </div>
+
+        <!-- ── Morphing Blob ──────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Morphing Blob</h2>
+          <div class="loader-wrap">
+            <div class="loader-blob" role="status" aria-label="Loading"></div>
+          </div>
+          <span class="demo-label">loader-blob</span>
+        </div>
+
+        <!-- ── DNA Helix ──────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">DNA Helix</h2>
+          <div class="loader-wrap">
+            <!-- 10 pairs of dots staggered to create two intertwining strands -->
+            <div class="loader-dna" role="status" aria-label="Loading">
+              <span class="loader-dna__pair" style="--i:0"></span>
+              <span class="loader-dna__pair" style="--i:1"></span>
+              <span class="loader-dna__pair" style="--i:2"></span>
+              <span class="loader-dna__pair" style="--i:3"></span>
+              <span class="loader-dna__pair" style="--i:4"></span>
+              <span class="loader-dna__pair" style="--i:5"></span>
+              <span class="loader-dna__pair" style="--i:6"></span>
+              <span class="loader-dna__pair" style="--i:7"></span>
+              <span class="loader-dna__pair" style="--i:8"></span>
+              <span class="loader-dna__pair" style="--i:9"></span>
+            </div>
+          </div>
+          <span class="demo-label">loader-dna</span>
+        </div>
+
+        <!-- ── Typewriter ─────────────────────────────────── -->
+        <!-- data-typewriter triggers JS phrase cycling -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Typewriter</h2>
+          <div class="loader-wrap">
+            <p class="loader-typewriter" data-typewriter
+              data-phrases='["Compiling assets...", "Fetching data...", "Almost there...", "Optimising...", "Loading UI..."]'
+              aria-live="polite">
+            </p>
+          </div>
+          <span class="demo-label">loader-typewriter · data-typewriter</span>
+        </div>
+
+        <!-- ── Neon Pulse Ring ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Neon Pulse Ring</h2>
+          <div class="loader-wrap">
+            <div class="loader-pulse" role="status" aria-label="Loading">
+              <span class="loader-pulse__ring loader-pulse__ring--1"></span>
+              <span class="loader-pulse__ring loader-pulse__ring--2"></span>
+              <span class="loader-pulse__ring loader-pulse__ring--3"></span>
+              <span class="loader-pulse__core"></span>
+            </div>
+          </div>
+          <span class="demo-label">loader-pulse</span>
+        </div>
+
+        <!-- ── Hourglass Flip ─────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Hourglass Flip</h2>
+          <div class="loader-wrap">
+            <div class="loader-hourglass" role="status" aria-label="Loading">
+              <div class="loader-hourglass__inner">
+                <div class="loader-hourglass__face loader-hourglass__face--front">
+                  <div class="loader-hourglass__top"></div>
+                  <div class="loader-hourglass__mid"></div>
+                  <div class="loader-hourglass__bot"></div>
+                </div>
+                <div class="loader-hourglass__face loader-hourglass__face--back">
+                  <div class="loader-hourglass__top loader-hourglass__top--flipped"></div>
+                  <div class="loader-hourglass__mid"></div>
+                  <div class="loader-hourglass__bot loader-hourglass__bot--flipped"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">loader-hourglass</span>
+        </div>
+
+        <!-- ── Bouncing Ball ──────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Bouncing Ball</h2>
+          <div class="loader-wrap">
+            <div class="loader-bounce" role="status" aria-label="Loading">
+              <div class="loader-bounce__ball"></div>
+              <div class="loader-bounce__shadow"></div>
+            </div>
+          </div>
+          <span class="demo-label">loader-bounce</span>
+        </div>
+
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+
