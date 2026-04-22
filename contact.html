@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Get in touch with Kova Digital. Tell us about your project and we'll respond within 48 hours with a clear plan and honest quote."
+    />
+
+    <title>Contact — Kova Digital</title>
+
+    <!-- Design system — order matters: tokens → reset → utilities → components -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/kova.css" />
+  </head>
+  <body>
+    <!-- ── NAV ──────────────────────────────────────────────── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo">
+          <img
+            src="assets/img/kova-logo.png"
+            alt="Kova Digital logo"
+            class="nav__logo-img"
+          />
+          <div class="nav__logo-text">
+            <span class="nav__logo-name">Kova Digital</span>
+            <span class="nav__logo-sub">Creative Digital Solutions</span>
+          </div>
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="services.html" class="nav__link">Services</a></li>
+          <li><a href="lab/index.html" class="nav__link">The Lab</a></li>
+          <li>
+            <a href="contact.html" class="nav__link is-active">Contact</a>
+          </li>
+        </ul>
+
+        <a href="contact.html" class="nav__cta">Get a Quote</a>
+
+        <button
+          class="nav__hamburger"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile nav drawer -->
+    <div
+      class="nav__mobile"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html" class="nav__mobile-link">Home</a>
+      <a href="services.html" class="nav__mobile-link">Services</a>
+      <a href="lab/index.html" class="nav__mobile-link">The Lab</a>
+      <a href="contact.html" class="nav__mobile-link is-active">Contact</a>
+      <a href="contact.html" class="btn btn--primary nav__mobile-cta"
+        >Get a Quote</a
+      >
+    </div>
+
+    <main>
+      <!-- ── PAGE HERO ────────────────────────────────────────── -->
+      <section class="page-hero" aria-labelledby="contact-hero-heading">
+        <div class="container page-hero__inner">
+          <p class="eyebrow">Get In Touch</p>
+          <h1 class="page-hero__heading" id="contact-hero-heading">
+            Let's build something<br /><span>great together</span>
+          </h1>
+          <p class="page-hero__sub">
+            Tell us about your project. We respond to every inquiry within 48
+            hours with a clear plan and honest pricing.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── CONTACT BODY ──────────────────────────────────────── -->
+      <section class="section" aria-labelledby="contact-form-heading">
+        <div class="container">
+          <div class="contact-layout">
+            <!-- ── FORM SIDE ──────────────────────────────────── -->
+            <div class="contact-form-wrap">
+              <h2 class="contact-form-wrap__heading" id="contact-form-heading">
+                Tell us about your project
+              </h2>
+              <p class="contact-form-wrap__sub">
+                The more detail you share, the better we can tailor our
+                response.
+              </p>
+
+              <form
+                class="contact-form"
+                id="contact-form"
+                novalidate
+                aria-label="Project inquiry form"
+              >
+                <!-- Name + Email row -->
+                <div class="contact-form__row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="name">
+                      Full Name
+                      <span class="form-field__required" aria-hidden="true"
+                        >*</span
+                      >
+                    </label>
+                    <input
+                      class="form-field__input"
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Tony Nguyen"
+                      autocomplete="name"
+                      required
+                    />
+                    <span
+                      class="form-field__error"
+                      id="name-error"
+                      role="alert"
+                    ></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-field__label" for="email">
+                      Email Address
+                      <span class="form-field__required" aria-hidden="true"
+                        >*</span
+                      >
+                    </label>
+                    <input
+                      class="form-field__input"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      autocomplete="email"
+                      required
+                    />
+                    <span
+                      class="form-field__error"
+                      id="email-error"
+                      role="alert"
+                    ></span>
+                  </div>
+                </div>
+
+                <!-- Service type -->
+                <div class="form-field">
+                  <label class="form-field__label" for="service">
+                    Service Needed
+                    <span class="form-field__required" aria-hidden="true"
+                      >*</span
+                    >
+                  </label>
+                  <div class="form-field__select-wrap">
+                    <select
+                      class="form-field__select"
+                      id="service"
+                      name="service"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select a service…
+                      </option>
+                      <option value="custom-design">
+                        Custom Website Design
+                      </option>
+                      <option value="ui-systems">UI Component System</option>
+                      <option value="maintenance">Ongoing Maintenance</option>
+                      <option value="multiple">Multiple Services</option>
+                      <option value="unsure">Not sure yet</option>
+                    </select>
+                    <!-- Custom chevron icon -->
+                    <svg
+                      class="form-field__select-arrow"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </div>
+                  <span
+                    class="form-field__error"
+                    id="service-error"
+                    role="alert"
+                  ></span>
+                </div>
+
+                <!-- Budget range -->
+                <div class="form-field">
+                  <label class="form-field__label" for="budget">
+                    Budget Range
+                  </label>
+                  <div class="form-field__select-wrap">
+                    <select
+                      class="form-field__select"
+                      id="budget"
+                      name="budget"
+                    >
+                      <option value="" disabled selected>
+                        Select a range…
+                      </option>
+                      <option value="under-500">Under $500</option>
+                      <option value="500-1500">$500 – $1,500</option>
+                      <option value="1500-3000">$1,500 – $3,000</option>
+                      <option value="3000-5000">$3,000 – $5,000</option>
+                      <option value="5000-plus">$5,000+</option>
+                      <option value="unsure">Not sure yet</option>
+                    </select>
+                    <svg
+                      class="form-field__select-arrow"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Message -->
+                <div class="form-field">
+                  <label class="form-field__label" for="message">
+                    Project Details
+                    <span class="form-field__required" aria-hidden="true"
+                      >*</span
+                    >
+                  </label>
+                  <textarea
+                    class="form-field__input form-field__input--textarea"
+                    id="message"
+                    name="message"
+                    placeholder="Tell us about your project — what you're building, who it's for, any inspiration or references, and your timeline if you have one."
+                    rows="6"
+                    required
+                  ></textarea>
+                  <span
+                    class="form-field__error"
+                    id="message-error"
+                    role="alert"
+                  ></span>
+                </div>
+
+                <!-- Submit -->
+                <div class="contact-form__submit-wrap">
+                  <button type="submit" class="btn btn--primary btn--lg">
+                    Send Inquiry
+                    <!-- Arrow icon -->
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Success message — shown by JS on submit -->
+                <div
+                  class="contact-form__success"
+                  id="form-success"
+                  aria-live="polite"
+                  hidden
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <p>Message sent! We'll be in touch within 48 hours.</p>
+                </div>
+              </form>
+            </div>
+            <!-- /.contact-form-wrap -->
+
+            <!-- ── INFO SIDE ───────────────────────────────────── -->
+            <aside class="contact-info" aria-label="Contact information">
+              <!-- Response time -->
+              <div class="contact-info__card">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-info__card-title">Response Time</p>
+                  <p class="contact-info__card-desc">
+                    We reply to every inquiry within 48 hours — usually sooner.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-info__card">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m2 7 10 7 10-7" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-info__card-title">Email Us Directly</p>
+                  <a
+                    href="mailto:techdudetony@gmail.com"
+                    class="contact-info__card-link"
+                  >
+                    techdudetony@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="contact-info__card">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"
+                    />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-info__card-title">Based In</p>
+                  <p class="contact-info__card-desc">
+                    Richmond, VA — serving clients nationwide.
+                  </p>
+                </div>
+              </div>
+
+              <!-- What to expect -->
+              <div class="contact-info__expect">
+                <p class="contact-info__expect-title">What happens next?</p>
+                <ol class="contact-info__expect-list">
+                  <li>
+                    <span class="contact-info__expect-num">01</span>
+                    <span
+                      >We review your inquiry and follow up within 48
+                      hours</span
+                    >
+                  </li>
+                  <li>
+                    <span class="contact-info__expect-num">02</span>
+                    <span
+                      >We schedule a short call to align on scope and
+                      goals</span
+                    >
+                  </li>
+                  <li>
+                    <span class="contact-info__expect-num">03</span>
+                    <span
+                      >You receive a detailed proposal with clear pricing</span
+                    >
+                  </li>
+                  <li>
+                    <span class="contact-info__expect-num">04</span>
+                    <span>We get to work — no surprises, no hidden fees</span>
+                  </li>
+                </ol>
+              </div>
+            </aside>
+            <!-- /.contact-info -->
+          </div>
+          <!-- /.contact-layout -->
+        </div>
+        <!-- /.container -->
+      </section>
+    </main>
+
+    <!-- ── FOOTER ────────────────────────────────────────────── -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo">
+              <img
+                src="assets/img/kova-logo.png"
+                alt="Kova Digital"
+                class="footer__logo-img"
+              />
+              <span class="footer__logo-name">Kova Digital</span>
+            </a>
+            <p class="footer__tagline">
+              Where Imagination meets Innovation. Custom digital experiences
+              crafted with precision and purpose.
+            </p>
+          </div>
+
+          <nav class="footer__nav-group" aria-label="Company links">
+            <p class="footer__nav-title">Company</p>
+            <a href="index.html" class="footer__nav-link">Home</a>
+            <a href="services.html" class="footer__nav-link">Services</a>
+            <a href="contact.html" class="footer__nav-link">Contact</a>
+          </nav>
+
+          <nav class="footer__nav-group" aria-label="Work links">
+            <p class="footer__nav-title">Work</p>
+            <a href="lab/index.html" class="footer__nav-link">The Lab</a>
+            <a href="lab/index.html#animations" class="footer__nav-link"
+              >Animations</a
+            >
+            <a href="lab/index.html#components" class="footer__nav-link"
+              >Components</a
+            >
+          </nav>
+
+          <nav class="footer__nav-group" aria-label="Contact links">
+            <p class="footer__nav-title">Get in Touch</p>
+            <a href="mailto:techdudetony@gmail.com" class="footer__nav-link"
+              >techdudetony@gmail.com</a
+            >
+            <a href="contact.html" class="footer__nav-link">Project Inquiry</a>
+          </nav>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; <span id="footer-year"></span> <span>Kova Digital</span>. All
+            rights reserved.
+          </p>
+          <p class="footer__copy">Creative Digital Solutions</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/kova.js"></script>
+    <script>
+      document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
