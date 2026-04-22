@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device=width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kova Digital services - custom website design, UI component systems, and ongoing maintenance retainers. See what we offer and how we work."
+    />
+
+    <title>Services — Kova Digital</title>
+
+    <!-- Design System: ORDER MATTERS!! tokens > reset > utilities > components -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/kova.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <!-- Logo -->
+        <a href="index.html" class="nav__logo">
+          <img
+            src="assets/img/kova-logo.png"
+            alt="Kova Digital logo"
+            class="nav__logo-img"
+          />
+          <div class="nav__logo-text">
+            <span class="nav__logo-name">Kova Digital</span>
+            <span class="nav__logo-sub">Creative Digital Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="nav__links" role="list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li>
+            <a href="services.html" class="nav__link is-active">Services</a>
+          </li>
+          <li><a href="lab/index.html" class="nav__link">The Lab</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a href="contact.html" class="nav__cta">Get a Quote</a>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="nav__hamburger"
+          aria-label="Toggle hamburger menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile nav drawer -->
+    <div
+      class="nav__mobile"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html" class="nav__mobile-link">Home</a>
+      <a href="services.html" class="nav__mobile-link is-active">Services</a>
+      <a href="lab/index.html" class="nav__mobile-link">The Lab</a>
+      <a href="contact.html" class="nav__mobile-link">Contact</a>
+      <a href="contact.html" class="btn btn--primary nav__mobile-cta"
+        >Get a Quote</a
+      >
+    </div>
+    <main>
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="services-hero-heading">
+        <div class="container page-hero__inner">
+          <p class="eyebrow">What We Offer</p>
+          <h1 class="page-hero__heading" id="services-hero-heading">
+            Services built for<br /><span>real results</span>
+          </h1>
+          <p class="page-hero__sub">
+            Every engagement starts with understanding your goals. We then apply
+            the right combination of design, engineering, and strategy to get
+            you there.
+          </p>
+        </div>
+      </section>
+
+      <!-- SERVICE 1 - CUSTOM WEBSITE DESIGN -->
+      <section
+        class="service-section section"
+        id="custom-design"
+        aria-labelledby="custom-design-heading"
+      >
+        <div class="container">
+          <div class="service-section__inner">
+            <!-- Text side -->
+            <div class="service-section__content">
+              <p class="eyebrow">Service 01</p>
+              <h2 class="service-section__heading" id="custom-design-heading">
+                Custom Website Design
+              </h2>
+              <hr class="divider" />
+              <p class="service-section__desc">
+                No templates. No page builders. Every site we build starts from
+                a blank canvas and is crafted specifically for your brand, your
+                audience, and your goals.
+              </p>
+              <p class="service-section__desc mt-4">
+                We handle everything — from initial wireframes and visual design
+                to hand-coded, performant, accessible HTML, CSS, and JavaScript
+                that you fully own.
+              </p>
+
+              <!-- Feature list -->
+              <ul class="service-feature-list mt-8">
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Custom visual design tailored to your brand
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Fully responsive — mobile, tablet, and desktop
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Performance-optimized and accessibility-first
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Clean, documented code you fully own
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  SEO-ready structure and semantic HTML
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn--primary mt-8"
+                >Start a Project</a
+              >
+            </div>
+
+            <!-- Visual Side -->
+            <div class="service-section__visual" aria-hidden="true">
+              <div class="service-visual-card">
+                <div class="service-visual-card__bar"></div>
+                <div
+                  class="service-visual-card__line service-visual-card__line--wide"
+                ></div>
+                <div
+                  class="service-visual-card__line service-visual-card__line--mid"
+                ></div>
+                <div class="service-visual-card__grid">
+                  <div class="service-visual-card__block"></div>
+                  <div class="service-visual-card__block"></div>
+                  <div
+                    class="service-visual-card__block service-visual-card__block--tall"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE 2 - UI COMPONENT SYSTEMS -->
+      <section
+        class="service-section service-section--alt section"
+        id="ui-systems"
+        aria-labelledby="ui-systems-heading"
+      >
+        <div class="container">
+          <div class="service-section__inner service-section__inner--reversed">
+            <!-- Visual Side -->
+            <div class="service-section__visual" aria-hidden="true">
+              <div class="service-visual-card">
+                <div class="service-visual-card__bar"></div>
+                <div class="service-visual-card__components">
+                  <div class="service-visual-card__chip">Button</div>
+                  <div class="service-visual-card__chip">Card</div>
+                  <div
+                    class="service-visual-card__chip service-visual-card__chip--gold"
+                  >
+                    Modal
+                  </div>
+                  <div class="service-visual-card__chip">Input</div>
+                  <div
+                    class="service-visual-card__chip service-visual-card__chip--gold"
+                  >
+                    Nav
+                  </div>
+                  <div class="service-visual-card__chip">Badge</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Text Side -->
+            <div class="service-section__content">
+              <p class="eyebrow">Service 02</p>
+              <h2 class="service-section__heading" id="ui-systems-heading">
+                UI Component Systems
+              </h2>
+              <hr class="divider" />
+              <p class="service-section__desc">
+                If you're building a product or scaling a team, a consistent
+                component library is the foundation that keeps everything moving
+                fast without breaking consistency.
+              </p>
+              <p class="service-section__desc mt-4">
+                We design and build scalable, token-driven component systems in
+                vanilla CSS or your framework of choice — documented, tested,
+                and ready to ship.
+              </p>
+
+              <ul class="service-feature-list mt-8">
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  CSS custom property design token system
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Reusable, composable component architecture
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Interactive component showcase / documentation
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Works with any stack — vanilla, React, Vue, or Svelte
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Theming support — light, dark, and brand variants
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn--primary mt-8"
+                >Discuss Your System</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE 3 - ONGOING MAINTENANCE -->
+      <section
+        class="service-section section"
+        id="maintenance"
+        aria-labelledby="maintenance-heading"
+      >
+        <div class="container">
+          <div class="service-section__inner">
+            <!-- Text side -->
+            <div class="service-section__content">
+              <p class="eyebrow">Service 03</p>
+              <h2 class="service-section__heading" id="maintenance-heading">
+                Ongoing Maintenance
+              </h2>
+              <hr class="divider" />
+              <p class="service-section__desc">
+                Launching a website is the beginning, not the end. Technology
+                changes, your business evolves, and your site needs to keep up.
+              </p>
+              <p class="service-section__desc mt-4">
+                Our retainer plans give you a dedicated partner who knows your
+                codebase, keeps everything running smoothly, and ships new
+                features on your timeline.
+              </p>
+
+              <ul class="service-feature-list mt-8">
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Monthly content and copy updates
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Performance monitoring and optimization
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  New feature development and iteration
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Priority response — bugs fixed within 24 hours
+                </li>
+                <li class="service-feature-list__item">
+                  <span class="service-feature-list__icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  Monthly report — performance, uptime, and changes
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn--primary mt-8"
+                >Explore Retainer Plans</a
+              >
+            </div>
+
+            <!-- Visual side -->
+            <div class="service-section__visual" aria-hidden="true">
+              <div class="service-visual-card">
+                <div class="service-visual-card__bar"></div>
+                <div class="service-visual-card__stats">
+                  <div class="service-visual-card__stat">
+                    <span class="service-visual-card__stat-value">99%</span>
+                    <span class="service-visual-card__stat-label">Uptime</span>
+                  </div>
+                  <div class="service-visual-card__stat">
+                    <span class="service-visual-card__stat-value">&lt;24h</span>
+                    <span class="service-visual-card__stat-label"
+                      >Response</span
+                    >
+                  </div>
+                  <div class="service-visual-card__stat">
+                    <span class="service-visual-card__stat-value">∞</span>
+                    <span class="service-visual-card__stat-label"
+                      >Requests</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENGAGEMENT TIERS -->
+      <section class="section" aria-labelledby="tiers-heading">
+        <div class="container">
+          <header class="section-header">
+            <p class="eyebrow">How We Engage</p>
+            <h2 class="section-header__heading" id="tiers-heading">
+              Choose your starting point
+            </h2>
+            <hr class="divider" />
+            <p class="section-header__sub">
+              Every project is different. These tiers are starting points —
+              we'll shape the right engagement around your specific needs.
+            </p>
+          </header>
+
+          <div class="grid grid-auto-md gap-8">
+            <!-- Tier 1 - Starter -->
+            <div class="tier-card">
+              <p class="tier-card__label">Starter</p>
+              <p class="tier-card__price">From <span>$500</span></p>
+              <p class="tier-card__desc">
+                Perfect for small businesses, landing pages, or anyone who needs
+                a clean, professional web presence fast.
+              </p>
+              <ul class="tier-card__list">
+                <li>Up to 5 pages</li>
+                <li>Mobile responsive</li>
+                <li>Contact Form</li>
+                <li>Basic SEO setup</li>
+                <li>
+                  <span class="tooltip-wrap">
+                    2 rounds of revisions
+                    <span
+                      class="tooltip-trigger"
+                      tabindex="0"
+                      aria-describedby="revision-policy"
+                      >*</span
+                    >
+                    <span class="tooltip" role="tooltip" id="revision-policy">
+                      A revision is a change to existing design or content — not
+                      new pages, features, or redesigns. New scope is quoted
+                      separately.
+                    </span>
+                  </span>
+                </li>
+              </ul>
+              <a href="contact.html" class="btn btn--outline">Get Started</a>
+            </div>
+
+            <!-- Tier 2 - Studio (featured) -->
+            <div class="tier-card tier-card--featured">
+              <p class="tier-card__badge">Most Popular</p>
+              <p class="tier-card__label">Studio</p>
+              <p class="tier-card__price">From <span>$1,500</span></p>
+              <p class="tier-card__desc">
+                A full custom site with design system foundations, animations,
+                and everything your growing brand needs.
+              </p>
+              <ul class="tier-card__list">
+                <li>Up to 10 pages</li>
+                <li>Custom UI component library</li>
+                <li>Animations &amp; interactions</li>
+                <li>Full SEO + performance audit</li>
+                <li>
+                  <span class="tooltip-wrap">
+                    Unlimited revisions
+                    <span
+                      class="tooltip-trigger"
+                      tabindex="0"
+                      aria-describedby="revision-policy"
+                      >*</span
+                    >
+                    <span class="tooltip" role="tooltip" id="revision-policy">
+                      A revision is a change to existing design or content — not
+                      new pages, features, or redesigns. New scope is quoted
+                      separately.
+                    </span>
+                  </span>
+                </li>
+              </ul>
+              <a href="contact.html" class="btn btn--outline">Get Started</a>
+            </div>
+
+            <!-- Tier 3 - Retainer -->
+            <div class="tier-card">
+              <p class="tier-card__label">Retainer</p>
+              <p class="tier-card__price">
+                From <span>$175</span><small>/mo</small>
+              </p>
+              <p class="tier-card__desc">
+                Ongoing partnership for businesses that want a dedicated
+                developer keeping their site sharp and growing.
+              </p>
+              <ul class="tier-card__list">
+                <li>Monthly hours included</li>
+                <li>Priority bug fixes</li>
+                <li>Feature development</li>
+                <li>Performance reports</li>
+                <li>Cancel anytime</li>
+              </ul>
+              <a href="contact.html" class="btn btn--outline">Get Started</a>
+            </div>
+          </div>
+
+          <!-- Pricing Disclaimer -->
+          <p class="tiers-note mt-8 text-center">
+            All pricing is a starting point, Final quotes are always provided
+            before any work begins — no surprises.
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA BAND -->
+      <section class="cta-band section" aria-labelledby="services-cta-heading">
+        <div class="container cta-band__inner">
+          <p class="eyebrow">Ready to Begin?</p>
+          <h2 class="cta-band__heading" id="services-cta-heading">
+            Let's talk about your project
+          </h2>
+          <p class="cta-band__sub">
+            No commitment, no pressure. Tell us what you're building and we'll
+            put together a clear plan and honest quote.
+          </p>
+          <div class="hero__actions">
+            <a href="contact.html" class="btn btn--primary btn--lg"
+              >Start a Conversation</a
+            >
+            <a href="lab/index.html" class="btn btn--outline btn--lg"
+              >See Our Work</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <!-- Brand Column -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo">
+              <img
+                src="assets/img/kova-logo.png"
+                alt="Kova Digital"
+                class="footer__logo-img"
+              />
+              <span class="footer__logo-name">Kova Digital</span>
+            </a>
+            <p class="footer__tagline">
+              Where Imagination meets Innovation. Custom digital experiences
+              crafted with precision and purpose.
+            </p>
+          </div>
+
+          <!-- Nav group - Company -->
+          <nav class="footer__nav-group" aria-label="Company links">
+            <p class="footer__nav-title">Company</p>
+            <a href="index.html" class="footer__nav-link">Home</a>
+            <a href="services.html" class="footer__nav-link">Services</a>
+            <a href="contact.html" class="footer__nav-link">Contact</a>
+          </nav>
+
+          <!-- Nav group - Work -->
+          <nav class="footer__nav-group" aria-label="Work links">
+            <p class="footer__nav-title">Work</p>
+            <a href="lab/index.html" class="footer__nav-link">The Lab</a>
+            <a href="lab/index.html#animations" class="footer__nav-link"
+              >Animations</a
+            >
+            <a href="lab/index.html#components" class="footer__nav-link"
+              >Components</a
+            >
+          </nav>
+
+          <!-- Nav group - Contact -->
+          <nav class="footer__nav-group" aria-label="Contact links">
+            <p class="footer__nav-title">Get in Touch</p>
+            <a href="mailto:techdudetony@gmail.com" class="footer__nav-link"
+              >techdudetony@gmail.com</a
+            >
+            <a href="contact.html" class="footer__nav-link">Project Inquiry</a>
+          </nav>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; <span id="footer-year"></span><span> Kova Digital</span>. All
+            rights reserved.
+          </p>
+          <p class="footer__copy">Creative Digital Solutions</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/kova.js"></script>
+    <script>
+      document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
