@@ -94,9 +94,75 @@ const initActiveNav = () => {
   });
 };
 
+/* CONTACT FORM VALIDATION */
+const initContactForm = () => {
+  const form = qs("#contact-form");
+  if (!form) return;
+
+  const successMsg = qs("#form-success");
+
+  /* Show error message and mark field invalid */
+  const setError = (input, msg) => {
+    const error = qs(`#${input.id}-error`);
+    input.classList.add("is-invalid");
+    if (error) error.textContent = msg;
+  };
+
+  /* Clear error state from a field */
+  const clearError = (input) => {
+    const error = qs(`#${input.id}-error`);
+    input.classList.remove("is-invalid");
+    if (error) error.textContent = "";
+  };
+
+  /* Validate a single field */
+  const validateField = (input) => {
+    const value = input.value.trim();
+
+    if (input.required && !value) {
+      setError(input, "This field is required.");
+      return false;
+    }
+
+    if (input.type === "email" && value) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(value)) {
+        setError(input, "Please enter a valid email address.");
+        return false;
+      }
+    }
+
+    clearError(input);
+    return true;
+  };
+
+  /* Validate on blur for immediate inline feedback */
+  qsa(".form-field__input", form).forEach((input) => {
+    input.addEventListener("blur", () => validateField(input));
+    input.addEventListener("input", () => {
+      if (input.classList.contains("is-invalid")) clearError(input);
+    });
+  });
+
+  /* Full validation on submit */
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); /* Prevent native submit — no backend yet */
+
+    const fields = qsa(".form-field__input[required], select[required]", form);
+    const allValid = fields.map(validateField).every(Boolean);
+
+    if (!allValid) return; /* Stop if any field failed */
+
+    /* Simulate successful submission — replace with real endpoint later */
+    form.style.display = "none";
+    successMsg.hidden = false;
+  });
+};
+
 /* INIT */
 document.addEventListener("DOMContentLoaded", () => {
   initNavScroll();
   initMobileMenu();
   initActiveNav();
+  initContactForm();
 });
