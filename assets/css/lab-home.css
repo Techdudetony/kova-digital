@@ -1,0 +1,194 @@
+/* ============================================================
+    LAB HOME
+    Styles for lab/index.html only
+   ============================================================ */
+/* LAB HERO */
+.lab-hero {
+  padding-top: calc(72px + var(--space-16));
+  padding-bottom: var(--space-16);
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.lab-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 700% 60% at 50% 50%,
+    rgba(201, 149, 42, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.lab-hero__inner {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.lab-hero__heading {
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-primary);
+}
+
+.lab-hero__heading span {
+  background: var(--gradient-gold-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lab-hero__sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+  margin-inline: auto;
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-10);
+}
+
+.lab-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.lab-hero__stat {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.lab-hero__stat strong {
+  color: var(--color-gold);
+  font-weight: var(--weight-bold);
+}
+
+.lab-hero__divider {
+  color: var(--color-border);
+}
+
+/* LAB GRID */
+/* 2-column card grid for component categories */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-4);
+}
+
+/* LAB CARD */
+.lab-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-8);
+  text-decoration: none;
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold left-edge accent line on hover */
+.lab-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  width: 2px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.lab-card:hover {
+  background: var(--color-surface-2);
+  border-color: var(--color-gold-dim);
+  transform: translateX(4px); /* Nudge right on hover */
+  box-shadow: var(--shadow-gold);
+}
+
+.lab-card:hover::before {
+  opacity: 1; /* Reveal gold left bar on hover */
+}
+
+.lab-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 149, 42, 0.1);
+  border: var(--border-gold);
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+
+.lab-card__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-gold);
+}
+
+.lab-card__body {
+  flex: 1;
+}
+
+.lab-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+  letter-spacing: var(--tracking-wide);
+}
+
+.lab-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-snug);
+  max-width: none;
+}
+
+.lab-card__arrow {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-gold-dim);
+  flex-shrink: 0;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    stroke var(--duration-base) var(--ease-out);
+}
+
+.lab-card:hover .lab-card__arrow {
+  stroke: var(--color-gold);
+  transform: translateX(4px); /* Arrow nudges with the card */
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .lab-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  .lab-hero__meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .lab-hero__divider {
+    display: none; /* Hide dots between stats on mobile */
+  }
+}
