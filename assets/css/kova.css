@@ -1391,6 +1391,47 @@
   padding-top: 72px;
 }
 
+/* LAB BUCKET PAGE HEADER */
+/* Reskins the UI Lab page header to match Kova design language */
+.page .page__header {
+  padding: var(--space-10) 0 var(--space-8);
+  border-bottom: var(--border-gold);
+  margin-bottom: var(--space-10);
+  position: relative;
+}
+
+/* Gold left accent bar beside the title */
+.page .page__header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-10);
+  height: calc(100% - var(--space-18));
+  width: 3px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+.page .page__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl); /* Controlled size — not raw h1 */
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+  padding-left: var(--space-6); /* Indent past the gold bar */
+  text-transform: none; /* Override any caps from Lab base */
+}
+
+.page .page__subtitle {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  padding-left: var(--space-6); /* Align with title */
+  margin-top: var(--space-2);
+  max-width: 52ch;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   /* Show hamburger, hid desktop links */
