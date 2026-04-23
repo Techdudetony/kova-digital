@@ -1,0 +1,305 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Modals</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../assets/css/components/modals.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page page--modals">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+
+      <header class="page__header">
+        
+        <h1 class="page__title">Modals</h1>
+        <p class="page__subtitle">Overlays, drawers, sheets, and notification patterns</p>
+      </header>
+
+      <section class="demo-grid">
+
+        <!-- ── Basic Modal ────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Basic Modal</h2>
+          <button class="modal-trigger-btn" type="button" data-modal-open="basic-modal">
+            Open Modal
+          </button>
+          <span class="demo-label">data-modal-open</span>
+        </div>
+
+        <!-- Basic Modal markup — hidden until triggered -->
+        <div class="modal-overlay" id="basic-modal" role="dialog" aria-modal="true" aria-labelledby="basic-modal-title" hidden>
+          <div class="modal">
+            <div class="modal__header">
+              <h3 class="modal__title" id="basic-modal-title">Modal Title</h3>
+              <button class="modal__close" type="button" data-modal-close aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal__body">
+              <p>This is a basic modal with a header, scrollable body, and action footer. Click outside or press Escape to close.</p>
+              <p>Additional content can go here. The body scrolls independently if the content overflows.</p>
+            </div>
+            <div class="modal__footer">
+              <button class="modal__btn modal__btn--ghost" type="button" data-modal-close>Cancel</button>
+              <button class="modal__btn modal__btn--primary" type="button" data-modal-close>Confirm</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Drawer ─────────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Drawer</h2>
+          <button class="modal-trigger-btn" type="button" data-modal-open="drawer-modal">
+            Open Drawer
+          </button>
+          <span class="demo-label">drawer</span>
+        </div>
+
+        <div class="modal-overlay" id="drawer-modal" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+          <div class="modal modal--drawer">
+            <div class="modal__header">
+              <h3 class="modal__title" id="drawer-title">Navigation Drawer</h3>
+              <button class="modal__close" type="button" data-modal-close aria-label="Close drawer">&times;</button>
+            </div>
+            <div class="modal__body">
+              <nav class="drawer-nav">
+                <a href="#" class="drawer-nav__link">🏠 Home</a>
+                <a href="#" class="drawer-nav__link">🎨 Components</a>
+                <a href="#" class="drawer-nav__link">📦 Animations</a>
+                <a href="#" class="drawer-nav__link">🔘 Buttons</a>
+                <a href="#" class="drawer-nav__link">🃏 Cards</a>
+                <a href="#" class="drawer-nav__link">⚙️ Settings</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Bottom Sheet ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Bottom Sheet</h2>
+          <button class="modal-trigger-btn" type="button" data-modal-open="sheet-modal">
+            Open Sheet
+          </button>
+          <span class="demo-label">modal--sheet</span>
+        </div>
+
+        <div class="modal-overlay" id="sheet-modal" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+          <div class="modal modal--sheet">
+            <!-- Drag handle indicator -->
+            <div class="modal__handle" aria-hidden="true"></div>
+            <div class="modal__header">
+              <h3 class="modal__title" id="sheet-title">Share</h3>
+              <button class="modal__close" type="button" data-modal-close aria-label="Close sheet">&times;</button>
+            </div>
+            <div class="modal__body">
+              <div class="sheet-options">
+                <button class="sheet-option" type="button">🔗 Copy Link</button>
+                <button class="sheet-option" type="button">✉️ Email</button>
+                <button class="sheet-option" type="button">💬 Message</button>
+                <button class="sheet-option" type="button">🐦 Twitter</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Confirmation Dialog ────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Confirmation Dialog</h2>
+          <button class="modal-trigger-btn modal-trigger-btn--danger" type="button" data-modal-open="confirm-modal">
+            Delete Item
+          </button>
+          <span class="demo-label">modal--confirm</span>
+        </div>
+
+        <div class="modal-overlay" id="confirm-modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-desc" hidden>
+          <div class="modal modal--confirm">
+            <div class="modal__icon modal__icon--danger" aria-hidden="true">⚠️</div>
+            <h3 class="modal__title modal__title--center" id="confirm-title">Delete Item?</h3>
+            <p class="modal__desc" id="confirm-desc">This action cannot be undone. The item will be permanently removed from your account.</p>
+            <div class="modal__footer modal__footer--centered">
+              <button class="modal__btn modal__btn--ghost" type="button" data-modal-close>Cancel</button>
+              <button class="modal__btn modal__btn--danger" type="button" data-modal-close>Yes, Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Image Lightbox ─────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Image Lightbox</h2>
+          <div class="lightbox-grid">
+            <!-- Unsplash thumbnails — clicking opens lightbox -->
+            <button class="lightbox-thumb" type="button"
+              data-lightbox-src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&h=800&fit=crop"
+              data-lightbox-alt="Tokyo skyline at night">
+              <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=120&h=80&fit=crop" alt="Tokyo" />
+            </button>
+            <button class="lightbox-thumb" type="button"
+              data-lightbox-src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&h=800&fit=crop"
+              data-lightbox-alt="Paris city view">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=120&h=80&fit=crop" alt="Paris" />
+            </button>
+            <button class="lightbox-thumb" type="button"
+              data-lightbox-src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&h=800&fit=crop"
+              data-lightbox-alt="Bali tropical landscape">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=120&h=80&fit=crop" alt="Bali" />
+            </button>
+          </div>
+          <span class="demo-label">data-lightbox-src</span>
+        </div>
+
+        <!-- Lightbox overlay — single instance, src swapped by JS -->
+        <div class="modal-overlay modal-overlay--dark" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image lightbox" hidden>
+          <button class="lightbox-close" type="button" data-modal-close aria-label="Close lightbox">&times;</button>
+          <img class="lightbox-image" src="" alt="" id="lightbox-img" />
+        </div>
+
+        <!-- ── Command Palette ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Command Palette</h2>
+          <button class="modal-trigger-btn" type="button" data-modal-open="command-modal">
+            Open <kbd class="modal-kbd">⌘K</kbd>
+          </button>
+          <p class="demo-card__note">Also triggered by <kbd class="modal-kbd">⌘K</kbd> / <kbd class="modal-kbd">Ctrl+K</kbd></p>
+          <span class="demo-label">command-palette · data-command</span>
+        </div>
+
+        <div class="modal-overlay modal-overlay--top" id="command-modal" role="dialog" aria-modal="true" aria-labelledby="command-title" hidden>
+          <div class="modal modal--command" data-command>
+            <div class="command__search">
+              <svg class="command__search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="16.65" y1="16.65" x2="22" y2="22" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <input class="command__input" type="text" placeholder="Search commands..." aria-label="Search commands" id="command-input" autocomplete="off" />
+              <kbd class="command__esc">Esc</kbd>
+            </div>
+            <ul class="command__list" id="command-list" role="listbox" aria-label="Commands">
+              <li class="command__item" role="option" data-command-value="Go to Animations">
+                <span class="command__icon">🎨</span> Go to Animations
+              </li>
+              <li class="command__item" role="option" data-command-value="Go to Buttons">
+                <span class="command__icon">🔘</span> Go to Buttons
+              </li>
+              <li class="command__item" role="option" data-command-value="Go to Cards">
+                <span class="command__icon">🃏</span> Go to Cards
+              </li>
+              <li class="command__item" role="option" data-command-value="Go to Forms">
+                <span class="command__icon">📝</span> Go to Forms
+              </li>
+              <li class="command__item" role="option" data-command-value="Toggle Dark Mode">
+                <span class="command__icon">🌙</span> Toggle Dark Mode
+              </li>
+              <li class="command__item" role="option" data-command-value="Copy Page Link">
+                <span class="command__icon">🔗</span> Copy Page Link
+              </li>
+              <li class="command__item" role="option" data-command-value="Open Settings">
+                <span class="command__icon">⚙️</span> Open Settings
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ── Toast / Notification ───────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Toast / Notification</h2>
+          <div class="toast-triggers">
+            <button class="modal-trigger-btn" type="button" data-toast="success">✓ Success</button>
+            <button class="modal-trigger-btn" type="button" data-toast="error">✕ Error</button>
+            <button class="modal-trigger-btn" type="button" data-toast="info">ℹ Info</button>
+            <button class="modal-trigger-btn" type="button" data-toast="warning">⚠ Warning</button>
+          </div>
+          <span class="demo-label">data-toast</span>
+        </div>
+
+        <!-- Toast container — toasts are injected here by JS -->
+        <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+        <!-- ── Cookie Consent Banner — always visible ─────── -->
+        <div class="demo-card demo-card--wide">
+          <h2 class="demo-card__title">Cookie Consent Banner</h2>
+          <div class="cookie-banner">
+            <div class="cookie-banner__content">
+              <p class="cookie-banner__text">
+                🍪 We use cookies to improve your experience. By continuing, you agree to our
+                <a href="#" class="cookie-banner__link">Privacy Policy</a>.
+              </p>
+            </div>
+            <div class="cookie-banner__actions">
+              <button class="cookie-banner__btn cookie-banner__btn--ghost" type="button">Manage</button>
+              <button class="cookie-banner__btn cookie-banner__btn--ghost" type="button">Decline</button>
+              <button class="cookie-banner__btn cookie-banner__btn--primary" type="button">Accept All</button>
+            </div>
+          </div>
+          <span class="demo-label">cookie-banner</span>
+        </div>
+
+        <!-- ── Tooltip Popover — always visible ──────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Tooltip Popover</h2>
+          <div class="tooltip-demo">
+            <div class="tooltip-wrap">
+              <button class="modal-trigger-btn" type="button">Hover / Focus me</button>
+              <div class="tooltip" role="tooltip">
+                <strong>Tooltip title</strong>
+                <p>Helpful context or description goes here.</p>
+              </div>
+            </div>
+            <div class="tooltip-wrap tooltip-wrap--top">
+              <button class="modal-trigger-btn" type="button">Top tooltip</button>
+              <div class="tooltip tooltip--top" role="tooltip">Appears above the element.</div>
+            </div>
+            <div class="tooltip-wrap tooltip-wrap--left">
+              <button class="modal-trigger-btn" type="button">Left tooltip</button>
+              <div class="tooltip tooltip--left" role="tooltip">Appears to the left.</div>
+            </div>
+          </div>
+          <span class="demo-label">tooltip</span>
+        </div>
+
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+

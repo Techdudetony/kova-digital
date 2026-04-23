@@ -1,0 +1,389 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Lab — Transitions</title>
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+    <link rel="stylesheet" href="../assets/css/components/transitions.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" /></head>
+
+  <body class="page page--transitions">
+  <!-- -- KOVA NAV -------------------------------------------- -->
+  <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/img/kova-logo.png" alt="Kova Digital logo" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Kova Digital</span>
+          <span class="nav__logo-sub">Creative Digital Solutions</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html"    class="nav__link">Home</a></li>
+        <li><a href="../services.html" class="nav__link">Services</a></li>
+        <li><a href="./index.html"     class="nav__link is-active">The Lab</a></li>
+        <li><a href="../contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <span class="nav__lab-badge">The Lab</span>
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="../index.html"    class="nav__mobile-link">Home</a>
+    <a href="../services.html" class="nav__mobile-link">Services</a>
+    <a href="./index.html"     class="nav__mobile-link is-active">The Lab</a>
+    <a href="../contact.html"  class="nav__mobile-link">Contact</a>
+    <a href="../contact.html"  class="btn btn--primary nav__mobile-cta">Get a Quote</a>
+  </div>
+
+    <main class="page__content">
+      <header class="page__header">
+        
+        <h1 class="page__title">Transitions</h1>
+        <p class="page__subtitle">
+          Scroll-driven reveals and motion-based state changes
+        </p>
+      </header>
+
+      <section class="demo-grid">
+        <!-- ── Scroll Deck Reveal ─────────────────────────── -->
+        <article class="demo-card demo-card--wide">
+          <h2 class="demo-card__title">Scroll Deck Reveal</h2>
+          <div class="scroll-deck-demo">
+            <div class="scroll-deck" data-scroll-deck>
+              <div class="scroll-deck__viewport">
+                <div class="scroll-deck__container">
+                  <div class="scroll-deck__card">
+                    <div
+                      class="scroll-deck__face scroll-deck__face--front"
+                      style="
+                        background-image: url(&quot;https://cdn.prod.website-files.com/679185b32f76eb227e8b2d64/690e228d4e47784421489090_e94dfb12e66c3ad5ce888a87139fb6e1.jpg&quot;);
+                      "
+                    ></div>
+                    <div
+                      class="scroll-deck__face scroll-deck__face--back"
+                    ></div>
+                  </div>
+                  <div class="scroll-deck__card">
+                    <div
+                      class="scroll-deck__face scroll-deck__face--front"
+                      style="
+                        background-image: url(&quot;https://cdn.prod.website-files.com/679185b32f76eb227e8b2d64/68cc3546a30d418181506343_49154acfd6aa76f4bf21b4f4aac6d938.jpg&quot;);
+                      "
+                    ></div>
+                    <div
+                      class="scroll-deck__face scroll-deck__face--back"
+                    ></div>
+                  </div>
+                  <div class="scroll-deck__card">
+                    <div
+                      class="scroll-deck__face scroll-deck__face--front"
+                      style="
+                        background-image: url(&quot;https://cdn.prod.website-files.com/679185b32f76eb227e8b2d64/690e21bca5a1e6afcad44a90_1661362d69d4f83dbb9635d50fe19695.jpg&quot;);
+                      "
+                    ></div>
+                    <div
+                      class="scroll-deck__face scroll-deck__face--back"
+                    ></div>
+                  </div>
+                  <div class="scroll-deck__card">
+                    <div
+                      class="scroll-deck__face scroll-deck__face--front"
+                      style="
+                        background-image: url(&quot;https://cdn.prod.website-files.com/679185b32f76eb227e8b2d64/68cc3546430643d66ba5571a_c49ec3146d5ee88438a57615125aeb38.jpg&quot;);
+                      "
+                    ></div>
+                    <div
+                      class="scroll-deck__face scroll-deck__face--back"
+                    ></div>
+                  </div>
+                  <div class="scroll-deck__card">
+                    <div
+                      class="scroll-deck__face scroll-deck__face--front"
+                      style="
+                        background-image: url(&quot;https://cdn.prod.website-files.com/679185b32f76eb227e8b2d64/68cc34c5e8f1a1601339ac88_78b4d0a1169a170c3d8efda43133bca0.jpg&quot;);
+                      "
+                    ></div>
+                    <div
+                      class="scroll-deck__face scroll-deck__face--back"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="scroll-deck__track" aria-hidden="true"></div>
+            </div>
+          </div>
+          <span class="demo-label">scroll-deck · data-scroll-deck</span>
+        </article>
+
+        <!-- ── Page Transition ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Page Transition</h2>
+          <div class="transition-demo-wrap">
+            <button
+              class="transition-btn"
+              type="button"
+              data-page-transition="slide"
+            >
+              Slide Wipe
+            </button>
+            <button
+              class="transition-btn"
+              type="button"
+              data-page-transition="fade"
+            >
+              Fade Out
+            </button>
+            <button
+              class="transition-btn"
+              type="button"
+              data-page-transition="curtain"
+            >
+              Curtain
+            </button>
+          </div>
+          <div
+            class="page-transition-overlay"
+            id="page-transition-overlay"
+            aria-hidden="true"
+          ></div>
+          <span class="demo-label">data-page-transition</span>
+        </div>
+
+        <!-- ── Scroll Reveal ──────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Scroll Reveal</h2>
+          <!-- data-reveal-container — JS observes boxes and adds .is-visible -->
+          <div class="reveal-demo" data-reveal-container>
+            <div class="reveal-box" data-reveal>Box 1</div>
+            <div class="reveal-box" data-reveal>Box 2</div>
+            <div class="reveal-box" data-reveal>Box 3</div>
+          </div>
+          <button class="reveal-replay-btn" type="button" data-reveal-replay>
+            ↺ Replay
+          </button>
+          <span class="demo-label">data-reveal</span>
+        </div>
+
+        <!-- ── Stagger List ───────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Stagger List</h2>
+          <ul class="stagger-list" data-stagger-list>
+            <li class="stagger-list__item">🎨 Animations</li>
+            <li class="stagger-list__item">🔘 Buttons</li>
+            <li class="stagger-list__item">🃏 Cards</li>
+            <li class="stagger-list__item">📝 Forms</li>
+            <li class="stagger-list__item">⏳ Loaders</li>
+          </ul>
+          <button class="stagger-replay-btn" type="button" data-stagger-replay>
+            ↺ Replay
+          </button>
+          <span class="demo-label">data-stagger-list</span>
+        </div>
+
+        <!-- ── Counter ───────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Counter</h2>
+          <div class="counter-group">
+            <div class="counter-item">
+              <span class="counter-item__value" data-counter data-target="2400"
+                >0</span
+              >
+              <span class="counter-item__label">Users</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-item__value" data-counter data-target="98"
+                >0</span
+              >
+              <span class="counter-item__label">Score</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-item__value" data-counter data-target="512"
+                >0</span
+              >
+              <span class="counter-item__label">Projects</span>
+            </div>
+          </div>
+          <span class="demo-label">data-counter</span>
+        </div>
+
+        <!-- ── Magnetic Cursor ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Magnetic Cursor</h2>
+          <div class="magnetic-demo">
+            <button class="magnetic-btn" type="button" data-magnetic>
+              Pull Me
+            </button>
+            <button
+              class="magnetic-btn magnetic-btn--accent"
+              type="button"
+              data-magnetic
+            >
+              Attract
+            </button>
+          </div>
+          <span class="demo-label">data-magnetic</span>
+        </div>
+
+        <!-- ── Parallax Scroll ────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Parallax Scroll</h2>
+          <!-- Mousemove within the card drives layer translation -->
+          <div class="parallax-scene" data-parallax-scene>
+            <div
+              class="parallax-layer parallax-layer--far"
+              data-depth="0.06"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="parallax-layer parallax-layer--mid"
+              data-depth="0.18"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="parallax-layer parallax-layer--near"
+              data-depth="0.35"
+              aria-hidden="true"
+            ></div>
+            <div class="parallax-layer parallax-layer--front" data-depth="0">
+              <p class="parallax-label">Move cursor over this card</p>
+            </div>
+          </div>
+          <span class="demo-label">data-parallax-scene</span>
+        </div>
+
+        <!-- ── Flip Number ────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Flip Number</h2>
+          <div class="flip-number-demo">
+            <div class="flip-number" data-flip-number data-value="00000"></div>
+            <button class="transition-btn" type="button" data-flip-trigger>
+              Randomise
+            </button>
+          </div>
+          <span class="demo-label">data-flip-number</span>
+        </div>
+
+        <!-- ── Smooth Marquee ─────────────────────────────── -->
+        <div class="demo-card demo-card--wide">
+          <h2 class="demo-card__title">Smooth Marquee</h2>
+          <div class="marquee" aria-label="Scrolling marquee">
+            <div class="marquee__track">
+              <span class="marquee__item">Animations</span>
+              <span class="marquee__item">Buttons</span>
+              <span class="marquee__item">Cards</span>
+              <span class="marquee__item">Forms</span>
+              <span class="marquee__item">Footers</span>
+              <span class="marquee__item">Loaders</span>
+              <span class="marquee__item">Navbars</span>
+              <span class="marquee__item">Transitions</span>
+              <span class="marquee__item" aria-hidden="true">Animations</span>
+              <span class="marquee__item" aria-hidden="true">Buttons</span>
+              <span class="marquee__item" aria-hidden="true">Cards</span>
+              <span class="marquee__item" aria-hidden="true">Forms</span>
+              <span class="marquee__item" aria-hidden="true">Footers</span>
+              <span class="marquee__item" aria-hidden="true">Loaders</span>
+              <span class="marquee__item" aria-hidden="true">Navbars</span>
+              <span class="marquee__item" aria-hidden="true">Transitions</span>
+            </div>
+          </div>
+          <span class="demo-label">marquee</span>
+        </div>
+
+        <!-- ── Page Flip ──────────────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Page Flip</h2>
+          <!-- Fixed left page + flipping right page. Click right page to turn. -->
+          <div class="page-flip" data-page-flip>
+            <div class="page-flip__book">
+              <!-- Static left page — always visible -->
+              <div class="page-flip__left">
+                <p class="page-flip__page-num">Page 1</p>
+                <p
+                  style="
+                    font-size: var(--text-xs);
+                    color: var(--color-muted);
+                    margin: 0;
+                  "
+                >
+                  The Beginning
+                </p>
+              </div>
+              <!-- Right page flips on click -->
+              <div class="page-flip__right" aria-label="Click to flip page">
+                <div class="page-flip__right-front">
+                  <p class="page-flip__page-num">Page 2</p>
+                  <p class="page-flip__hint">Click to turn →</p>
+                </div>
+                <div class="page-flip__right-back">
+                  <p class="page-flip__page-num">Page 3</p>
+                  <p class="page-flip__hint">← Click to turn back</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="demo-label">data-page-flip</span>
+        </div>
+
+        <!-- ── Portal Transition ──────────────────────────── -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Portal Transition</h2>
+          <div class="portal-demo">
+            <button class="transition-btn" type="button" data-portal>
+              Open Portal
+            </button>
+          </div>
+          <div class="portal-overlay" id="portal-overlay" aria-hidden="true">
+            <button class="portal-close" type="button" data-portal-close>
+              ✕ Close Portal
+            </button>
+          </div>
+          <span class="demo-label">data-portal</span>
+        </div>
+
+        <!-- ── Glitch Page Transition ─────────────────────── -->
+        <!-- Completely different from the button glitch — this is a page-to-page transition -->
+        <div class="demo-card demo-card__centered">
+          <h2 class="demo-card__title">Glitch Transition</h2>
+          <div class="glitch-demo">
+            <div class="glitch-scene" data-glitch-scene>
+              <!-- Page A -->
+              <div class="glitch-scene__page glitch-scene__page--a">PAGE A</div>
+              <!-- Page B — hidden until glitch completes -->
+              <div class="glitch-scene__page glitch-scene__page--b">PAGE B</div>
+              <!-- RGB-split layers -->
+              <div
+                class="glitch-scene__slice glitch-scene__slice--r"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="glitch-scene__slice glitch-scene__slice--g"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="glitch-scene__slice glitch-scene__slice--b"
+                aria-hidden="true"
+              ></div>
+            </div>
+            <button class="transition-btn" type="button" data-glitch-trigger>
+              Glitch →
+            </button>
+          </div>
+          <span class="demo-label">data-glitch-scene</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/js/interactions.js" defer></script>
+    <script src="../assets/js/kova.js"></script></body>
+</html>
+
+
+
