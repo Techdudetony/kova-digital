@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography — Kova Digital Lab</title>
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" />
+    <link rel="stylesheet" href="../assets/css/lab-bucket.css" />
+    <link rel="stylesheet" href="../assets/css/components/typography.css" />
+  </head>
+  <body class="page">
+    <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="../index.html" class="nav__logo">
+          <img
+            src="../assets/img/kova-logo.png"
+            alt="Kova Digital logo"
+            class="nav__logo-img"
+          />
+          <div class="nav__logo-text">
+            <span class="nav__logo-name">Kova Digital</span>
+            <span class="nav__logo-sub">Creative Digital Solutions</span>
+          </div>
+        </a>
+        <ul class="nav__links" role="list">
+          <li><a href="../index.html" class="nav__link">Home</a></li>
+          <li><a href="../services.html" class="nav__link">Services</a></li>
+          <li>
+            <a href="./index.html" class="nav__link is-active">The Lab</a>
+          </li>
+          <li><a href="../contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <span class="nav__lab-badge">The Lab</span>
+        <button
+          class="nav__hamburger"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <div
+      class="nav__mobile"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="../index.html" class="nav__mobile-link">Home</a>
+      <a href="../services.html" class="nav__mobile-link">Services</a>
+      <a href="./index.html" class="nav__mobile-link is-active">The Lab</a>
+      <a href="../contact.html" class="nav__mobile-link">Contact</a>
+      <a href="../contact.html" class="btn btn--primary nav__mobile-cta"
+        >Get a Quote</a
+      >
+    </div>
+
+    <main class="lab-page">
+      <a href="./index.html" class="lab-back">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        Back to The Lab
+      </a>
+
+      <header class="lab-page__header">
+        <span class="lab-page__eyebrow">UI Lab</span>
+        <h1 class="lab-page__title">Typography</h1>
+        <p class="lab-page__subtitle">
+          Gradient headings, typewriter effects, text reveals, and split
+          animations.
+        </p>
+      </header>
+
+      <!-- Components go here -->
+      <div class="demo-grid demo-grid--2col"></div>
+    </main>
+
+    <script src="../assets/js/kova.js"></script>
+    <script src="../assets/js/lab.js"></script>
+  </body>
+</html>
