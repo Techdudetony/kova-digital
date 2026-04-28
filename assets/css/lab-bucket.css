@@ -1,0 +1,269 @@
+/* =================================================
+   LAB BUCKET PAGES
+   Shared layout for all component category pages.
+   ================================================= */
+/* ---------- PAGE SHELL ---------- */
+.lab-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  padding-top: 72px;
+  padding-bottom: var(--space-32);
+}
+
+/* --------- PAGE HEADER ---------- */
+.lab-page__header {
+  padding: var(--space-12) 0 var(--space-10);
+  border-bottom: var(--border-gold);
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.lab-page__header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-12);
+  bottom: var(--space-10);
+  width: 3px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+.lab-page__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.lab-page__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+  padding-left: var(--space-6);
+  text-transform: none;
+}
+
+.lab-page__subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  padding-left: var(--space-6);
+  margin-top: var(--space-3);
+  max-width: 52ch;
+}
+
+/* ---------- SECTION DIVIDER ---------- */
+.lab-section {
+  margin-bottom: var(--space-16);
+}
+
+.lab-section__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.lab-section__label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ---------- DEMO GRID ---------- */
+.demo-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.demo-grid--2col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.demo-grid--4col {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.demo-grid--1col {
+  grid-template-columns: 1fr;
+}
+
+.demo-card--full {
+  grid-column: 1 / -1;
+}
+
+/* --------- DEMO CARD ---------- */
+.demo-card {
+  background: var(--color-surface);
+  border: var(--border-gold);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.demo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--space-6);
+  right: var(--space-6);
+  height: 1px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.demo-card:hover {
+  background: var(--color-surface-2);
+  border-color: var(--color-gold-dim);
+  box-shadow: var(--shadow-gold);
+}
+
+.demo-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- DEMO CARD PREVIEW ---------- */
+.demo-card__preview {
+  flex: 1;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-card__preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.demo-card__preview > * {
+  position: relative;
+  z-index: var(--z-raised);
+  pointer-events: none; /* No interaction — view only */
+}
+
+/* Tall preview for hero sections and footers */
+.demo-card__preview--tall {
+  min-height: 300px;
+}
+.demo-card__preview--short {
+  min-height: 120px;
+}
+.demo-card__preview--fill {
+  padding: 0;
+} /* Edge-to-edge for full-bleed demos */
+
+/* ---------- DEMO CARD FOOTER ---------- */
+.demo-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-top: var(--border-gold);
+  gap: var(--space-4);
+}
+
+.demo-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.demo-card__anchor {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: var(--transition-colors);
+  white-space: nowrap;
+}
+
+.demo-card__anchor:hover {
+  color: var(--color-gold);
+}
+
+/* ---------- BACK LINK ---------- */
+.lab-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  margin-bottom: var(--space-6);
+  transition: var(--transition-colors);
+}
+
+.lab-back:hover {
+  color: var(--color-gold);
+}
+
+.lab-back svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.lab-back:hover svg {
+  transform: translateX(-3px); /* Arrow nudges left on hover */
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .demo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .demo-grid--4col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-grid,
+  .demo-grid--2col,
+  .demo-grid--4col {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-page__title {
+    font-size: var(--text-2xl);
+  }
+}
