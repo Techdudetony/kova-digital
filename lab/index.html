@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kova Digital UI Lab - live component showcase. Buttons, loaders, navigation, hero sections, and more. All built with vanilla HTML, CSS, and JavaScript."
+    />
+
+    <title>The Lab — Kova Digital</title>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/utilities.css" />
+    <link rel="stylesheet" href="../assets/css/kova.css" />
+    <link rel="stylesheet" href="../assets/css/lab-home.css" />
+
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/components/buttons.css" />
+    <link rel="stylesheet" href="../assets/css/components/loaders.css" />
+    <link rel="stylesheet" href="../assets/css/components/navigation.css" />
+    <link rel="stylesheet" href="../assets/css/components/hero-sections.css" />
+    <link rel="stylesheet" href="../assets/css/components/footers.css" />
+    <link rel="stylesheet" href="../assets/css/components/cards.css" />
+    <link rel="stylesheet" href="../assets/css/components/forms.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/components/micro-interactions.css"
+    />
+    <link rel="stylesheet" href="../assets/css/components/typography.css" />
+  </head>
+
+  <body class="page">
+    <!-- KOVA NAV -->
+    <nav class="nav nav--lab" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <!-- Logo -->
+        <a href="../index.html" class="nav__logo">
+          <img
+            src="../assets/img/kova-logo.png"
+            alt="Kova Digital logo"
+            class="nav__logo-img"
+          />
+          <div class="nav__logo-text">
+            <span class="nav__logo-name">Kova Digital</span>
+            <span class="nav__logo-sub">Creative Digital Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="nav__links" role="list">
+          <li><a href="../index.html" class="nav__link">Home</a></li>
+          <li><a href="../services.html" class="nav__link">Services</a></li>
+          <li>
+            <a href="../lab/index.html" class="nav__link is-active">The Lab</a>
+          </li>
+          <li><a href="../contact.html" class="nav__link">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a href="../contact.html" class="nav__cta">Get a Quote</a>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="nav__hamburger"
+          aria-label="Toggle hamburger menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile nav drawer -->
+    <div
+      class="nav__mobile"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="../index.html" class="nav__mobile-link">Home</a>
+      <a href="../services.html" class="nav__mobile-link">Services</a>
+      <a href="../lab/index.html" class="nav__mobile-link is-active">The Lab</a>
+      <a href="../contact.html" class="nav__mobile-link">Contact</a>
+      <a href="../contact.html" class="btn btn--primary nav__mobile-cta"
+        >Get a Quote</a
+      >
+    </div>
+
+    <main class="page__content">
+      <!-- LAB HERO -->
+      <header class="lab-hero" aria-labelledby="lab-heading">
+        <div class="container lab-hero__inner">
+          <p class="eyebrow">Kova Digital</p>
+          <h1 class="lab-hero__heading" id="lab-heading">
+            The<span> Lab</span>
+          </h1>
+          <p class="lab-hero__sub">
+            A live showcase of UI components built with vanilla HTML, CSS, and
+            JavaScript. No frameworks, no shortcuts — just craft.
+          </p>
+          <div class="lab-hero__meta">
+            <span class="lab-hero__stat"><strong>9</strong> Categories</span>
+            <span class="lab-hero__divider" aria-hidden="true">·</span>
+            <span class="lab-hero__stat"
+              ><strong>40+</strong> Live Components</span
+            >
+            <span class="lab-hero__divider" aria-hidden="true">·</span>
+            <span class="lab-hero__stat"><strong>0</strong> Dependencies</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- FEATURED COMPONENTS -->
+      <section class="section" aria-labelledby="featured-heading">
+        <div class="container">
+          <!-- Secion header w/ shuffle button -->
+          <div class="featured-header">
+            <div>
+              <p class="eyebrow">Randomly Selected</p>
+              <h2 class="featured-heading" id="featured-heading">
+                Featured Components
+              </h2>
+              <hr class="divider" />
+            </div>
+            <button
+              class="featured-shuffle btn btn--outline btn--sm"
+              aria-label="Shuffle featured components"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                width="14"
+                height="14"
+              >
+                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+              </svg>
+              Shuffle
+            </button>
+          </div>
+
+          <!-- Featured cards injected here -->
+          <div
+            class="featued-grid"
+            aria-live="polite"
+            aria-label="FEatured components"
+          >
+            <!-- Populated by lab.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- BROWSE ALL CATEGORIES -->
+      <section class="section" aria-labelledby="categories-heading">
+        <div class="container">
+          <header class="section-header">
+            <p class="eyebrow">All Categories</p>
+            <h2 class="section-header__heading" id="categories-heading">
+              Browse the full collection
+            </h2>
+            <hr class="divider" />
+          </header>
+
+          <div class="lab-grid">
+            <a href="./buttons.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="7" width="20" height="10" rx="5" />
+                  <circle cx="17" cy="12" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Buttons</h3>
+                <p class="lab-card__desc">
+                  Gold glow, ripple, flip, liquid fill and more
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./loaders.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                  />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Loaders</h3>
+                <p class="lab-card__desc">
+                  Spinners, progress bars, skeleton screens
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./navigation.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 6h18M3 12h18M3 18h18" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Navigation</h3>
+                <p class="lab-card__desc">
+                  Pill nav, glass nav, sidebar, underline slide
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./hero-sections.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="12" rx="2" />
+                  <path d="M2 18h20M6 22h12" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Hero Sections</h3>
+                <p class="lab-card__desc">
+                  Centered, split, gradient, and full-bleed openers
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./footers.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="17" width="20" height="5" rx="1" />
+                  <path d="M2 12h20M2 7h20" opacity=".4" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Footers</h3>
+                <p class="lab-card__desc">
+                  Minimal, column, gold band, and animated footers
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./cards.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M2 9h20" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Cards</h3>
+                <p class="lab-card__desc">
+                  Service, pricing, profile, and hover glow cards
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./forms.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M8 10h8M8 14h5" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Forms</h3>
+                <p class="lab-card__desc">
+                  Contact forms, search bars, login inputs
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./micro-interactions.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Micro-interactions</h3>
+                <p class="lab-card__desc">
+                  Toggles, likes, tooltips, progress rings
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="./typography.html" class="lab-card">
+              <div class="lab-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 7V4h16v3M9 20h6M12 4v16" />
+                </svg>
+              </div>
+              <div class="lab-card__body">
+                <h3 class="lab-card__title">Typography</h3>
+                <p class="lab-card__desc">
+                  Gradient headings, typewriter, text reveal, split
+                </p>
+              </div>
+              <svg
+                class="lab-card__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- CTA back to business site -->
+          <div class="flex justify-center mt-16">
+            <a href="../contact.html" class="btn btn--primary btn--lg"
+              >Start a Project</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="../assets/js/kova.js"></script>
+    <script src="../assets/js/lab-registry.js"></script>
+    <script src="../assets/js/lab.js"></script>
+  </body>
+</html>
