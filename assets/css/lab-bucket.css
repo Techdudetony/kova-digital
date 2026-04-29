@@ -166,6 +166,9 @@
 .demo-card__preview > * {
   position: relative;
   z-index: var(--z-raised);
+}
+
+.demo-card__preview--view-only > * {
   pointer-events: none; /* No interaction — view only */
 }
 

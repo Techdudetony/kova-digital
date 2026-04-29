@@ -1,0 +1,533 @@
+/* ==============================================
+   UI LAB — Micro-interactions
+   ============================================== */
+/* ---------- SHARED LAYOUT HELPERS ---------- */
+.micro-demo--row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* ---------- GOLD TOGGLE ----------- */
+.demo-toggle {
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+}
+
+.demo-toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.demo-toggle__track {
+  display: flex;
+  align-items: center;
+  width: 52px;
+  height: 28px;
+  background: var(--color-surface-3);
+  border: var(--border-gold);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.demo-toggle__thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-dim);
+  transition:
+    transform var(--duration-base) var(--ease-spring),
+    background var(--duration-base) var(--ease-out);
+}
+
+/* Checked state — gold track and thumb slides right */
+.demo-toggle__input:checked + .demo-toggle__track {
+  background: var(--gradient-gold);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.demo-toggle__input:checked + .demo-toggle__track .demo-toggle__thumb {
+  transform: translateX(24px);
+  background: var(--color-text-inverse);
+}
+
+.demo-toggle__input:focus-visible + .demo-toggle__track {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ----------- LIKE BUTTON ----------- */
+.demo-like {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-surface-2);
+  border: var(--border-gold);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-5);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.demo-like:hover {
+  background: rgba(201, 149, 42, 0.08);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
+}
+
+.demo-like__icon {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+  line-height: 1;
+}
+
+.demo-like__count {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semi);
+  color: var(--color-text-secondary);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+/* Liked state — gold heart with pop animation */
+.demo-like.is-liked {
+  border-color: var(--color-gold);
+  background: rgba(201, 149, 42, 0.08);
+}
+
+.demo-like.is-liked .demo-like__icon {
+  color: var(--color-gold);
+  transform: scale(1.3);
+  animation: like-pop 0.4s var(--ease-spring) forwards;
+}
+
+.demo-like.is-liked .demo-like__count {
+  color: var(--color-gold);
+}
+
+@keyframes like-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+/* ---------- TOOLTIP ---------- */
+.demo-tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.demo-tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--color-surface-3);
+  color: var(--color-gold);
+  border: var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: var(--shadow-gold);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    visibility var(--duration-base) var(--ease-out);
+}
+
+/* Arrow pointing down */
+.demo-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-gold-dim);
+}
+
+.demo-tooltip-wrap:hover .demo-tooltip,
+.demo-tooltip-wrap:focus-within .demo-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ----------- PROGRESS RING ---------- */
+.demo-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.demo-progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.demo-progress-ring__track {
+  fill: none;
+  stroke: var(--color-surface-3);
+  stroke-width: 4;
+}
+
+.demo-progress-ring__fill {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 150.8; /* circumference: 2 * PI * 24 */
+  stroke-dashoffset: 37.7; /* 75% fill: 150.8 * 0.25 */
+  animation: ring-fill 2s var(--ease-out) forwards;
+  filter: drop-shadow(0 0 4px rgba(201, 149, 42, 0.4));
+}
+
+@keyframes ring-fill {
+  from {
+    stroke-dashoffset: 150.8;
+  }
+  to {
+    stroke-dashoffset: 37.7;
+  }
+}
+
+.demo-progress-ring__label {
+  position: absolute;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-gold);
+}
+
+/* ---------- STAR RATING ---------- */
+.demo-stars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: var(--space-1);
+}
+
+.demo-stars input {
+  display: none;
+}
+
+.demo-stars label {
+  font-size: var(--text-2xl);
+  color: var(--color-surface-3);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+/* Fill all stars from hovered back to first via sibling selectors */
+.demo-stars label:hover,
+.demo-stars label:hover ~ label,
+.demo-stars input:checked ~ label {
+  color: var(--color-gold);
+}
+
+.demo-stars label:hover {
+  transform: scale(1.2);
+}
+
+/* ---------- ACCORDION ---------- */
+.demo-accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.demo-accordion__item {
+  background: var(--color-surface-2);
+  border: var(--border-gold);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.demo-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semi);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.demo-accordion__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.demo-accordion__trigger::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-gold-dim);
+  border-bottom: 2px solid var(--color-gold-dim);
+  transform: rotate(45deg);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.demo-accordion__item[open] .demo-accordion__trigger {
+  color: var(--color-gold);
+}
+
+.demo-accordion__item[open] .demo-accordion__trigger::after {
+  transform: rotate(-135deg);
+  border-color: var(--color-gold);
+}
+
+.demo-accordion__body {
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  border-top: var(--border-thin);
+}
+
+.demo-accordion__body p {
+  max-width: none;
+}
+
+/* ---------- COPY TO CLIPBOARD ---------- */
+.demo-copy {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface-2);
+  border: var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.demo-copy__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.demo-copy__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: transparent;
+  border: var(--border-gold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.demo-copy__btn:hover {
+  background: rgba(201, 149, 42, 0.1);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.demo-copy__icon,
+.demo-copy__check {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-gold);
+  position: absolute;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.demo-copy__check {
+  opacity: 0;
+  transform: scale(0.5);
+  stroke: var(--color-gold);
+}
+
+/* Copied state — swap icon for checkmark */
+.demo-copy__btn.is-copied {
+  background: rgba(201, 149, 42, 0.15);
+  border-color: var(--color-gold);
+}
+
+.demo-copy__btn.is-copied .demo-copy__icon {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.demo-copy__btn.is-copied .demo-copy__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- NOTIFICATION BADGE ---------- */
+.demo-badge-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.demo-badge-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-surface-2);
+  border: var(--border-gold);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.demo-badge-btn:hover {
+  background: rgba(201, 149, 42, 0.08);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.demo-badge-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-gold);
+}
+
+.demo-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--space-1);
+  background: var(--gradient-gold);
+  color: var(--color-text-inverse);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: badge-pop 0.4s var(--ease-spring) forwards;
+}
+
+.demo-badge--dot {
+  min-width: 10px;
+  height: 10px;
+  padding: 0;
+  top: -3px;
+  right: -3px;
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ---------- HOVER CARD FLIP ---------- */
+.demo-hover-card {
+  width: 140px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-inout);
+  cursor: pointer;
+}
+
+.demo-hover-card:hover {
+  transform: rotateY(180deg);
+}
+
+.demo-hover-card__front,
+.demo-hover-card__back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+}
+
+.demo-hover-card__front {
+  background: var(--color-surface-2);
+  border: var(--border-gold);
+}
+
+.demo-hover-card__icon {
+  font-size: var(--text-2xl);
+  color: var(--color-gold);
+}
+
+.demo-hover-card__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  max-width: none;
+}
+
+.demo-hover-card__back {
+  background: var(--gradient-gold);
+  transform: rotateY(180deg);
+  border: none;
+}
+
+.demo-hover-card__text {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-inverse);
+  max-width: none;
+}
+
+.demo-hover-card__sub {
+  font-size: var(--text-xs);
+  color: rgba(13, 13, 13, 0.7);
+  max-width: none;
+}
