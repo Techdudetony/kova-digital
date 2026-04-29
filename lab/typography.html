@@ -46,6 +46,7 @@
         </button>
       </div>
     </nav>
+
     <div
       class="nav__mobile"
       id="mobile-nav"
@@ -79,13 +80,113 @@
         <span class="lab-page__eyebrow">UI Lab</span>
         <h1 class="lab-page__title">Typography</h1>
         <p class="lab-page__subtitle">
-          Gradient headings, typewriter effects, text reveals, and split
-          animations.
+          Gradient headings, typewriter effects, text reveals, splits, and
+          animated display treatments.
         </p>
       </header>
 
-      <!-- Components go here -->
-      <div class="demo-grid demo-grid--2col"></div>
+      <div class="demo-grid demo-grid--2col">
+        <!-- Gradient Heading -->
+        <div class="demo-card" id="type-gradient-heading">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <h2 class="demo-type demo-type--gradient">
+              Where Imagination<br />meets Innovation
+            </h2>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Gradient Heading</span>
+            <span class="demo-card__anchor">.demo-type--gradient</span>
+          </div>
+        </div>
+
+        <!-- Typewriter -->
+        <div class="demo-card" id="type-typewriter">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <p class="demo-type demo-type--typewriter">
+              Creative Digital Solutions<span class="demo-type__cursor">|</span>
+            </p>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Typewriter</span>
+            <span class="demo-card__anchor">.demo-type--typewriter</span>
+          </div>
+        </div>
+
+        <!-- Text Reveal -->
+        <div class="demo-card" id="type-reveal">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <p class="demo-type demo-type--reveal">Crafted with precision.</p>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Text Reveal</span>
+            <span class="demo-card__anchor">.demo-type--reveal</span>
+          </div>
+        </div>
+
+        <!-- Split Text -->
+        <div class="demo-card" id="type-split">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <h2 class="demo-type demo-type--split">
+              <span>Kova</span><span>Digital</span>
+            </h2>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Split Text</span>
+            <span class="demo-card__anchor">.demo-type--split</span>
+          </div>
+        </div>
+
+        <!-- Glitch Text -->
+        <div class="demo-card" id="type-glitch">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <h2 class="demo-type demo-type--glitch" data-text="GLITCH">
+              GLITCH
+            </h2>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Glitch Text</span>
+            <span class="demo-card__anchor">.demo-type--glitch</span>
+          </div>
+        </div>
+
+        <!-- Outlined Text -->
+        <div class="demo-card" id="type-outline">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <h2 class="demo-type demo-type--outline">KOVA</h2>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Outlined Text</span>
+            <span class="demo-card__anchor">.demo-type--outline</span>
+          </div>
+        </div>
+
+        <!-- Blur Reveal -->
+        <div class="demo-card" id="type-blur">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <p class="demo-type demo-type--blur">Where Vision Meets Craft</p>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Blur Reveal</span>
+            <span class="demo-card__anchor">.demo-type--blur</span>
+          </div>
+        </div>
+
+        <!-- Stagger Fade -->
+        <div class="demo-card" id="type-stagger">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <div class="demo-type demo-type--stagger">
+              <span>Creative.</span>
+              <span>Digital.</span>
+              <span>Solutions.</span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Stagger Fade</span>
+            <span class="demo-card__anchor">.demo-type--stagger</span>
+          </div>
+        </div>
+      </div>
+      <!-- /.demo-grid -->
     </main>
 
     <script src="../assets/js/kova.js"></script>
