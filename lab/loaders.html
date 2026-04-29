@@ -46,6 +46,7 @@
         </button>
       </div>
     </nav>
+
     <div
       class="nav__mobile"
       id="mobile-nav"
@@ -79,12 +80,158 @@
         <span class="lab-page__eyebrow">UI Lab</span>
         <h1 class="lab-page__title">Loaders</h1>
         <p class="lab-page__subtitle">
-          Spinners, progress bars, skeleton screens, and loading states.
+          Spinners, progress bars, skeleton screens, and loading states — all
+          animated with pure CSS.
         </p>
       </header>
 
-      <!-- Components go here -->
-      <div class="demo-grid"></div>
+      <div class="demo-grid">
+        <!-- Gold Spinner -->
+        <div class="demo-card" id="loader-spinner">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--spinner"
+              role="status"
+              aria-label="Loading"
+            ></div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Gold Spinner</span>
+            <span class="demo-card__anchor">.loader--spinner</span>
+          </div>
+        </div>
+
+        <!-- Pulse Dots -->
+        <div class="demo-card" id="loader-dots">
+          <div class="demo-card__preview">
+            <div class="loader loader--dots" role="status" aria-label="Loading">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Pulse Dots</span>
+            <span class="demo-card__anchor">.loader--dots</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="demo-card" id="loader-bar">
+          <div class="demo-card__preview">
+            <div class="loader loader--bar" role="status" aria-label="Loading">
+              <div class="loader__bar-fill"></div>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Progress Bar</span>
+            <span class="demo-card__anchor">.loader--bar</span>
+          </div>
+        </div>
+
+        <!-- Skeleton Screen -->
+        <div class="demo-card" id="loader-skeleton">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--skeleton"
+              role="status"
+              aria-label="Loading"
+            >
+              <div class="skeleton__avatar"></div>
+              <div class="skeleton__lines">
+                <div class="skeleton__line skeleton__line--wide"></div>
+                <div class="skeleton__line skeleton__line--mid"></div>
+                <div class="skeleton__line skeleton__line--short"></div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Skeleton Screen</span>
+            <span class="demo-card__anchor">.loader--skeleton</span>
+          </div>
+        </div>
+
+        <!-- Pulsing Ring -->
+        <div class="demo-card" id="loader-ring">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--ring"
+              role="status"
+              aria-label="Loading"
+            ></div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Pulsing Ring</span>
+            <span class="demo-card__anchor">.loader--ring</span>
+          </div>
+        </div>
+
+        <!-- Orbit Loader -->
+        <div class="demo-card" id="loader-orbit">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--orbit"
+              role="status"
+              aria-label="Loading"
+            >
+              <div class="loader__orbit-core"></div>
+              <div class="loader__orbit-ring">
+                <div class="loader__orbit-dot"></div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Orbit</span>
+            <span class="demo-card__anchor">.loader--orbit</span>
+          </div>
+        </div>
+
+        <!-- Bar Wave -->
+        <div class="demo-card" id="loader-wave">
+          <div class="demo-card__preview">
+            <div class="loader loader--wave" role="status" aria-label="Loading">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Bar Wave</span>
+            <span class="demo-card__anchor">.loader--wave</span>
+          </div>
+        </div>
+
+        <!-- Flip Cube -->
+        <div class="demo-card" id="loader-cube">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--cube"
+              role="status"
+              aria-label="Loading"
+            ></div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Flip Cube</span>
+            <span class="demo-card__anchor">.loader--cube</span>
+          </div>
+        </div>
+
+        <!-- Typewriter -->
+        <div class="demo-card" id="loader-typewriter">
+          <div class="demo-card__preview">
+            <div
+              class="loader loader--typewriter"
+              role="status"
+              aria-label="Loading"
+            >
+              Loading<span class="loader__typewriter-dots"></span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Typewriter</span>
+            <span class="demo-card__anchor">.loader--typewriter</span>
+          </div>
+        </div>
+      </div>
+      <!-- /.demo-grid -->
     </main>
 
     <script src="../assets/js/kova.js"></script>

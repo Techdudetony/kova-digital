@@ -1,0 +1,351 @@
+/* ==============================================
+   UI LAB — Loaders
+   ============================================== */
+
+/* ---------- SHARED BASE ---------- */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- GOLD SPINNER ---------- */
+.loader--spinner {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--color-surface-3);
+  border-top: 3px solid var(--color-gold);
+  border-right: 3px solid var(--color-copper);
+  animation: spinner-rotate 0.9s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- PULSE DOTS ---------- */
+.loader--dots {
+  gap: var(--space-2);
+}
+
+.loader--dots span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold);
+  animation: dots-pulse 1.2s var(--ease-inout) infinite;
+}
+
+.loader--dots span:nth-child(2) {
+  background: var(--color-copper);
+  animation-delay: 0.2s;
+}
+
+.loader--dots span:nth-child(3) {
+  background: var(--color-rose-gold);
+  animation-delay: 0.4s;
+}
+
+@keyframes dots-pulse {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ---------- PROGRESS BAR --------- */
+.loader--bar {
+  width: 100%;
+  max-width: 240px;
+  height: 6px;
+  background: var(--color-surface-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.loader__bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  animation: bar-progress 2s var(--ease-inout) infinite;
+}
+
+@keyframes bar-progress {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+  70% {
+    width: 100%;
+    opacity: 1;
+  }
+  90% {
+    width: 100%;
+    opacity: 0;
+  }
+  100% {
+    width: 0%;
+    opacity: 0;
+  }
+}
+
+/* ---------- SKELETON SCREEN ---------- */
+.loader--skeleton {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 260px;
+}
+
+.skeleton__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-3);
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton__lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-1);
+}
+
+.skeleton__line {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-3);
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton__line--wide {
+  width: 100%;
+}
+.skeleton__line--mid {
+  width: 75%;
+}
+.skeleton__line--short {
+  width: 50%;
+}
+
+.skeleton__avatar::after,
+.skeleton__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 149, 42, 0.15) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.8s var(--ease-inout) infinite;
+}
+
+.skeleton__line:nth-child(2)::after {
+  animation-delay: 0.1s;
+}
+.skeleton__line:nth-child(3)::after {
+  animation-delay: 0.2s;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* --------- PULSING RING ---------- */
+.loader--ring {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
+.loader--ring::before,
+.loader--ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-gold);
+  animation: ring-pulse 1.8s var(--ease-out) infinite;
+}
+
+.loader--ring::after {
+  animation-delay: 0.6s;
+  border-color: var(--color-copper);
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* ---------- ORBIT ---------- */
+.loader--orbit {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
+.loader__orbit-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.loader__orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-gold-dim);
+  animation: orbit-spin 1.2s linear infinite;
+}
+
+.loader__orbit-dot {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-copper);
+  box-shadow: 0 0 8px rgba(184, 115, 51, 0.6);
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- BAR WAVE ---------- */
+.loader--wave {
+  gap: var(--space-1);
+  align-items: flex-end;
+  height: 40px;
+}
+
+.loader--wave span {
+  display: block;
+  width: 6px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold);
+  animation: wave-bounce 1s var(--ease-inout) infinite;
+}
+
+.loader--wave span:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader--wave span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loader--wave span:nth-child(3) {
+  animation-delay: 0.2s;
+  background: var(--color-copper);
+}
+.loader--wave span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loader--wave span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wave-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1.5);
+    opacity: 1;
+  }
+}
+
+/* ---------- FLIP CUBE ---------- */
+.loader--cube {
+  width: 36px;
+  height: 36px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-sm);
+  animation: cube-flip 1.4s var(--ease-inout) infinite;
+  box-shadow: var(--shadow-gold);
+}
+
+@keyframes cube-flip {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+
+/* ---------- TYPEWRITER ---------- */
+.loader--typewriter {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semi);
+  color: var(--color-gold);
+  letter-spacing: var(--tracking-wide);
+}
+
+.loader__typewriter-dots::after {
+  content: "";
+  animation: typewriter-dots 1.4s var(--ease-inout) infinite;
+}
+
+@keyframes typewriter-dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
