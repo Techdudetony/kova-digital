@@ -109,6 +109,38 @@ const LAB_REGISTRY = [
     previewHTML: `<div class="loader loader--ring"></div>`,
     tags: ["ring", "pulse", "glow"],
   },
+  {
+    id: "loader-orbit",
+    title: "Orbit",
+    category: "Loaders",
+    page: "./loaders.html",
+    previewHTML: `<div class="loader loader--orbit"><div class="loader__orbit-core"></div><div class="loader__orbit-ring"><div class="loader__orbit-dot"></div></div></div>`,
+    tags: ["orbit", "spin", "loading"],
+  },
+  {
+    id: "loader-wave",
+    title: "Bar Wave",
+    category: "Loaders",
+    page: "./loaders.html",
+    previewHTML: `<div class="loader loader--wave"><span></span><span></span><span></span><span></span><span></span></div>`,
+    tags: ["wave", "bars", "loading"],
+  },
+  {
+    id: "loader-cube",
+    title: "Flip Cube",
+    category: "Loaders",
+    page: "./loaders.html",
+    previewHTML: `<div class="loader loader--cube"></div>`,
+    tags: ["cube", "flip", "3d"],
+  },
+  {
+    id: "loader-typewriter",
+    title: "Typewriter",
+    category: "Loaders",
+    page: "./loaders.html",
+    previewHTML: `<div class="loader loader--typewriter">Loading<span class="loader__typewriter-dots"></span></div>`,
+    tags: ["typewriter", "text", "loading"],
+  },
 
   /* ---------- NAVIGATION ---------- */
   {
