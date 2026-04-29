@@ -49,6 +49,7 @@
         </button>
       </div>
     </nav>
+
     <div
       class="nav__mobile"
       id="mobile-nav"
@@ -82,15 +83,298 @@
         <span class="lab-page__eyebrow">UI Lab</span>
         <h1 class="lab-page__title">Micro-interactions</h1>
         <p class="lab-page__subtitle">
-          Toggles, like buttons, tooltips, progress rings, and small delights.
+          Toggles, likes, tooltips, ratings, and small delights that bring
+          interfaces to life.
         </p>
       </header>
 
-      <!-- Components go here -->
-      <div class="demo-grid"></div>
+      <div class="demo-grid">
+        <!-- Gold Toggle -->
+        <div class="demo-card" id="micro-toggle">
+          <div class="demo-card__preview">
+            <div class="micro-demo micro-demo--row">
+              <label class="demo-toggle">
+                <input type="checkbox" class="demo-toggle__input" />
+                <span class="demo-toggle__track">
+                  <span class="demo-toggle__thumb"></span>
+                </span>
+              </label>
+              <label class="demo-toggle">
+                <input type="checkbox" class="demo-toggle__input" checked />
+                <span class="demo-toggle__track">
+                  <span class="demo-toggle__thumb"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Gold Toggle</span>
+            <span class="demo-card__anchor">.demo-toggle</span>
+          </div>
+        </div>
+
+        <!-- Like Button -->
+        <div class="demo-card" id="micro-like">
+          <div class="demo-card__preview">
+            <button class="demo-like" aria-label="Like">
+              <span class="demo-like__icon">♥</span>
+              <span class="demo-like__count">24</span>
+            </button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Like Button</span>
+            <span class="demo-card__anchor">.demo-like</span>
+          </div>
+        </div>
+
+        <!-- Tooltip -->
+        <div class="demo-card" id="micro-tooltip">
+          <div class="demo-card__preview">
+            <div class="demo-tooltip-wrap">
+              <button class="btn btn--outline">Hover Me</button>
+              <span class="demo-tooltip">I am a tooltip!</span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Tooltip</span>
+            <span class="demo-card__anchor">.demo-tooltip</span>
+          </div>
+        </div>
+
+        <!-- Progress Ring -->
+        <div class="demo-card" id="micro-progress">
+          <div class="demo-card__preview">
+            <div class="demo-progress-ring">
+              <svg viewBox="0 0 60 60" aria-label="75% progress">
+                <circle
+                  class="demo-progress-ring__track"
+                  cx="30"
+                  cy="30"
+                  r="24"
+                />
+                <circle
+                  class="demo-progress-ring__fill"
+                  cx="30"
+                  cy="30"
+                  r="24"
+                />
+              </svg>
+              <span class="demo-progress-ring__label">75%</span>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Progress Ring</span>
+            <span class="demo-card__anchor">.demo-progress-ring</span>
+          </div>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="demo-card" id="micro-stars">
+          <div class="demo-card__preview">
+            <div class="demo-stars" role="group" aria-label="Star rating">
+              <input type="radio" name="stars" id="s5" value="5" /><label
+                for="s5"
+                >★</label
+              >
+              <input type="radio" name="stars" id="s4" value="4" /><label
+                for="s4"
+                >★</label
+              >
+              <input
+                type="radio"
+                name="stars"
+                id="s3"
+                value="3"
+                checked
+              /><label for="s3">★</label>
+              <input type="radio" name="stars" id="s2" value="2" /><label
+                for="s2"
+                >★</label
+              >
+              <input type="radio" name="stars" id="s1" value="1" /><label
+                for="s1"
+                >★</label
+              >
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Star Rating</span>
+            <span class="demo-card__anchor">.demo-stars</span>
+          </div>
+        </div>
+
+        <!-- Accordion -->
+        <div class="demo-card" id="micro-accordion">
+          <div class="demo-card__preview demo-card__preview--tall">
+            <div class="demo-accordion">
+              <details class="demo-accordion__item" open>
+                <summary class="demo-accordion__trigger">
+                  What do you build?
+                </summary>
+                <div class="demo-accordion__body">
+                  <p>
+                    Custom websites, UI systems, and digital experiences built
+                    from scratch.
+                  </p>
+                </div>
+              </details>
+              <details class="demo-accordion__item">
+                <summary class="demo-accordion__trigger">
+                  How long does it take?
+                </summary>
+                <div class="demo-accordion__body">
+                  <p>Typically 2–6 weeks depending on scope and complexity.</p>
+                </div>
+              </details>
+              <details class="demo-accordion__item">
+                <summary class="demo-accordion__trigger">
+                  Do you offer maintenance?
+                </summary>
+                <div class="demo-accordion__body">
+                  <p>Yes — retainer plans starting at $175/mo.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Accordion</span>
+            <span class="demo-card__anchor">.demo-accordion</span>
+          </div>
+        </div>
+
+        <!-- Copy to Clipboard -->
+        <div class="demo-card" id="micro-copy">
+          <div class="demo-card__preview">
+            <div class="demo-copy">
+              <code class="demo-copy__code">npm install kova-ui</code>
+              <button class="demo-copy__btn" aria-label="Copy to clipboard">
+                <svg
+                  class="demo-copy__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+                <svg
+                  class="demo-copy__check"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Copy to Clipboard</span>
+            <span class="demo-card__anchor">.demo-copy</span>
+          </div>
+        </div>
+
+        <!-- Notification Badge -->
+        <div class="demo-card" id="micro-badge">
+          <div class="demo-card__preview">
+            <div class="micro-demo micro-demo--row">
+              <div class="demo-badge-wrap">
+                <button class="demo-badge-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"
+                    />
+                  </svg>
+                </button>
+                <span class="demo-badge">3</span>
+              </div>
+              <div class="demo-badge-wrap">
+                <button class="demo-badge-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                    />
+                  </svg>
+                </button>
+                <span class="demo-badge demo-badge--dot"></span>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Notification Badge</span>
+            <span class="demo-card__anchor">.demo-badge</span>
+          </div>
+        </div>
+
+        <!-- Hover Card -->
+        <div class="demo-card" id="micro-hover-card">
+          <div class="demo-card__preview">
+            <div class="demo-hover-card">
+              <div class="demo-hover-card__front">
+                <span class="demo-hover-card__icon">✦</span>
+                <p class="demo-hover-card__label">Hover Me</p>
+              </div>
+              <div class="demo-hover-card__back">
+                <p class="demo-hover-card__text">Kova Digital</p>
+                <p class="demo-hover-card__sub">Creative Solutions</p>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Hover Card Flip</span>
+            <span class="demo-card__anchor">.demo-hover-card</span>
+          </div>
+        </div>
+      </div>
+      <!-- /.demo-grid -->
     </main>
 
     <script src="../assets/js/kova.js"></script>
     <script src="../assets/js/lab.js"></script>
+
+    <!-- Micro-interaction JS — like button and copy to clipboard -->
+    <script>
+      /* ---------- LIKE BUTTON ---------- */
+      document.querySelectorAll(".demo-like").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const isLiked = btn.classList.toggle("is-liked");
+          const count = btn.querySelector(".demo-like__count");
+          count.textContent = isLiked
+            ? parseInt(count.textContent) + 1
+            : parseInt(count.textContent) - 1;
+        });
+      });
+
+      /* ---------- COPY TO CLIPBOARD ---------- */
+      document.querySelectorAll(".demo-copy__btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const code = btn
+            .closest(".demo-copy")
+            .querySelector(".demo-copy__code").textContent;
+          navigator.clipboard.writeText(code).then(() => {
+            btn.classList.add("is-copied");
+            setTimeout(() => btn.classList.remove("is-copied"), 2000);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
