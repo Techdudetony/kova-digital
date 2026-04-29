@@ -46,6 +46,7 @@
         </button>
       </div>
     </nav>
+
     <div
       class="nav__mobile"
       id="mobile-nav"
@@ -79,15 +80,127 @@
         <span class="lab-page__eyebrow">UI Lab</span>
         <h1 class="lab-page__title">Buttons</h1>
         <p class="lab-page__subtitle">
-          Interactive button styles, hover effects, and click interactions.
+          Interactive button styles, hover effects, and click interactions — all
+          built with vanilla CSS.
         </p>
       </header>
 
-      <!-- Components go here -->
-      <div class="demo-grid"></div>
+      <div class="demo-grid">
+        <!-- Gold Glow -->
+        <div class="demo-card" id="btn-gold-glow">
+          <div class="demo-card__preview">
+            <button class="btn btn--neon">Hover Me</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Gold Glow</span>
+            <span class="demo-card__anchor">.btn--neon</span>
+          </div>
+        </div>
+
+        <!-- Animated Border -->
+        <div class="demo-card" id="btn-animated-border">
+          <div class="demo-card__preview">
+            <button class="btn btn--border"><span>Explore</span></button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Animated Border</span>
+            <span class="demo-card__anchor">.btn--border</span>
+          </div>
+        </div>
+
+        <!-- Ripple Click -->
+        <div class="demo-card" id="btn-ripple">
+          <div class="demo-card__preview demo-card__preview--interactive">
+            <button class="btn btn--ripple btn--ripple-demo">Click Me</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Ripple Click</span>
+            <span class="demo-card__anchor">.btn--ripple</span>
+          </div>
+        </div>
+
+        <!-- Fill Sweep -->
+        <div class="demo-card" id="btn-fill-sweep">
+          <div class="demo-card__preview">
+            <button class="btn btn--fill">Fill Me</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Fill Sweep</span>
+            <span class="demo-card__anchor">.btn--fill</span>
+          </div>
+        </div>
+
+        <!-- Gold Pulse -->
+        <div class="demo-card" id="btn-gold-pulse">
+          <div class="demo-card__preview">
+            <button class="btn btn--neon-pulse">Pulse</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Gold Pulse</span>
+            <span class="demo-card__anchor">.btn--neon-pulse</span>
+          </div>
+        </div>
+
+        <!-- Liquid Fill -->
+        <div class="demo-card" id="btn-liquid-fill">
+          <div class="demo-card__preview">
+            <button class="btn btn--liquid">Liquid</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Liquid Fill</span>
+            <span class="demo-card__anchor">.btn--liquid</span>
+          </div>
+        </div>
+
+        <!-- Flip Reveal -->
+        <div class="demo-card" id="btn-flip">
+          <div class="demo-card__preview">
+            <button class="btn btn--flip">
+              <span class="btn__face">Hover Me</span>
+              <span class="btn__back">Flipped!</span>
+            </button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Flip Reveal</span>
+            <span class="demo-card__anchor">.btn--flip</span>
+          </div>
+        </div>
+
+        <!-- Glitch -->
+        <div class="demo-card" id="btn-glitch">
+          <div class="demo-card__preview">
+            <button class="btn btn--glitch" data-text="Glitch">Glitch</button>
+          </div>
+          <div class="demo-card__footer">
+            <span class="demo-card__title">Glitch</span>
+            <span class="demo-card__anchor">.btn--glitch</span>
+          </div>
+        </div>
+      </div>
+      <!-- /.demo-grid -->
     </main>
 
     <script src="../assets/js/kova.js"></script>
     <script src="../assets/js/lab.js"></script>
+
+    <!-- Ripple interaction — scoped to demo card only -->
+    <script>
+      document.querySelectorAll(".btn--ripple-demo").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const ripple = document.createElement("span");
+          const rect = btn.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          ripple.className = "ripple";
+          ripple.style.cssText = `
+          width:  ${size}px;
+          height: ${size}px;
+          left:   ${e.clientX - rect.left - size / 2}px;
+          top:    ${e.clientY - rect.top - size / 2}px;
+        `;
+          btn.appendChild(ripple);
+          ripple.addEventListener("animationend", () => ripple.remove());
+        });
+      });
+    </script>
   </body>
 </html>
